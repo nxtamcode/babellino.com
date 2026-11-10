@@ -98,7 +98,7 @@ dd { margin: 8px 0 0; font-size: 14px; }
 .questions { max-width: 660px; margin-top: 28px; }
 .questions details { border-bottom: 1px solid var(--line); }
 .questions summary { padding-block: 18px; font-size: 14px; line-height: 1.6; cursor: pointer; }
-.questions details p { padding-bottom: 20px; }
+.questions details p { padding-block: 8px 20px; }
 .not-found { padding-block: 88px; }
 .not-found h1 { font-size: clamp(42px, 6vw, 72px); letter-spacing: -2px; }
 .not-found p { margin-block: 24px; line-height: 1.7; color: var(--muted); }

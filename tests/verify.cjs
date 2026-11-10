@@ -78,10 +78,11 @@ const { mkdir, writeFile } = require('node:fs/promises');
     console.log('Passed no-JavaScript questions and 404');
     // axe executes asynchronous JavaScript; run it in an enabled context, while
     // separately preserving the functional no-JavaScript checks above.
-    const errorContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const errorContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
     const errorPage = await errorContext.newPage();
     await errorPage.goto(new URL('404.html', base).href);
     assert.equal((await new AxeBuilder({ page: errorPage }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations.length, 0);
+    await errorPage.screenshot({ path: 'test-results/desktop-404.png', fullPage: true });
     await errorContext.close();
     await writeFile('test-results/report.json', JSON.stringify(results, null, 2));
     console.log(JSON.stringify(results, null, 2));
