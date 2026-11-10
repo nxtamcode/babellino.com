@@ -26,8 +26,8 @@ p, h1, h2, figure { margin: 0; }
 .brand-mark { width: 34px; height: 34px; margin-right: 10px; }
 .wordmark-dot { color: #6d7947; }
 nav { display: flex; gap: 36px; font-size: 14px; }
-nav a, .text-link { padding-block: 12px; }
-nav a:hover, .text-link:hover { text-decoration: underline; text-underline-offset: 5px; }
+nav a { padding-block: 12px; }
+nav a:hover { text-decoration: underline; text-underline-offset: 5px; }
 nav span { margin-left: 8px; }
 .hero { display: grid; grid-template-columns: 1.08fr 1fr; gap: 40px; padding-block: 74px 68px; align-items: center; }
 .eyebrow { font-size: 11px; letter-spacing: 1.1px; line-height: 1.7; text-transform: uppercase; }
@@ -83,10 +83,9 @@ dd { margin: 8px 0 0; font-size: 14px; }
 .how-bottom p { max-width: 350px; font-size: 14px; line-height: 1.8; color: #d1dac9; }
 .process { display: flex; align-items: center; gap: 22px; font-size: 13px; white-space: nowrap; }
 .process-arrow { color: #dce777; font-size: 20px; }
-.closing { display: flex; justify-content: space-between; align-items: center; gap: 60px; padding-block: 88px; }
+.closing { padding-block: 88px; }
 .closing h2 { margin-block: 17px 20px; }
 .closing p:not(.eyebrow) { font-size: 13px; line-height: 1.8; color: var(--muted); max-width: 440px; }
-.text-link { display: inline-flex; gap: 30px; align-items: center; border-bottom: 1px solid var(--ink); white-space: nowrap; font-size: 13px; }
 .footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; border-top: 1px solid var(--line); padding-block: 28px 34px; }
 .footer .wordmark { font-size: 25px; }
 .footer > span { font-size: 10px; color: var(--muted); }
@@ -103,7 +102,6 @@ dd { margin: 8px 0 0; font-size: 14px; }
   .intro .section-label { grid-column: 1 / -1; max-width: 175px; }
   .how-bottom { gap: 30px; }
   .process { gap: 14px; font-size: 11px; }
-  .closing { gap: 28px; }
 }
 @media (max-width: 760px) {
   .wrap { width: calc(100% - 40px); }
@@ -134,7 +132,7 @@ dd { margin: 8px 0 0; font-size: 14px; }
   .how-bottom { flex-direction: column; align-items: flex-start; gap: 28px; margin-top: 24px; }
   .how-bottom p { max-width: 420px; }
   .process { gap: 18px; font-size: 11px; flex-wrap: wrap; }
-  .closing { flex-direction: column; align-items: flex-start; padding-block: 48px; gap: 24px; }
+  .closing { padding-block: 48px; }
   .closing h2 { font-size: 36px; }
   .footer { flex-wrap: wrap; gap: 20px; padding-block: 24px; }
 }
