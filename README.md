@@ -34,6 +34,12 @@ pricing, and availability are not announced.
   availability, pricing, or privacy guarantees.
 - Preserve keyboard navigation, reduced-motion support, and mobile layout.
 
+## Boot splash artwork
+
+Draft 800 × 1280 boot artwork is in [`artwork/boot-splash/`](artwork/boot-splash/).
+It includes matched greyscale/colour SVGs and reference PNGs, not firmware code.
+Final loader formats, progress placement, and device validation are still pending.
+
 ## Verification
 
 Test desktop and mobile layouts, local asset loading, anchor navigation, keyboard
