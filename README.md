@@ -5,8 +5,15 @@ device with an 8-inch touchscreen and no internet requirement during use.
 
 ## Development
 
-Buildless HTML and CSS. No runtime dependencies, third-party fonts, analytics,
+Buildless HTML, CSS, and vanilla JavaScript. No runtime dependencies, third-party fonts, analytics,
 cookies, or external runtime requests.
+
+The local `hero.js` progressively enhances the headline with English, Spanish,
+French, Italian, and Portuguese translations, cycling every six seconds. A small
+Pause/Resume control stops automatic updates. Hidden tabs suspend the timer;
+reduced-motion preferences keep English static. The English heading also works
+without JavaScript and remains stable for assistive technology. Headline language
+examples do not announce supported product languages.
 
 ```sh
 python3 -m http.server 8080 --bind 127.0.0.1
