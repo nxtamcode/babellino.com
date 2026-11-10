@@ -28,6 +28,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
       const response = await page.goto(base, { waitUntil: 'networkidle' });
       assert.equal(response.status(), 200);
       assert.match(await page.title(), /^Babellino/);
+      assert.doesNotMatch(await response.text(), /github|open[\s-]?source/i);
       assert.equal(await page.locator('h1').count(), 1);
       const layout = await page.evaluate(() => ({
         width: innerWidth, scroll: document.documentElement.scrollWidth,
@@ -38,6 +39,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
       if (layout.screenScroll > layout.screenHeight + 1) errors.push('Screen mockup clipping');
       const a11y = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
       await page.screenshot({ path: `test-results/${name}.png`, fullPage: true });
+      await page.locator('.closing').screenshot({ path: `test-results/${name}-closing.png` });
       await page.keyboard.press('Tab');
       assert.equal(await page.locator(':focus').innerText(), 'Skip to content');
       await page.keyboard.press('Enter');
