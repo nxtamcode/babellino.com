@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <title>Babellino. Offline AI translator. In development.</title>
+  <rect width="1200" height="630" fill="#f5f3e9"/>
+  <g transform="translate(80 90) scale(2.4)">
+    <path d="M5 5h17a7 7 0 0 1 7 7v7a7 7 0 0 1-7 7h-6l-8 6v-6H5Z" fill="#293c31"/>
+    <path d="M12 11v9m0-5h5a3 3 0 1 1 0 6h-5" fill="none" stroke="#f5f3e9" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="80" y="310" font-family="Helvetica, Arial, sans-serif" font-size="132" font-weight="700" letter-spacing="-7" fill="#252a23">babellino<tspan fill="#6d7947">.</tspan></text>
+  <text x="85" y="390" font-family="Georgia, serif" font-size="48" fill="#293c31">Offline AI translator</text>
+  <path d="M85 470h1030" stroke="#d6d8ca"/>
+  <text x="85" y="526" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#606457">In development</text>
+  <text x="1115" y="526" text-anchor="end" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#606457">babellino.com</text>
+</svg>

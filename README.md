@@ -63,3 +63,25 @@ npm test
 ```
 
 Browser QA dependencies are development-only. Publishing requires no npm build.
+
+## Search and sharing
+
+The English page is the canonical, indexable content; rotating headlines do not
+create localized pages or announce device language support. Keep essential facts
+and questions in HTML, usable without JavaScript.
+
+- Keep the title, description, Open Graph/Twitter fields, and WebPage JSON-LD in sync.
+- WebSite/WebPage/Brand describe the prelaunch site, not an offer. Do not invent a
+  company identity, ratings, prices, availability, supported languages, or sameAs links.
+- `llms.txt` is an optional factual navigation aid, not a ranking or citation promise.
+- `sitemap.xml` lists only the canonical homepage. Update `lastmod` only for meaningful
+  public-content changes, not every deployment; update the corresponding test date.
+- `404.html` is the branded, noindex error page. Check an actual missing URL after deploy.
+- `social-card.svg` uses the existing brand design. Regenerate the committed PNG with
+  `rsvg-convert social-card.svg -o social-card.png`; verify 1200 × 630 and inspect it.
+
+`tests/seo.py` validates the static metadata, graph references, share image, sitemap,
+robots, links, and claim boundaries. Browser QA also covers question disclosures
+(open/closed and no-JavaScript), their keyboard operation, and the 404 design.
+Search Console/Bing verification and actual search/AI visibility need separate
+account access and measurements; passing these checks does not demonstrate indexing.
