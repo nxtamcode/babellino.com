@@ -48,6 +48,15 @@ const { mkdir, writeFile } = require('node:fs/promises');
       assert.equal(new URL(page.url()).hash, '#the-device');
       await page.getByRole('link', { name: 'How it works' }).click();
       assert.equal(new URL(page.url()).hash, '#how-it-works');
+      for (const summary of await page.locator('.questions summary').all()) {
+        await summary.focus();
+        await page.keyboard.press('Enter');
+        assert.equal(await summary.evaluate(el => el.parentElement.open), true);
+      }
+      const expanded = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
+      assert.equal(expanded.violations.length, 0);
+      assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+      await page.locator('.closing').screenshot({ path: `test-results/${name}-questions-open.png` });
       results.push({ name, layout, errors, remoteRequests,
         violations: a11y.violations.map(v => ({
           id: v.id, impact: v.impact, nodes: v.nodes.map(n => n.target),
@@ -55,6 +64,16 @@ const { mkdir, writeFile } = require('node:fs/promises');
       });
       await context.close();
     }
+    const fallback = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+    const page = await fallback.newPage();
+    await page.goto(base);
+    await page.getByText('Which languages will Babellino support?', { exact: true }).click();
+    assert.ok(await page.getByText('Supported languages have not been announced.', { exact: false }).isVisible());
+    await page.goto(new URL('404.html', base).href);
+    assert.equal(await page.locator('h1').innerText(), 'Page not found.');
+    assert.equal((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations.length, 0);
+    await page.screenshot({ path: 'test-results/mobile-404.png', fullPage: true });
+    await fallback.close();
     await writeFile('test-results/report.json', JSON.stringify(results, null, 2));
     console.log(JSON.stringify(results, null, 2));
     assert.ok(results.every(r => !r.errors.length && !r.remoteRequests.length && !r.violations.length));

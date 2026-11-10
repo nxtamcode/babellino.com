@@ -1,0 +1,14 @@
+# Babellino
+
+> Babellino is a self-contained offline AI translator in development, with an 8-inch touchscreen for live, face-to-face translation.
+
+AI runs on the device; no internet connection is needed during use.
+Final hardware, supported languages, pricing, and availability have not been announced.
+The website's device illustration, sample conversation, and translated headlines are illustrative, not final hardware or confirmed language support.
+
+## Website
+
+- [Babellino](https://babellino.com/): Official prelaunch website.
+- [The device](https://babellino.com/#the-device): Product direction and intended features.
+- [How it works](https://babellino.com/#how-it-works): Speech, on-device AI, and translation.
+- [Questions](https://babellino.com/#questions): Offline operation, unannounced languages, and concept hardware.
