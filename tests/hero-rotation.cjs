@@ -89,19 +89,26 @@ const heading = 'A little less lost in translation.';
       await page.clock.fastForward(6000);
       assert.equal(await currentLanguage(page), 'fr');
 
+      // Media-query and viewport notifications arrive on real rendering frames,
+      // not the frozen timer clock. Wait for the actual preference response.
+      await page.clock.resume();
       await page.emulateMedia({ reducedMotion: 'reduce' });
-      await page.clock.runFor(100);
+      await toggle.waitFor({ state: 'hidden' });
       await page.clock.fastForward(30000);
       assert.equal(await currentLanguage(page), 'en');
       assert.equal(await toggle.isVisible(), false);
       await page.emulateMedia({ reducedMotion: 'no-preference' });
-      await page.clock.runFor(100);
+      await toggle.waitFor({ state: 'visible' });
       await page.clock.fastForward(6000);
       assert.equal(await currentLanguage(page), 'es');
       assert.equal(await toggle.isVisible(), true);
 
       await page.setViewportSize({ width: width === 320 ? 1440 : 320, height });
-      await page.clock.runFor(100);
+      await page.waitForFunction(() => {
+        const visual = document.querySelector('.hero-title-visual').getBoundingClientRect();
+        return [...document.querySelectorAll('.headline-line')].every(line =>
+          line.getBoundingClientRect().right <= visual.right + 1);
+      });
       assert.ok((await geometry(page)).fits, 'All languages refit after resizing');
       await toggle.click();
       await page.clock.resume();
