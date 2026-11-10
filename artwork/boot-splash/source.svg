@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1280" viewBox="0 0 800 1280" role="img" aria-labelledby="title description">
+  <title id="title">Babellino boot splash — colour artwork draft</title>
+  <desc id="description">The existing speech-bubble mark and babellino wordmark on a forest-green background. The firmware progress bar is not baked into this artwork.</desc>
+  <rect width="800" height="1280" fill="#293c31"/>
+  <!-- Exact mark geometry from the website header, inverted into brand colours. -->
+  <g transform="translate(281 385) scale(7)">
+    <path d="M5 5h17a7 7 0 0 1 7 7v7a7 7 0 0 1-7 7h-6l-8 6v-6H5Z" fill="#dce777"/>
+    <path d="M12 11v9m0-5h5a3 3 0 1 1 0 6h-5" fill="none" stroke="#293c31" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <!-- Editable lettering; the distributed SVG and PNG exports are font-independent. -->
+  <text x="400" y="714" text-anchor="middle" font-family="Helvetica Neue" font-weight="700" font-size="88" letter-spacing="-4.693333" fill="#f5f3e9">babellino<tspan fill="#dce777">.</tspan></text>
+</svg>
