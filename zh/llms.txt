@@ -1,0 +1,42 @@
+# Babellino
+
+> Babellino 是一款开发中的离线 AI 翻译器，配备 8 英寸触摸屏，支持 10 种语言。无需订阅，使用时无需联网。
+
+无需订阅。Babellino 正在为离线翻译而开发，AI 在设备上运行，使用时无需互联网连接。
+最终硬件规格、价格与上市时间尚未公布。
+设备图片和示例对话仅供示意，并非最终硬件或实时演示。
+
+## 支持 10 种语言。
+
+- 加泰罗尼亚语 — Català
+- 荷兰语 — Nederlands
+- 英语 — English
+- 法语 — Français
+- 德语 — Deutsch
+- 意大利语 — Italiano
+- 普通话 — 普通话
+- 葡萄牙语 — Português
+- 罗马尼亚语 — Română
+- 西班牙语 — Español
+
+更多语言即将加入。 欢迎联系我们，提出更多语言需求。
+
+## 网站
+
+- [Babellino](https://babellino.com/zh/)
+- [设备介绍](https://babellino.com/zh/#the-device)
+- [工作原理](https://babellino.com/zh/#how-it-works)
+- [常见问题](https://babellino.com/zh/#questions)
+
+## 网站语言
+
+- [Català](https://babellino.com/ca/)
+- [Nederlands](https://babellino.com/nl/)
+- [English](https://babellino.com/)
+- [Français](https://babellino.com/fr/)
+- [Deutsch](https://babellino.com/de/)
+- [Italiano](https://babellino.com/it/)
+- [普通话](https://babellino.com/zh/)
+- [Português](https://babellino.com/pt/)
+- [Română](https://babellino.com/ro/)
+- [Español](https://babellino.com/es/)

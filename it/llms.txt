@@ -1,0 +1,42 @@
+# Babellino
+
+> Babellino è un traduttore IA offline in sviluppo, con touchscreen da 8 pollici e 10 lingue supportate. Nessun abbonamento né internet durante l’uso.
+
+Non è richiesto alcun abbonamento. Babellino è in sviluppo per tradurre offline, con IA sul dispositivo e senza connessione internet durante l’uso.
+Hardware definitivo, prezzo e disponibilità non sono ancora stati annunciati.
+L’immagine del dispositivo e la conversazione di esempio sono illustrative: non mostrano l’hardware definitivo né una dimostrazione dal vivo.
+
+## 10 lingue supportate.
+
+- Catalano — Català
+- Olandese — Nederlands
+- Inglese — English
+- Francese — Français
+- Tedesco — Deutsch
+- Italiano — Italiano
+- Cinese mandarino — 普通话
+- Portoghese — Português
+- Rumeno — Română
+- Spagnolo — Español
+
+Altre lingue sono in arrivo. Contattaci per richiederne un’altra.
+
+## Sito web
+
+- [Babellino](https://babellino.com/it/)
+- [Il dispositivo](https://babellino.com/it/#the-device)
+- [Come funziona](https://babellino.com/it/#how-it-works)
+- [Domande](https://babellino.com/it/#questions)
+
+## Lingua del sito
+
+- [Català](https://babellino.com/ca/)
+- [Nederlands](https://babellino.com/nl/)
+- [English](https://babellino.com/)
+- [Français](https://babellino.com/fr/)
+- [Deutsch](https://babellino.com/de/)
+- [Italiano](https://babellino.com/it/)
+- [普通话](https://babellino.com/zh/)
+- [Português](https://babellino.com/pt/)
+- [Română](https://babellino.com/ro/)
+- [Español](https://babellino.com/es/)

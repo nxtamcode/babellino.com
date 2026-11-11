@@ -5,14 +5,10 @@
   const toggle = document.getElementById('hero-language-toggle');
   if (!visual || !controls || !label || !toggle) return;
 
-  // Editorial headline translations, not a list of supported device languages.
-  const phrases = [
-    { lang: 'en', name: 'English', lines: ['A little less', 'lost in', 'translation.'] },
-    { lang: 'es', name: 'Español', lines: ['Un poco menos', 'perdidos en la', 'traducción.'] },
-    { lang: 'fr', name: 'Français', lines: ['Un peu moins', 'perdus dans la', 'traduction.'] },
-    { lang: 'it', name: 'Italiano', lines: ['Un po’ meno', 'persi nella', 'traduzione.'] },
-    { lang: 'pt', name: 'Português', lines: ['Um pouco menos', 'perdidos na', 'tradução.'] },
-  ];
+  const config = JSON.parse(document.getElementById('site-config').textContent);
+  const phrases = [config.languages.find(p => p.code === config.locale),
+    ...config.languages.filter(p => p.code !== config.locale)];
+  visual.classList.add('is-animated');
   const slides = [visual.querySelector('.headline-slide')];
   for (const phrase of phrases.slice(1)) {
     const slide = document.createElement('span');
@@ -66,8 +62,8 @@
   };
 
   const updateButton = () => {
-    toggle.textContent = paused ? 'Resume' : 'Pause';
-    toggle.setAttribute('aria-label', `${paused ? 'Resume' : 'Pause'} headline language rotation`);
+    toggle.textContent = config.labels[paused ? 'resume' : 'pause'];
+    toggle.setAttribute('aria-label', config.labels[paused ? 'resumeLabel' : 'pauseLabel']);
   };
 
   const updateMotion = () => {

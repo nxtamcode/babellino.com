@@ -1,14 +1,42 @@
 # Babellino
 
-> Babellino is a self-contained offline AI translator in development, with an 8-inch touchscreen for live, face-to-face translation.
+> Babellino is an offline AI translator in development with an 8-inch touchscreen and 10 supported languages. No subscription or internet required during use.
 
-No subscription is required. AI runs on the device; no internet connection is needed during use.
-Final hardware, supported languages, pricing, and availability have not been announced.
-The website's device illustration, sample conversation, and translated headlines are illustrative, not final hardware or confirmed language support.
+No subscription is required. Babellino is being developed for offline translation, with AI running on the device and no internet connection needed during use.
+Final hardware, pricing, and availability have not been announced.
+The device illustration and sample conversation are illustrative, not final hardware or a live demo.
+
+## 10 supported languages.
+
+- Catalan — Català
+- Dutch — Nederlands
+- English — English
+- French — Français
+- German — Deutsch
+- Italian — Italiano
+- Mandarin Chinese — 普通话
+- Portuguese — Português
+- Romanian — Română
+- Spanish — Español
+
+More languages are coming. Contact us to request another.
 
 ## Website
 
-- [Babellino](https://babellino.com/): Official prelaunch website.
-- [The device](https://babellino.com/#the-device): Product direction and intended features.
-- [How it works](https://babellino.com/#how-it-works): Speech, on-device AI, and translation.
-- [Questions](https://babellino.com/#questions): Subscription-free offline operation, unannounced languages, and concept hardware.
+- [Babellino](https://babellino.com/)
+- [The device](https://babellino.com/#the-device)
+- [How it works](https://babellino.com/#how-it-works)
+- [Questions](https://babellino.com/#questions)
+
+## Website language
+
+- [Català](https://babellino.com/ca/)
+- [Nederlands](https://babellino.com/nl/)
+- [English](https://babellino.com/)
+- [Français](https://babellino.com/fr/)
+- [Deutsch](https://babellino.com/de/)
+- [Italiano](https://babellino.com/it/)
+- [普通话](https://babellino.com/zh/)
+- [Português](https://babellino.com/pt/)
+- [Română](https://babellino.com/ro/)
+- [Español](https://babellino.com/es/)

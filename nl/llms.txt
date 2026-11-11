@@ -1,0 +1,42 @@
+# Babellino
+
+> Babellino is een offline AI-vertaler in ontwikkeling, met een 8-inch touchscreen en 10 ondersteunde talen. Geen abonnement of internet nodig tijdens gebruik.
+
+Een abonnement is niet nodig. Babellino wordt ontwikkeld voor offline vertaling, met AI op het apparaat en zonder internetverbinding tijdens gebruik.
+Definitieve hardware, prijs en beschikbaarheid zijn nog niet bekendgemaakt.
+De apparaatafbeelding en het voorbeeldgesprek zijn illustratief; ze tonen geen definitieve hardware of live demo.
+
+## 10 ondersteunde talen.
+
+- Catalaans — Català
+- Nederlands — Nederlands
+- Engels — English
+- Frans — Français
+- Duits — Deutsch
+- Italiaans — Italiano
+- Mandarijn-Chinees — 普通话
+- Portugees — Português
+- Roemeens — Română
+- Spaans — Español
+
+Er komen meer talen bij. Neem contact op om een andere taal aan te vragen.
+
+## Website
+
+- [Babellino](https://babellino.com/nl/)
+- [Het apparaat](https://babellino.com/nl/#the-device)
+- [Hoe het werkt](https://babellino.com/nl/#how-it-works)
+- [Vragen](https://babellino.com/nl/#questions)
+
+## Taal van de website
+
+- [Català](https://babellino.com/ca/)
+- [Nederlands](https://babellino.com/nl/)
+- [English](https://babellino.com/)
+- [Français](https://babellino.com/fr/)
+- [Deutsch](https://babellino.com/de/)
+- [Italiano](https://babellino.com/it/)
+- [普通话](https://babellino.com/zh/)
+- [Português](https://babellino.com/pt/)
+- [Română](https://babellino.com/ro/)
+- [Español](https://babellino.com/es/)
