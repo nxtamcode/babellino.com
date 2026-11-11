@@ -190,6 +190,7 @@ dd { margin: 8px 0 0; font-size: 14px; }
 .native-name { display: block; color: var(--muted); font-size: 12px; }
 .supported p { font-size: 14px; line-height: 1.8; color: var(--muted); }
 .supported a { color: var(--ink); }
+.supported .request-language { display: inline-block; max-width: 100%; }
 @media (max-width: 760px) {
   .language-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; margin-block: 28px; }
   .supported { padding-block: 32px; }
