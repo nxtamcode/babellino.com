@@ -22,6 +22,10 @@ commit the generated HTML, `llms.txt` files, and sitemap. The small Python stdli
 script is an **authoring tool**, not a hosting dependency. CI's `--check` catches
 generated-file drift. `site.json` contains the confirmed public contact address
 and meaningful-content `lastModified` date. Never guess a contact address.
+The owner confirmed reuse of the existing contact destination, `sales@nxtam.com`.
+Request links prefill a localized subject. Their native mailto URLs are character-
+encoded in HTML as a basic scraper deterrent, not strong spam protection; they
+still work without JavaScript. `llms.txt` directs requests to the website section.
 
 `site.js` selects the first supported browser language on the English entry
 point, with an explicit `?lang=` choice or saved manual selection taking priority.

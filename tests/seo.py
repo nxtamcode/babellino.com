@@ -61,6 +61,7 @@ class Page(HTMLParser):
 settings = json.loads((ROOT / "site.json").read_text())
 # Contact is configured separately from translations; never guess an address.
 email = settings["contactEmail"]
+assert email == "sales@nxtam.com", "Use the owner-confirmed existing contact address"
 codes = ["ca", "nl", "en", "fr", "de", "it", "zh", "pt", "ro", "es"]
 locales = {c: json.loads((ROOT / f"locales/{c}.json").read_text()) for c in codes}
 paths = {c: "" if c == "en" else c + "/" for c in codes}
@@ -104,10 +105,8 @@ for code, copy in locales.items():
     assert "Supported languages have not been announced" not in page.text
     assert [l["data-locale"] for l in page.links if "data-locale" in l] == codes
     requests = [l for l in page.links if "request-language" in l.get("class", "")]
-    if email:
-        assert len(requests) == 1 and requests[0]["href"].startswith("mailto:" + email + "?subject=")
-    else:
-        assert not requests, "Unconfirmed contact must not use a fabricated address"
+    assert len(requests) == 1 and requests[0]["href"].startswith("mailto:" + email + "?subject=")
+    assert email not in source, "Keep the native mailto character-encoded in source HTML"
     for link in page.links:
         parsed = urlparse(link.get("href", ""))
         if parsed.scheme:

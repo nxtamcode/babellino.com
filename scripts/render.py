@@ -27,7 +27,7 @@ def render():
     keys = set(locales["en"])
     assert all(set(d) == keys for d in locales.values()), "Translation keys must match"
     email = settings["contactEmail"]
-    assert not email or (email.count("@") == 1 and not any(c in email for c in "\r\n?&# ")), "Invalid contact address"
+    assert email.count("@") == 1 and not any(c in email for c in "\r\n?&# "), "Invalid contact address"
     languages = [dict(code=c, lang=locales[c]["htmlLang"], name=locales[c]["native"],
                       path=path(c), lines=locales[c]["headline"]) for c in ROTATION]
     errors = {c: {k: d[k] for k in ("errorTitle", "errorHeading", "errorMessage", "backHome", "home", "languageMenu")}
@@ -87,7 +87,10 @@ def render():
         values["processLabel"] = escape(", ".join(d["process"]))
         values["languageList"] = "".join(f'<li><span>{escape(name)}</span>' + (f'<span class="native-name" lang="{locales[c]["htmlLang"]}">{escape(locales[c]["native"])}</span>' if name != locales[c]["native"] else "") + "</li>" for c, name in zip(ORDER, d["languageNames"]))
         href = f'mailto:{email}?subject={quote(d["requestSubject"])}'
-        values["requestLink"] = f'<a class="text-link request-language" href="{escape(href)}">{values["requestLanguage"]}</a>' if email else values["requestLanguage"]
+        # A small deterrent to naive address scrapers, while retaining native mailto
+        # behavior for keyboard users and browsers with JavaScript disabled.
+        encoded_href = "".join(f"&#{ord(char)};" for char in href)
+        values["requestLink"] = f'<a class="text-link request-language" href="{encoded_href}">{values["requestLanguage"]}</a>'
         # Avoid a second contact CTA; the FAQ points to the complete language list.
         values["languageAnswerHTML"] = f'{values["languageAnswer"]} <a class="text-link" href="#languages">{values["languagesLink"]}</a>'
         output[path(code).lstrip("/") + "index.html"] = Template((ROOT / "templates/index.html").read_text()).substitute(values)
@@ -97,7 +100,7 @@ def render():
         output[path(code).lstrip("/") + "404.html"] = Template((ROOT / "templates/404.html").read_text()).substitute(values)
         llms = f'# Babellino\n\n> {d["description"]}\n\n{d["offlineAnswer"]}\n{d["unannounced"]}\n{d["illustrative"]}\n\n## {d["languagesHeading"]}\n\n'
         llms += "\n".join(f'- {name} — {locales[c]["native"]}' for c, name in zip(ORDER, d["languageNames"]))
-        llms += f'\n\n{d["moreLanguages"]} ' + (f'[{d["requestLanguage"]}]({href})' if email else d["requestLanguage"]) + "\n"
+        llms += f'\n\n{d["moreLanguages"]} ' + f'[{d["requestLanguage"]}]({url}#languages)' + "\n"
         llms += f'\n## {d["website"]}\n\n- [Babellino]({url})\n'
         llms += "\n".join(f'- [{d[label]}]({url}#{anchor})' for label, anchor in (("deviceNav", "the-device"), ("howNav", "how-it-works"), ("questions", "questions")))
         llms += f'\n\n## {d["languageMenu"]}\n\n' + "\n".join(f'- [{locales[c]["native"]}]({BASE}{path(c)})' for c in ORDER) + "\n"
