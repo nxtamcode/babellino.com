@@ -3,7 +3,7 @@ const AxeBuilder = require('@axe-core/playwright').default;
 const assert = require('node:assert/strict');
 const { mkdir, writeFile } = require('node:fs/promises');
 
-const languages = ['en', 'es', 'fr', 'it', 'pt'];
+const languages = ['en', 'es', 'fr', 'it', 'pt', 'ca', 'nl', 'de', 'ro', 'zh-Hans'];
 const heading = 'A little less lost in translation.';
 
 (async () => {

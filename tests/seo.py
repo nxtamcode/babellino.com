@@ -58,68 +58,89 @@ class Page(HTMLParser):
             self.title += data
 
 
-page = Page((ROOT / "index.html").read_text())
-assert page.lang == "en" and page.h1 == 1
-assert "Offline AI Translator" in page.title and "In Development" in page.title
-assert "noindex" not in page.meta.get("robots", "")
-assert [l["href"] for l in page.links if l.get("rel") == "canonical"] == [BASE]
-assert not any("hreflang" in l for l in page.links), "Headline translations are not localized pages"
-assert page.meta["og:url"] == BASE and page.meta["og:site_name"] == "Babellino"
-assert page.meta["og:title"] == page.meta["twitter:title"] == page.title
-assert page.meta["og:description"] == page.meta["twitter:description"]
-assert page.meta["twitter:card"] == "summary_large_image"
-assert page.meta["og:image"] == page.meta["twitter:image"] == BASE + "social-card.png"
-assert page.meta["og:image:alt"] == page.meta["twitter:image:alt"]
+settings = json.loads((ROOT / "site.json").read_text())
+# Contact is configured separately from translations; never guess an address.
+email = settings["contactEmail"]
+assert email == "sales@nxtam.com", "Use the owner-confirmed existing contact address"
+codes = ["ca", "nl", "en", "fr", "de", "it", "zh", "pt", "ro", "es"]
+locales = {c: json.loads((ROOT / f"locales/{c}.json").read_text()) for c in codes}
+paths = {c: "" if c == "en" else c + "/" for c in codes}
+expected_alternates = {d["htmlLang"]: BASE + paths[c] for c, d in locales.items()}
+expected_alternates["x-default"] = BASE
+for code, copy in locales.items():
+    directory = ROOT / paths[code]
+    source = (directory / "index.html").read_text()
+    page = Page(source)
+    url = BASE + paths[code]
+    assert page.lang == copy["htmlLang"] and page.h1 == 1
+    assert page.title == copy["title"]
+    assert "noindex" not in page.meta.get("robots", "")
+    assert [l["href"] for l in page.links if l.get("rel") == "canonical"] == [url]
+    assert {l["hreflang"]: l["href"] for l in page.links if l.get("rel") == "alternate"} == expected_alternates
+    assert page.meta["og:url"] == url and page.meta["og:site_name"] == "Babellino"
+    assert page.meta["og:locale"] == copy["ogLocale"]
+    assert page.meta["og:title"] == page.meta["twitter:title"] == page.title
+    assert page.meta["description"] == page.meta["og:description"] == page.meta["twitter:description"] == copy["description"]
+    assert page.meta["twitter:card"] == "summary_large_image"
+    assert page.meta["og:image"] == page.meta["twitter:image"] == BASE + "social-card.png"
+    assert page.meta["og:image:alt"] == page.meta["twitter:image:alt"] == "Babellino"
+    assert len(page.scripts) == 1
+    data = json.loads(page.scripts[0])
+    assert data["@context"] == "https://schema.org"
+    website, webpage = data["@graph"]
+    assert website["@type"] == "WebSite" and website["name"] == "Babellino"
+    assert website["url"] == BASE and webpage["url"] == url
+    assert webpage["@type"] == "WebPage" and webpage["name"] == page.title
+    assert webpage["description"] == page.meta["description"]
+    assert webpage["isPartOf"]["@id"] == website["@id"]
+    assert website["inLanguage"] == [locales[c]["htmlLang"] for c in codes]
+    assert webpage["inLanguage"] == page.lang
+    assert webpage["about"]["@type"] == "Brand"
+    assert webpage["primaryImageOfPage"]["url"] == page.meta["og:image"]
+    for unsupported in ['"offers"', '"aggregateRating"', '"review"', '"sameAs"', '"FAQPage"']:
+        assert unsupported not in page.scripts[0], f"Unverified/irrelevant schema: {unsupported}"
+    assert page.questions == 4  # Three FAQs + the native language selector.
+    for key in ("languagesHeading", "moreLanguages", "requestLanguage", "development", "noSubscriptions", "noInternet", "offlineQuestion", "offlineAnswer"):
+        assert copy[key] in page.text, (code, key)
+    assert "Supported languages have not been announced" not in page.text
+    assert [l["data-locale"] for l in page.links if "data-locale" in l] == codes
+    requests = [l for l in page.links if "request-language" in l.get("class", "")]
+    assert len(requests) == 1 and requests[0]["href"].startswith("mailto:" + email + "?subject=")
+    assert email not in source, "Keep the native mailto character-encoded in source HTML"
+    for link in page.links:
+        parsed = urlparse(link.get("href", ""))
+        if parsed.scheme:
+            assert parsed.scheme in ("https", "mailto")
+            if parsed.scheme == "mailto":
+                assert parsed.path == email
+            continue
+        target = ROOT / parsed.path.lstrip("/") if parsed.path else directory / "index.html"
+        if target.is_dir():
+            target /= "index.html"
+        assert target.exists(), target
+        if parsed.fragment:
+            assert parsed.fragment in Page(target.read_text()).ids
+    llms = (directory / "llms.txt").read_text()
+    assert llms.startswith("# Babellino\n")
+    for key in ("unannounced", "illustrative", "offlineAnswer", "moreLanguages"):
+        assert copy[key] in llms
+    assert all(name in llms for name in copy["languageNames"])
+    error = Page((directory / "404.html").read_text())
+    assert error.meta["robots"] == "noindex" and error.lang == copy["htmlLang"]
+    assert error.title == copy["errorTitle"] and copy["errorHeading"] in error.text
+    for public in ("index.html", "404.html", "llms.txt"):
+        assert "github" not in (directory / public).read_text().lower()
+
 png = (ROOT / "social-card.png").read_bytes()
 assert png[:8] == b"\x89PNG\r\n\x1a\n"
 assert struct.unpack(">II", png[16:24]) == (1200, 630)
 assert len(png) < 100_000
-
-assert len(page.scripts) == 1
-data = json.loads(page.scripts[0])
-assert data["@context"] == "https://schema.org"
-website, webpage = data["@graph"]
-assert website["@type"] == "WebSite" and website["name"] == "Babellino"
-assert website["url"] == webpage["url"] == BASE
-assert webpage["@type"] == "WebPage" and webpage["name"] == page.title
-assert webpage["description"] == page.meta["description"]
-assert webpage["isPartOf"]["@id"] == website["@id"]
-assert website["inLanguage"] == webpage["inLanguage"] == page.lang
-assert webpage["about"]["@type"] == "Brand"
-assert webpage["primaryImageOfPage"]["url"] == page.meta["og:image"]
-for unsupported in ['"offers"', '"aggregateRating"', '"review"', '"sameAs"', '"FAQPage"']:
-    assert unsupported not in page.scripts[0], f"Unverified/irrelevant schema: {unsupported}"
-assert page.questions == 3
-assert "Supported languages have not been announced" in page.text
-assert "Pricing and availability have not been announced" in page.text
-assert "No subscriptions. No internet required during use." in page.text
-assert "Does Babellino need a subscription or internet?" in page.text
-assert "No subscription is required." in page.text
-for key in ("description", "og:description", "twitter:description"):
-    assert "no subscription" in page.meta[key].lower()
-    assert "translation" in page.meta[key].lower()
-
-for link in page.links:
-    url = urlparse(link.get("href", ""))
-    if url.scheme:
-        assert url.scheme == "https"
-        continue
-    assert (ROOT / (url.path or "index.html")).exists()
-    if url.fragment:
-        assert url.fragment in page.ids
-
+assert "github" not in (ROOT / "social-card.svg").read_text().lower()
 robots = (ROOT / "robots.txt").read_text()
 assert "User-agent: *\nAllow: /" in robots
 assert "Sitemap: " + BASE + "sitemap.xml" in robots
 ns = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
 sitemap = ET.parse(ROOT / "sitemap.xml")
-assert [e.text for e in sitemap.findall("s:url/s:loc", ns)] == [BASE]
-assert sitemap.find("s:url/s:lastmod", ns).text == "2026-11-10"
-llms = (ROOT / "llms.txt").read_text()
-assert llms.startswith("# Babellino\n") and "have not been announced" in llms
-assert "not final hardware or confirmed language support" in llms
-assert "No subscription is required." in llms
-for public in ("index.html", "404.html", "llms.txt", "social-card.svg"):
-    assert "github" not in (ROOT / public).read_text().lower()
-assert Page((ROOT / "404.html").read_text()).meta["robots"] == "noindex"
-print("SEO checks passed: metadata, schema, image, local links, sitemap, robots, factual boundaries, 404")
+assert [e.text for e in sitemap.findall("s:url/s:loc", ns)] == [BASE + paths[c] for c in codes]
+assert all(e.text == settings["lastModified"] for e in sitemap.findall("s:url/s:lastmod", ns))
+print("SEO checks passed for all 10 locales: metadata, reciprocal hreflang, schema, image, links, sitemap, robots, facts and 404")

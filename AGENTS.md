@@ -2,7 +2,8 @@
 
 - Keep this a small, buildless static site. The default branch is `master`.
 - Product branding is Babellino. This is a prelaunch page, not a store or live demo.
-- The mockup is illustrative. Do not imply final hardware or supported languages.
+- The mockup is illustrative, not final hardware or a live demo. Publish only the
+  approved language list in issue #8; do not infer support from illustrations.
 - Only publish approved product facts. Never copy private device source into this repo.
 - Do not add repository links or imply public-source availability in visitor-facing content.
 - Prefer local assets; no analytics, remote fonts, or unnecessary JavaScript.

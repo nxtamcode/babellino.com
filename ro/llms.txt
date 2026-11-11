@@ -1,0 +1,42 @@
+# Babellino
+
+> Babellino este un traducător IA offline în dezvoltare, cu ecran tactil de 8 inchi și 10 limbi acceptate. Fără abonament sau internet în timpul utilizării.
+
+Nu este necesar un abonament. Babellino este dezvoltat pentru traducere offline, cu IA pe dispozitiv și fără conexiune la internet în timpul utilizării.
+Hardware-ul final, prețul și disponibilitatea nu au fost încă anunțate.
+Imaginea dispozitivului și conversația exemplificativă sunt ilustrative, nu reprezintă hardware-ul final sau o demonstrație în direct.
+
+## 10 limbi acceptate.
+
+- Catalană — Català
+- Neerlandeză — Nederlands
+- Engleză — English
+- Franceză — Français
+- Germană — Deutsch
+- Italiană — Italiano
+- Chineză mandarină — 普通话
+- Portugheză — Português
+- Română — Română
+- Spaniolă — Español
+
+Vor urma și alte limbi. [Contactează-ne pentru a solicita o altă limbă.](https://babellino.com/ro/#languages)
+
+## Site web
+
+- [Babellino](https://babellino.com/ro/)
+- [Dispozitivul](https://babellino.com/ro/#the-device)
+- [Cum funcționează](https://babellino.com/ro/#how-it-works)
+- [Întrebări](https://babellino.com/ro/#questions)
+
+## Limba site-ului
+
+- [Català](https://babellino.com/ca/)
+- [Nederlands](https://babellino.com/nl/)
+- [English](https://babellino.com/)
+- [Français](https://babellino.com/fr/)
+- [Deutsch](https://babellino.com/de/)
+- [Italiano](https://babellino.com/it/)
+- [普通话](https://babellino.com/zh/)
+- [Português](https://babellino.com/pt/)
+- [Română](https://babellino.com/ro/)
+- [Español](https://babellino.com/es/)

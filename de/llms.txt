@@ -1,0 +1,42 @@
+# Babellino
+
+> Babellino ist ein Offline-KI-Übersetzer in Entwicklung mit 8-Zoll-Touchscreen und 10 unterstützten Sprachen. Kein Abo und kein Internet bei der Nutzung nötig.
+
+Ein Abo ist nicht erforderlich. Babellino wird für Offline-Übersetzung entwickelt: Die KI läuft auf dem Gerät, und während der Nutzung ist keine Internetverbindung nötig.
+Endgültige Hardware, Preis und Verfügbarkeit wurden noch nicht bekannt gegeben.
+Geräteabbildung und Beispielgespräch dienen der Veranschaulichung. Sie zeigen weder die endgültige Hardware noch eine Live-Demo.
+
+## 10 unterstützte Sprachen.
+
+- Katalanisch — Català
+- Niederländisch — Nederlands
+- Englisch — English
+- Französisch — Français
+- Deutsch — Deutsch
+- Italienisch — Italiano
+- Mandarin-Chinesisch — 普通话
+- Portugiesisch — Português
+- Rumänisch — Română
+- Spanisch — Español
+
+Weitere Sprachen folgen. [Kontaktiere uns, um eine weitere anzufragen.](https://babellino.com/de/#languages)
+
+## Website
+
+- [Babellino](https://babellino.com/de/)
+- [Das Gerät](https://babellino.com/de/#the-device)
+- [So funktioniert’s](https://babellino.com/de/#how-it-works)
+- [Fragen](https://babellino.com/de/#questions)
+
+## Sprache der Website
+
+- [Català](https://babellino.com/ca/)
+- [Nederlands](https://babellino.com/nl/)
+- [English](https://babellino.com/)
+- [Français](https://babellino.com/fr/)
+- [Deutsch](https://babellino.com/de/)
+- [Italiano](https://babellino.com/it/)
+- [普通话](https://babellino.com/zh/)
+- [Português](https://babellino.com/pt/)
+- [Română](https://babellino.com/ro/)
+- [Español](https://babellino.com/es/)
