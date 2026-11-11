@@ -31,6 +31,8 @@ const { mkdir, writeFile } = require('node:fs/promises');
       assert.match(await page.title(), /^Babellino/);
       assert.doesNotMatch(await response.text(), /github|open[\s-]?source/i);
       assert.equal(await page.locator('h1').count(), 1);
+      assert.equal(await page.locator('.hero-note').innerText(), 'No subscriptions. No internet required during use.');
+      assert.equal(await page.locator('.details div').filter({ hasText: 'Subscriptions' }).locator('dd').innerText(), 'None required');
       const layout = await page.evaluate(() => ({
         width: innerWidth, scroll: document.documentElement.scrollWidth,
         screenHeight: document.querySelector('.screen').clientHeight,

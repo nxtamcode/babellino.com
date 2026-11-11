@@ -35,6 +35,9 @@ pricing, and availability are not announced.
 ## Content boundaries
 
 - Use **Babellino** as the product brand.
+- Owner-approved messaging (2026-11-10): no subscriptions; no internet required during
+  translation use. This does not announce a hardware price, free lifetime updates,
+  or an offline firmware-update process.
 - This repository is the website, not device firmware.
 - Do not publish internal source, provisioning details, private links, or credentials.
 - Do not add unverified latency, accuracy, language counts, battery life, certifications,

@@ -92,6 +92,12 @@ for unsupported in ['"offers"', '"aggregateRating"', '"review"', '"sameAs"', '"F
 assert page.questions == 3
 assert "Supported languages have not been announced" in page.text
 assert "Pricing and availability have not been announced" in page.text
+assert "No subscriptions. No internet required during use." in page.text
+assert "Does Babellino need a subscription or internet?" in page.text
+assert "No subscription is required." in page.text
+for key in ("description", "og:description", "twitter:description"):
+    assert "no subscription" in page.meta[key].lower()
+    assert "translation" in page.meta[key].lower()
 
 for link in page.links:
     url = urlparse(link.get("href", ""))
@@ -112,6 +118,7 @@ assert sitemap.find("s:url/s:lastmod", ns).text == "2026-11-10"
 llms = (ROOT / "llms.txt").read_text()
 assert llms.startswith("# Babellino\n") and "have not been announced" in llms
 assert "not final hardware or confirmed language support" in llms
+assert "No subscription is required." in llms
 for public in ("index.html", "404.html", "llms.txt", "social-card.svg"):
     assert "github" not in (ROOT / public).read_text().lower()
 assert Page((ROOT / "404.html").read_text()).meta["robots"] == "noindex"
