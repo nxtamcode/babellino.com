@@ -77,7 +77,7 @@ def render():
         pair = locales["es" if code == "en" else "en"]
         values.update(pairLang=pair["htmlLang"], pairNative=escape(pair["native"]))
         for key in ("greeting", "reply", "deviceHeading", "howHeading"):
-            values[key + "HTML"] = "<br>".join(map(escape, d[key]))
+            values[key + "HTML"] = ("<br> " if key == "howHeading" else "<br>").join(map(escape, d[key]))
         # Translations use natural wrapping; only the original speech has line breaks.
         values["pairGreetingHTML"] = escape(" ".join(pair["greeting"]))
         values["pairReplyHTML"] = "<br>".join(map(escape, pair["reply"]))
