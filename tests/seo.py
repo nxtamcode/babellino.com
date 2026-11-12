@@ -107,6 +107,9 @@ for code, copy in locales.items():
     requests = [l for l in page.links if "request-language" in l.get("class", "")]
     assert len(requests) == 1 and requests[0]["href"].startswith("mailto:" + email + "?subject=")
     assert 'id="updates"' in source and 'src="/signup.js"' in source
+    nav_subscribe = [l for l in page.links if "nav-subscribe" in l.get("class", "")]
+    assert len(nav_subscribe) == 1 and nav_subscribe[0]["href"] == "#updates"
+    assert copy["subscribeNav"] in page.text
     assert copy["updatesHeading"] in page.text and copy["updatesFallback"] in page.text
     assert len([l for l in page.links if "footer-contact" in l.get("class", "")]) == 1
     assert len([l for l in page.links if "signup-fallback" in l.get("class", "")]) == 1

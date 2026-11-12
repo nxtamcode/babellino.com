@@ -45,5 +45,6 @@
   "updatesError": "No se pudo cargar el formulario. Puedes escribirnos desde el enlace de abajo.",
   "updatesFallback": "¿Prefieres el correo? Contacta con nosotros.",
   "updatesFrame": "Suscripción por correo a Babellino",
-  "updatesSubject": "Novedades de Babellino"
+  "updatesSubject": "Novedades de Babellino",
+  "subscribeNav": "Suscribirse"
 }

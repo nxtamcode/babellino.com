@@ -12,7 +12,7 @@ const codes = ['ca', 'nl', 'en', 'fr', 'de', 'it', 'zh', 'pt', 'ro', 'es'];
     for (const code of codes) {
       const copy = JSON.parse(readFileSync(`locales/${code}.json`));
       const url = new URL(code === 'en' ? '/?lang=en' : `/${code}/`, base).href;
-      for (const width of [320, 1440]) {
+      for (const width of [320, 390, 768, 1024, 1440]) {
         const context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
         const page = await context.newPage();
         await mockBeehiiv(page);
@@ -20,7 +20,16 @@ const codes = ['ca', 'nl', 'en', 'fr', 'de', 'it', 'zh', 'pt', 'ro', 'es'];
         page.on('request', r => requests.push(r.url()));
         await page.goto(url);
         assert.ok(!requests.includes(loaderURL), 'No vendor request before the signup section is near');
-        await page.locator('.hero .button').click();
+        const subscribe = page.getByRole('navigation').getByRole('link', { name: copy.subscribeNav, exact: true });
+        assert.ok(await subscribe.isVisible());
+        assert.equal(await subscribe.getAttribute('href'), '#updates');
+        const box = await subscribe.boundingBox();
+        assert.ok(box.height >= 44 && box.x >= 0 && box.x + box.width <= width);
+        assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+        await subscribe.focus();
+        assert.ok(await subscribe.evaluate(el => el === document.activeElement));
+        await page.locator('.header').screenshot({ path: `test-results/subscribe-nav-${code}-${width}.png` });
+        await page.keyboard.press('Enter');
         assert.equal(new URL(page.url()).hash, '#updates');
         const frame = page.locator('#signup-embed iframe');
         await frame.waitFor();
@@ -47,6 +56,8 @@ const codes = ['ca', 'nl', 'en', 'fr', 'de', 'it', 'zh', 'pt', 'ro', 'es'];
       }
       const noJS = await browser.newPage({ javaScriptEnabled: false });
       await noJS.goto(url);
+      await noJS.locator('.nav-subscribe').click();
+      assert.equal(new URL(noJS.url()).hash, '#updates');
       assert.ok(await noJS.locator('.signup-fallback').isVisible());
       assert.equal(await noJS.locator('.signup-fallback').innerText(), copy.updatesFallback);
       assert.equal(await noJS.locator('.signup-status').isVisible(), false);

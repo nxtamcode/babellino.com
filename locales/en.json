@@ -45,5 +45,6 @@
   "updatesError": "The form couldn’t load. You can email us below.",
   "updatesFallback": "Prefer email? Contact us.",
   "updatesFrame": "Babellino email signup",
-  "updatesSubject": "Babellino updates"
+  "updatesSubject": "Babellino updates",
+  "subscribeNav": "Subscribe"
 }

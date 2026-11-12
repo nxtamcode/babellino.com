@@ -45,5 +45,6 @@
   "updatesError": "Das Formular konnte nicht geladen werden. Schreib uns über den Link unten.",
   "updatesFallback": "Lieber per E-Mail? Schreib uns.",
   "updatesFrame": "Anmeldung für Babellino-Neuigkeiten",
-  "updatesSubject": "Neuigkeiten von Babellino"
+  "updatesSubject": "Neuigkeiten von Babellino",
+  "subscribeNav": "Abonnieren"
 }
