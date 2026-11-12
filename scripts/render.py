@@ -47,6 +47,7 @@ def render():
     for code, d in locales.items():
         url = BASE + path(code)
         values = {k: escape(v) for k, v in d.items() if isinstance(v, str)}
+        values["contactHref"] = "".join(f"&#{ord(char)};" for char in "mailto:" + email)
         values.update(homePath=path(code) + ("?lang=en" if code == "en" else ""), languageSelector=selector(code))
         config = dict(locale=code, languages=languages,
                       labels={k: d[k] for k in ("pause", "resume", "pauseLabel", "resumeLabel")})

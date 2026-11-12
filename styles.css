@@ -109,6 +109,7 @@ dd { margin: 8px 0 0; font-size: 14px; }
 .not-found p { margin-block: 24px; line-height: 1.7; color: var(--muted); }
 .footer { display: flex; justify-content: space-between; align-items: center; gap: 24px; border-top: 1px solid var(--line); padding-block: 28px 34px; }
 .footer .wordmark { font-size: 25px; }
+.footer-contact { margin-left: auto; font-size: 12px; }
 .footer > span { font-size: 10px; color: var(--muted); }
 
 @media (min-width: 1500px) { .hero { gap: 80px; } }
