@@ -61,7 +61,7 @@ class Page(HTMLParser):
 settings = json.loads((ROOT / "site.json").read_text())
 # Contact is configured separately from translations; never guess an address.
 email = settings["contactEmail"]
-assert email == "sales@nxtam.com", "Use the owner-confirmed existing contact address"
+assert email == "hi@babellino.com", "Use the owner-confirmed existing contact address"
 codes = ["ca", "nl", "en", "fr", "de", "it", "zh", "pt", "ro", "es"]
 locales = {c: json.loads((ROOT / f"locales/{c}.json").read_text()) for c in codes}
 paths = {c: "" if c == "en" else c + "/" for c in codes}

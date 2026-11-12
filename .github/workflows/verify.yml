@@ -34,6 +34,7 @@ jobs:
             if curl --fail --silent http://127.0.0.1:8765/ >/dev/null; then break; fi
             sleep 1
           done
+          node tests/beehiiv-live.cjs
           npm test
       - name: Save screenshots and report
         if: always()
