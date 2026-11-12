@@ -13,7 +13,8 @@ const codes = ['ca', 'nl', 'en', 'fr', 'de', 'it', 'zh', 'pt', 'ro', 'es'];
       const copy = JSON.parse(readFileSync(`locales/${code}.json`));
       const url = new URL(code === 'en' ? '/?lang=en' : `/${code}/`, base).href;
       for (const width of [320, 1440]) {
-        const page = await browser.newPage({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+        const context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
+        const page = await context.newPage();
         await mockBeehiiv(page);
         const requests = [];
         page.on('request', r => requests.push(r.url()));
@@ -42,7 +43,7 @@ const codes = ['ca', 'nl', 'en', 'fr', 'de', 'it', 'zh', 'pt', 'ro', 'es'];
         await page.locator('#updates').scrollIntoViewIfNeeded();
         assert.equal(requests.filter(r => r === loaderURL).length, 1, 'Loader must run once');
         assert.ok(requests.every(r => r === loaderURL || new URL(r).origin === new URL(base).origin));
-        await page.close();
+        await context.close();
       }
       const noJS = await browser.newPage({ javaScriptEnabled: false });
       await noJS.goto(url);
