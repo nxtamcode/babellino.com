@@ -22,7 +22,7 @@ commit the generated HTML, `llms.txt` files, and sitemap. The small Python stdli
 script is an **authoring tool**, not a hosting dependency. CI's `--check` catches
 generated-file drift. `site.json` contains the confirmed public contact address
 and meaningful-content `lastModified` date. Never guess a contact address.
-The owner confirmed reuse of the existing contact destination, `sales@nxtam.com`.
+The owner confirmed the Babellino public contact address, `hi@babellino.com` (2026-11-12).
 Request links prefill a localized subject. Their native mailto URLs are character-
 encoded in HTML as a basic scraper deterrent, not strong spam protection; they
 still work without JavaScript. `llms.txt` directs requests to the website section.
