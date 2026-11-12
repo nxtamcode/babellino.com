@@ -45,5 +45,6 @@
   "updatesError": "无法加载表单。你可以通过下方链接给我们发邮件。",
   "updatesFallback": "想通过邮件联系？欢迎给我们写信。",
   "updatesFrame": "Babellino 邮件订阅",
-  "updatesSubject": "Babellino 最新消息"
+  "updatesSubject": "Babellino 最新消息",
+  "subscribeNav": "订阅"
 }

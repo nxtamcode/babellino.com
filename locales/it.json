@@ -45,5 +45,6 @@
   "updatesError": "Impossibile caricare il modulo. Puoi scriverci tramite il link qui sotto.",
   "updatesFallback": "Preferisci un’e-mail? Contattaci.",
   "updatesFrame": "Iscrizione alle novità di Babellino",
-  "updatesSubject": "Novità di Babellino"
+  "updatesSubject": "Novità di Babellino",
+  "subscribeNav": "Iscriviti"
 }

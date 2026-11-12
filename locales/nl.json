@@ -45,5 +45,6 @@
   "updatesError": "Het formulier kon niet laden. Je kunt ons hieronder mailen.",
   "updatesFallback": "Liever e-mail? Neem contact op.",
   "updatesFrame": "Aanmelden voor Babellino-updates",
-  "updatesSubject": "Updates over Babellino"
+  "updatesSubject": "Updates over Babellino",
+  "subscribeNav": "Inschrijven"
 }

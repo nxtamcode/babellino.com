@@ -45,5 +45,6 @@
   "updatesError": "No s’ha pogut carregar el formulari. Pots escriure’ns a continuació.",
   "updatesFallback": "Prefereixes el correu? Contacta amb nosaltres.",
   "updatesFrame": "Inscripció per correu a Babellino",
-  "updatesSubject": "Novetats de Babellino"
+  "updatesSubject": "Novetats de Babellino",
+  "subscribeNav": "Subscriu-t’hi"
 }

@@ -45,5 +45,6 @@
   "updatesError": "Formularul nu s-a putut încărca. Ne poți scrie prin linkul de mai jos.",
   "updatesFallback": "Preferi e-mailul? Contactează-ne.",
   "updatesFrame": "Înscriere la noutățile Babellino",
-  "updatesSubject": "Noutăți Babellino"
+  "updatesSubject": "Noutăți Babellino",
+  "subscribeNav": "Abonează-te"
 }
