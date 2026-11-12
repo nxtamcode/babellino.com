@@ -35,5 +35,15 @@
   "illustrative": "La ilustración del dispositivo y la conversación de ejemplo son ilustrativas; no muestran el dispositivo final ni una demostración en vivo.",
   "website": "Sitio web", "questions": "Preguntas",
   "errorTitle": "Página no encontrada — Babellino", "errorHeading": "Página no encontrada.",
-  "errorMessage": "Es posible que la página haya cambiado de ubicación o que la dirección sea incorrecta.", "backHome": "Volver a Babellino"
+  "errorMessage": "Es posible que la página haya cambiado de ubicación o que la dirección sea incorrecta.", "backHome": "Volver a Babellino",
+  "updatesCTA": "Recibir novedades",
+  "updatesHeading": "Las novedades de Babellino.",
+  "updatesDescription": "Noticias del producto, nuevos idiomas y novedades sobre el lanzamiento.",
+  "updatesProvider": "beehiiv gestiona las suscripciones. Formulario en inglés.",
+  "updatesPrivacy": "Privacidad",
+  "updatesLoading": "Cargando el formulario…",
+  "updatesError": "No se pudo cargar el formulario. Puedes escribirnos desde el enlace de abajo.",
+  "updatesFallback": "¿Prefieres el correo? Contacta con nosotros.",
+  "updatesFrame": "Suscripción por correo a Babellino",
+  "updatesSubject": "Novedades de Babellino"
 }

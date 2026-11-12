@@ -35,5 +35,15 @@
   "illustrative": "The device illustration and sample conversation are illustrative, not final hardware or a live demo.",
   "website": "Website", "questions": "Questions",
   "errorTitle": "Page not found — Babellino", "errorHeading": "Page not found.",
-  "errorMessage": "This page may have moved, or the address may be incorrect.", "backHome": "Back to Babellino"
+  "errorMessage": "This page may have moved, or the address may be incorrect.", "backHome": "Back to Babellino",
+  "updatesCTA": "Get updates",
+  "updatesHeading": "Get Babellino updates.",
+  "updatesDescription": "Product news, new languages, and launch updates.",
+  "updatesProvider": "Email signup is handled by beehiiv.",
+  "updatesPrivacy": "Privacy",
+  "updatesLoading": "Loading signup form…",
+  "updatesError": "The form couldn’t load. You can email us below.",
+  "updatesFallback": "Prefer email? Contact us.",
+  "updatesFrame": "Babellino email signup",
+  "updatesSubject": "Babellino updates"
 }

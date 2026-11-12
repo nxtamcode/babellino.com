@@ -106,7 +106,11 @@ for code, copy in locales.items():
     assert [l["data-locale"] for l in page.links if "data-locale" in l] == codes
     requests = [l for l in page.links if "request-language" in l.get("class", "")]
     assert len(requests) == 1 and requests[0]["href"].startswith("mailto:" + email + "?subject=")
+    assert 'id="updates"' in source and 'src="/signup.js"' in source
+    assert copy["updatesHeading"] in page.text and copy["updatesFallback"] in page.text
     assert len([l for l in page.links if "footer-contact" in l.get("class", "")]) == 1
+    assert len([l for l in page.links if "signup-fallback" in l.get("class", "")]) == 1
+    assert "sales@nxtam.com" not in page.text
     assert email not in source, "Keep the native mailto character-encoded in source HTML"
     for link in page.links:
         parsed = urlparse(link.get("href", ""))

@@ -40,6 +40,7 @@
   <script id="site-config" type="application/json">{"locale":"es","languages":[{"code":"en","lang":"en","name":"English","path":"/","lines":["A little less","lost in","translation."]},{"code":"es","lang":"es","name":"Español","path":"/es/","lines":["Un poco menos","perdidos en la","traducción."]},{"code":"fr","lang":"fr","name":"Français","path":"/fr/","lines":["Un peu moins","perdus dans la","traduction."]},{"code":"it","lang":"it","name":"Italiano","path":"/it/","lines":["Un po’ meno","persi nella","traduzione."]},{"code":"pt","lang":"pt","name":"Português","path":"/pt/","lines":["Um pouco menos","perdidos na","tradução."]},{"code":"ca","lang":"ca","name":"Català","path":"/ca/","lines":["Una mica menys","perduts en la","traducció."]},{"code":"nl","lang":"nl","name":"Nederlands","path":"/nl/","lines":["Iets minder","verloren in de","vertaling."]},{"code":"de","lang":"de","name":"Deutsch","path":"/de/","lines":["Ein bisschen","weniger verloren","beim Übersetzen."]},{"code":"ro","lang":"ro","name":"Română","path":"/ro/","lines":["Mai puțin","pierduți în","traducere."]},{"code":"zh","lang":"zh-Hans","name":"普通话","path":"/zh/","lines":["少一点","语言隔阂，","多一点理解。"]}],"labels":{"pause":"Pausar","resume":"Continuar","pauseLabel":"Pausar la rotación de idiomas del titular","resumeLabel":"Continuar la rotación de idiomas del titular"}}</script>
   <script src="/site.js"></script>
   <script src="/hero.js" defer></script>
+  <script src="/signup.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Saltar al contenido</a>
@@ -73,7 +74,7 @@
           <button id="hero-language-toggle" type="button" aria-label="Pausar la rotación de idiomas del titular">Pausar</button>
         </div>
         <p class="hero-description">Distintos idiomas. La misma mesa. Conoce el traductor autónomo con IA que mantiene viva la conversación.</p>
-        <a class="button" href="#the-device">Conoce Babellino <span aria-hidden="true">↓</span></a>
+        <a class="button" href="#updates">Recibir novedades <span aria-hidden="true">↓</span></a>
         <p class="hero-note"><strong>Sin suscripciones.</strong> <span>Sin internet durante el uso.</span></p>
         <a class="text-link languages-link" href="#languages">10 idiomas compatibles</a>
       </div>
@@ -132,6 +133,19 @@
             <span>Voz</span><span class="process-arrow" aria-hidden="true">→</span><span>IA en el dispositivo</span><span class="process-arrow" aria-hidden="true">→</span><span>Traducción</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
+      <div class="updates-copy">
+        <h2 id="updates-title">Las novedades de Babellino.</h2>
+        <p>Noticias del producto, nuevos idiomas y novedades sobre el lanzamiento.</p>
+      </div>
+      <div class="updates-signup">
+        <div id="signup-embed" lang="en" data-form-title="Suscripción por correo a Babellino"></div>
+        <p class="signup-status" role="status" data-loading="Cargando el formulario…" data-error="No se pudo cargar el formulario. Puedes escribirnos desde el enlace de abajo." hidden></p>
+        <p class="signup-note">beehiiv gestiona las suscripciones. Formulario en inglés. <a class="text-link" href="https://www.beehiiv.com/privacy">Privacidad</a></p>
+        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#78;&#111;&#118;&#101;&#100;&#97;&#100;&#101;&#115;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">¿Prefieres el correo? Contacta con nosotros.</a>
       </div>
     </section>
 

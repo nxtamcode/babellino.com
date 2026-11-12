@@ -35,5 +35,15 @@
   "illustrative": "L’immagine del dispositivo e la conversazione di esempio sono illustrative: non mostrano l’hardware definitivo né una dimostrazione dal vivo.",
   "website": "Sito web", "questions": "Domande",
   "errorTitle": "Pagina non trovata — Babellino", "errorHeading": "Pagina non trovata.",
-  "errorMessage": "La pagina potrebbe essere stata spostata oppure l’indirizzo potrebbe essere errato.", "backHome": "Torna a Babellino"
+  "errorMessage": "La pagina potrebbe essere stata spostata oppure l’indirizzo potrebbe essere errato.", "backHome": "Torna a Babellino",
+  "updatesCTA": "Ricevi aggiornamenti",
+  "updatesHeading": "Le novità di Babellino.",
+  "updatesDescription": "Novità sul prodotto, nuove lingue e aggiornamenti sul lancio.",
+  "updatesProvider": "Le iscrizioni sono gestite da beehiiv. Modulo in inglese.",
+  "updatesPrivacy": "Privacy",
+  "updatesLoading": "Caricamento del modulo…",
+  "updatesError": "Impossibile caricare il modulo. Puoi scriverci tramite il link qui sotto.",
+  "updatesFallback": "Preferisci un’e-mail? Contattaci.",
+  "updatesFrame": "Iscrizione alle novità di Babellino",
+  "updatesSubject": "Novità di Babellino"
 }

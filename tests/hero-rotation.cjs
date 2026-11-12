@@ -1,3 +1,4 @@
+const { mockBeehiiv, loaderURL } = require('./beehiiv-mock.cjs');
 const { chromium } = require('playwright');
 const AxeBuilder = require('@axe-core/playwright').default;
 const assert = require('node:assert/strict');
@@ -15,6 +16,7 @@ const heading = 'A little less lost in translation.';
   async function open(viewport, reducedMotion = 'no-preference') {
     const context = await browser.newContext({ viewport, reducedMotion });
     const page = await context.newPage();
+    await mockBeehiiv(page);
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
     await page.clock.install({ time: new Date('2026-01-01T00:00:00Z') });
@@ -130,6 +132,7 @@ const heading = 'A little less lost in translation.';
 
     const fallback = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 700 } });
     const page = await fallback.newPage();
+    await mockBeehiiv(page);
     await page.goto(base);
     assert.equal(await currentLanguage(page), 'en');
     assert.equal(await page.locator('.headline-slide').count(), 1);

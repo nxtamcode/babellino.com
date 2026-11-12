@@ -35,5 +35,15 @@
   "illustrative": "L’appareil et la conversation présentés sont des illustrations, et non du matériel définitif ou une démonstration en direct.",
   "website": "Site web", "questions": "Questions",
   "errorTitle": "Page introuvable — Babellino", "errorHeading": "Page introuvable.",
-  "errorMessage": "Cette page a peut-être été déplacée, ou l’adresse est incorrecte.", "backHome": "Retour à Babellino"
+  "errorMessage": "Cette page a peut-être été déplacée, ou l’adresse est incorrecte.", "backHome": "Retour à Babellino",
+  "updatesCTA": "Recevoir les nouveautés",
+  "updatesHeading": "Les nouvelles de Babellino.",
+  "updatesDescription": "Actualités du produit, nouvelles langues et lancement.",
+  "updatesProvider": "Les inscriptions sont gérées par beehiiv. Formulaire en anglais.",
+  "updatesPrivacy": "Confidentialité",
+  "updatesLoading": "Chargement du formulaire…",
+  "updatesError": "Le formulaire n’a pas pu se charger. Vous pouvez nous écrire ci-dessous.",
+  "updatesFallback": "Vous préférez un e-mail ? Contactez-nous.",
+  "updatesFrame": "Inscription aux nouvelles de Babellino",
+  "updatesSubject": "Nouvelles de Babellino"
 }

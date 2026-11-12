@@ -1,3 +1,4 @@
+const { mockBeehiiv, loaderURL } = require('./beehiiv-mock.cjs');
 const { chromium } = require('playwright');
 const AxeBuilder = require('@axe-core/playwright').default;
 const assert = require('node:assert/strict');
@@ -18,9 +19,10 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
       for (const width of [1440, 320]) {
         const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
         const page = await context.newPage();
+        await mockBeehiiv(page);
         const errors = [];
         page.on('pageerror', e => errors.push(e.message));
-        page.on('request', r => { if (new URL(r.url()).origin !== new URL(base).origin) errors.push(r.url()); });
+        page.on('request', r => { if (r.url() !== loaderURL && new URL(r.url()).origin !== new URL(base).origin) errors.push(r.url()); });
         page.on('response', r => { if (r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
         assert.equal((await page.goto(new URL(route(code), base).href, { waitUntil: 'networkidle' })).status(), 200);
         assert.equal(await page.locator('html').getAttribute('lang'), copy.htmlLang);
@@ -76,6 +78,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
       // Every locale is real HTML, not an English shell requiring JS.
       const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 320, height: 700 } });
       const page = await context.newPage();
+      await mockBeehiiv(page);
       await page.goto(new URL(route(code), base).href);
       assert.equal(await page.locator('html').getAttribute('lang'), copy.htmlLang);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
@@ -94,6 +97,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
       ['de-DE', 'de'], ['it-IT', 'it'], ['zh-TW', 'zh'], ['zh-CN', 'zh'], ['pt-BR', 'pt'], ['ro-RO', 'ro'], ['es-MX', 'es'], ['ja-JP', 'en']]) {
       const context = await browser.newContext({ locale });
       const page = await context.newPage();
+      await mockBeehiiv(page);
       await page.goto(base);
       await page.waitForURL(url => url.pathname === route(code));
       assert.equal(await page.locator('html').getAttribute('lang'), data[code].htmlLang);
@@ -101,6 +105,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
     }
     const context = await browser.newContext({ locale: 'de-DE' });
     const page = await context.newPage();
+    await mockBeehiiv(page);
     await page.goto(base);
     await page.waitForURL('**/de/');
     await page.locator('.site-language summary').click();
@@ -124,6 +129,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
       Object.defineProperty(window, 'localStorage', { get: () => { throw new DOMException('Blocked', 'SecurityError'); } });
     });
     const p = await blocked.newPage();
+    await mockBeehiiv(p);
     await p.goto(new URL('/?campaign=test#languages', base).href);
     await p.waitForURL('**/ro/?campaign=test#languages');
     await p.locator('.site-language summary').click();

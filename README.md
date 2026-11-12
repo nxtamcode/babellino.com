@@ -5,8 +5,10 @@ device with an 8-inch touchscreen and no internet requirement during use.
 
 ## Development
 
-Buildless HTML, CSS, and vanilla JavaScript. No runtime dependencies, third-party fonts, analytics,
-cookies, or external runtime requests.
+Buildless HTML, CSS, and vanilla JavaScript. The site uses local assets and system
+fonts. The owner-approved beehiiv signup is the sole external runtime integration;
+its iframe loads third-party assets, fonts, anti-bot services and telemetry. Do not
+claim that the whole site is cookie-free, tracking-free, or makes no external requests.
 
 ### Languages and content editing
 
@@ -32,7 +34,8 @@ point, with an explicit `?lang=` choice or saved manual selection taking priorit
 Explicit localized URLs stay in their chosen language. The native disclosure
 menu works without JavaScript; with JavaScript it remembers manual selections in
 localStorage, tolerating blocked storage. `/?lang=en` allows an English override
-even without storage. No cookies, IP lookup, third-party detection, or analytics.
+even without storage. Language selection itself uses no cookies, IP lookup,
+third-party detection, or analytics.
 
 `hero.js` cycles through all ten languages every six seconds, starting with the
 current page language. Pause/Resume stops updates; hidden tabs suspend the timer.
@@ -45,6 +48,28 @@ python3 -m http.server 8080 --bind 127.0.0.1
 ```
 
 Open <http://127.0.0.1:8080>.
+
+## Email signup
+
+`signup.js` loads the exact owner-supplied v3 beehiiv form when the updates section
+is near the viewport. Form ID: `686fd649-8c20-4918-b7ab-f87bda722800`. No API key,
+custom submission endpoint, attribution.js, or email storage is added to the site.
+beehiiv owns validation, bot protection, submission, and success/error messages.
+A localized mailto fallback remains available with blocked scripts, a slow provider,
+or JavaScript disabled. The iframe gets a localized accessible title.
+
+The surrounding copy is translated into all ten site languages. This supplied
+form's fields/messages are English; other language pages disclose that limitation.
+Its internal appearance and language cannot be restyled from this cross-origin
+site. In beehiiv's [form builder](https://www.beehiiv.com/support/article/12977090590487-creating-an-embedded-subscribe-form),
+use Inline, hide the header, transparent background, small padding (16px or less),
+and a full-width responsive layout. Publish changes, don't just save a draft.
+Prefer system fonts, ink `#252a23`, paper `#f5f3e9`, and no shadow.
+
+Account-level double opt-in, welcome emails, campaigns and automations are not
+changed by this integration. Check these in beehiiv before collecting addresses;
+confirmation behavior must be verified with an owner-authorized test email.
+The public form's default success text is not proof of those account settings.
 
 ## Publishing
 
@@ -94,6 +119,13 @@ npm test
 ```
 
 Browser QA dependencies are development-only. Publishing requires no npm build.
+The baseline browser tests use an explicit, non-submitting beehiiv test double and
+reject other remote requests. `tests/signup.cjs` covers all locales, iframe labels,
+lazy loading and blocked/timeout/no-JS fallbacks. `tests/beehiiv-live.cjs` separately
+renders the real supplied embed at 320, 390 and 1440px, checking field width and
+capturing screenshots. It blocks all non-read HTTP methods: no signup or email is
+sent. That smoke test does not prove backend acceptance or confirmation delivery;
+provider outages or breaking form-builder changes can make it fail.
 
 ## Search and sharing
 

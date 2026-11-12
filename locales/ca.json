@@ -35,5 +35,15 @@
   "illustrative": "La imatge del dispositiu i la conversa d’exemple són il·lustratives, no mostren el dispositiu final ni una demostració en directe.",
   "website": "Lloc web", "questions": "Preguntes",
   "errorTitle": "Pàgina no trobada — Babellino", "errorHeading": "Pàgina no trobada.",
-  "errorMessage": "Pot ser que la pàgina s’hagi mogut o que l’adreça sigui incorrecta.", "backHome": "Torna a Babellino"
+  "errorMessage": "Pot ser que la pàgina s’hagi mogut o que l’adreça sigui incorrecta.", "backHome": "Torna a Babellino",
+  "updatesCTA": "Rep novetats",
+  "updatesHeading": "Rep les novetats de Babellino.",
+  "updatesDescription": "Notícies del producte, nous idiomes i novetats del llançament.",
+  "updatesProvider": "beehiiv gestiona les inscripcions. Formulari en anglès.",
+  "updatesPrivacy": "Privadesa",
+  "updatesLoading": "S’està carregant el formulari…",
+  "updatesError": "No s’ha pogut carregar el formulari. Pots escriure’ns a continuació.",
+  "updatesFallback": "Prefereixes el correu? Contacta amb nosaltres.",
+  "updatesFrame": "Inscripció per correu a Babellino",
+  "updatesSubject": "Novetats de Babellino"
 }

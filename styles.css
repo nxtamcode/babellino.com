@@ -196,3 +196,15 @@ dd { margin: 8px 0 0; font-size: 14px; }
   .language-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 16px; margin-block: 28px; }
   .supported { padding-block: 32px; }
 }
+
+/* The supplied cross-origin form owns its fields and submission states. */
+.updates { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; padding-block: 80px; border-bottom: 1px solid var(--line); }
+.updates-copy p { max-width: 370px; margin-top: 20px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+.updates-signup { min-width: 0; }
+#signup-embed iframe { width: 100%; border: 0; display: block; }
+.signup-status { font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+.signup-note, .signup-fallback { font-size: 12px; line-height: 1.8; color: var(--muted); }
+.signup-note { margin-top: 16px; }
+.signup-fallback { display: inline-block; max-width: 100%; margin-top: 8px; color: var(--ink); }
+@media (max-width: 1100px) { .updates { gap: 40px; grid-template-columns: 1fr 1.2fr; } }
+@media (max-width: 760px) { .updates { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 48px; } }
