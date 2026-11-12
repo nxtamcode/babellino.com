@@ -34,8 +34,8 @@ jobs:
             if curl --fail --silent http://127.0.0.1:8765/ >/dev/null; then break; fi
             sleep 1
           done
-          node tests/beehiiv-live.cjs
           npm test
+          node tests/beehiiv-live.cjs
       - name: Save screenshots and report
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2

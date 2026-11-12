@@ -35,5 +35,15 @@
   "illustrative": "De apparaatafbeelding en het voorbeeldgesprek zijn illustratief; ze tonen geen definitieve hardware of live demo.",
   "website": "Website", "questions": "Vragen",
   "errorTitle": "Pagina niet gevonden — Babellino", "errorHeading": "Pagina niet gevonden.",
-  "errorMessage": "Deze pagina is mogelijk verplaatst, of het adres is onjuist.", "backHome": "Terug naar Babellino"
+  "errorMessage": "Deze pagina is mogelijk verplaatst, of het adres is onjuist.", "backHome": "Terug naar Babellino",
+  "updatesCTA": "Ontvang updates",
+  "updatesHeading": "Blijf op de hoogte van Babellino.",
+  "updatesDescription": "Productnieuws, nieuwe talen en updates over de lancering.",
+  "updatesProvider": "Aanmelden verloopt via beehiiv. Het formulier is in het Engels.",
+  "updatesPrivacy": "Privacy",
+  "updatesLoading": "Aanmeldformulier laden…",
+  "updatesError": "Het formulier kon niet laden. Je kunt ons hieronder mailen.",
+  "updatesFallback": "Liever e-mail? Neem contact op.",
+  "updatesFrame": "Aanmelden voor Babellino-updates",
+  "updatesSubject": "Updates over Babellino"
 }

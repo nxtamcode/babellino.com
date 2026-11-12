@@ -35,5 +35,15 @@
   "illustrative": "Imaginea dispozitivului și conversația exemplificativă sunt ilustrative, nu reprezintă hardware-ul final sau o demonstrație în direct.",
   "website": "Site web", "questions": "Întrebări",
   "errorTitle": "Pagina nu a fost găsită — Babellino", "errorHeading": "Pagina nu a fost găsită.",
-  "errorMessage": "Este posibil ca pagina să fi fost mutată sau adresa să fie incorectă.", "backHome": "Înapoi la Babellino"
+  "errorMessage": "Este posibil ca pagina să fi fost mutată sau adresa să fie incorectă.", "backHome": "Înapoi la Babellino",
+  "updatesCTA": "Primește noutăți",
+  "updatesHeading": "Noutăți de la Babellino.",
+  "updatesDescription": "Noutăți despre produs, limbi noi și informații despre lansare.",
+  "updatesProvider": "Înscrierile sunt gestionate de beehiiv. Formularul este în engleză.",
+  "updatesPrivacy": "Confidențialitate",
+  "updatesLoading": "Se încarcă formularul…",
+  "updatesError": "Formularul nu s-a putut încărca. Ne poți scrie prin linkul de mai jos.",
+  "updatesFallback": "Preferi e-mailul? Contactează-ne.",
+  "updatesFrame": "Înscriere la noutățile Babellino",
+  "updatesSubject": "Noutăți Babellino"
 }

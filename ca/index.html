@@ -40,6 +40,7 @@
   <script id="site-config" type="application/json">{"locale":"ca","languages":[{"code":"en","lang":"en","name":"English","path":"/","lines":["A little less","lost in","translation."]},{"code":"es","lang":"es","name":"Español","path":"/es/","lines":["Un poco menos","perdidos en la","traducción."]},{"code":"fr","lang":"fr","name":"Français","path":"/fr/","lines":["Un peu moins","perdus dans la","traduction."]},{"code":"it","lang":"it","name":"Italiano","path":"/it/","lines":["Un po’ meno","persi nella","traduzione."]},{"code":"pt","lang":"pt","name":"Português","path":"/pt/","lines":["Um pouco menos","perdidos na","tradução."]},{"code":"ca","lang":"ca","name":"Català","path":"/ca/","lines":["Una mica menys","perduts en la","traducció."]},{"code":"nl","lang":"nl","name":"Nederlands","path":"/nl/","lines":["Iets minder","verloren in de","vertaling."]},{"code":"de","lang":"de","name":"Deutsch","path":"/de/","lines":["Ein bisschen","weniger verloren","beim Übersetzen."]},{"code":"ro","lang":"ro","name":"Română","path":"/ro/","lines":["Mai puțin","pierduți în","traducere."]},{"code":"zh","lang":"zh-Hans","name":"普通话","path":"/zh/","lines":["少一点","语言隔阂，","多一点理解。"]}],"labels":{"pause":"Pausa","resume":"Reprèn","pauseLabel":"Pausa la rotació d’idiomes del títol","resumeLabel":"Reprèn la rotació d’idiomes del títol"}}</script>
   <script src="/site.js"></script>
   <script src="/hero.js" defer></script>
+  <script src="/signup.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Ves al contingut</a>
@@ -73,7 +74,7 @@
           <button id="hero-language-toggle" type="button" aria-label="Pausa la rotació d’idiomes del títol">Pausa</button>
         </div>
         <p class="hero-description">Idiomes diferents. La mateixa taula. Descobreix el traductor autònom amb IA que manté viva la conversa.</p>
-        <a class="button" href="#the-device">Descobreix Babellino <span aria-hidden="true">↓</span></a>
+        <a class="button" href="#updates">Rep novetats <span aria-hidden="true">↓</span></a>
         <p class="hero-note"><strong>Sense subscripcions.</strong> <span>Sense internet durant l’ús.</span></p>
         <a class="text-link languages-link" href="#languages">10 idiomes compatibles</a>
       </div>
@@ -135,6 +136,19 @@
       </div>
     </section>
 
+    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
+      <div class="updates-copy">
+        <h2 id="updates-title">Rep les novetats de Babellino.</h2>
+        <p>Notícies del producte, nous idiomes i novetats del llançament.</p>
+      </div>
+      <div class="updates-signup">
+        <div id="signup-embed" lang="en" data-form-title="Inscripció per correu a Babellino"></div>
+        <p class="signup-status" role="status" data-loading="S’està carregant el formulari…" data-error="No s’ha pogut carregar el formulari. Pots escriure’ns a continuació." hidden></p>
+        <p class="signup-note">beehiiv gestiona les inscripcions. Formulari en anglès. <a class="text-link" href="https://www.beehiiv.com/privacy">Privadesa</a></p>
+        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#78;&#111;&#118;&#101;&#116;&#97;&#116;&#115;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Prefereixes el correu? Contacta amb nosaltres.</a>
+      </div>
+    </section>
+
     <section class="closing wrap" id="questions" aria-labelledby="closing-title">
       <h2 id="closing-title">Sobre Babellino.</h2>
       <p>Actualment en desenvolupament. El preu i la disponibilitat encara no s’han anunciat.</p>
@@ -157,6 +171,7 @@
 
   <footer class="footer wrap">
     <a class="wordmark" href="/ca/">babellino<span class="wordmark-dot">.</span></a>
+    <a class="footer-contact text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;">Contacte</a>
     <span>© 2026 Babellino</span>
   </footer>
 </body>

@@ -1,3 +1,4 @@
+const { mockBeehiiv, loaderURL } = require('./beehiiv-mock.cjs');
 // Browser and accessibility QA: https://playwright.dev/docs/accessibility-testing
 const { chromium } = require('playwright');
 const AxeBuilder = require('@axe-core/playwright').default;
@@ -18,10 +19,11 @@ const { mkdir, writeFile } = require('node:fs/promises');
       console.log(`Checking ${name}`);
       const context = await browser.newContext({ viewport: { width, height }, reducedMotion: 'reduce' });
       const page = await context.newPage();
+      await mockBeehiiv(page);
       const errors = [], remoteRequests = [];
       page.on('pageerror', error => errors.push(error.message));
       page.on('request', request => {
-        if (new URL(request.url()).origin !== new URL(base).origin) remoteRequests.push(request.url());
+        if (request.url() !== loaderURL && new URL(request.url()).origin !== new URL(base).origin) remoteRequests.push(request.url());
       });
       page.on('response', response => {
         if (response.status() >= 400) errors.push(`HTTP ${response.status()}: ${response.url()}`);
@@ -47,8 +49,8 @@ const { mkdir, writeFile } = require('node:fs/promises');
       assert.equal(await page.locator(':focus').innerText(), 'Skip to content');
       await page.keyboard.press('Enter');
       assert.equal(new URL(page.url()).hash, '#main');
-      await page.getByRole('link', { name: 'Meet Babellino' }).click();
-      assert.equal(new URL(page.url()).hash, '#the-device');
+      await page.getByRole('link', { name: 'Get updates' }).click();
+      assert.equal(new URL(page.url()).hash, '#updates');
       await page.getByRole('link', { name: 'How it works' }).click();
       assert.equal(new URL(page.url()).hash, '#how-it-works');
       for (const summary of await page.locator('.questions summary').all()) {
@@ -70,6 +72,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
     }
     const fallback = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
     const page = await fallback.newPage();
+    await mockBeehiiv(page);
     await page.goto(base);
     await page.getByText('Which languages does Babellino support?', { exact: true }).click();
     assert.ok(await page.getByText('Babellino supports the 10 languages listed above, with more coming.', { exact: false }).isVisible());
@@ -82,6 +85,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
     // separately preserving the functional no-JavaScript checks above.
     const errorContext = await browser.newContext({ viewport: { width: 1440, height: 1000 } });
     const errorPage = await errorContext.newPage();
+    await mockBeehiiv(errorPage);
     await errorPage.goto(new URL('404.html', base).href);
     assert.equal((await new AxeBuilder({ page: errorPage }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations.length, 0);
     await errorPage.screenshot({ path: 'test-results/desktop-404.png', fullPage: true });

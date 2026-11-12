@@ -35,5 +35,15 @@
   "illustrative": "Geräteabbildung und Beispielgespräch dienen der Veranschaulichung. Sie zeigen weder die endgültige Hardware noch eine Live-Demo.",
   "website": "Website", "questions": "Fragen",
   "errorTitle": "Seite nicht gefunden — Babellino", "errorHeading": "Seite nicht gefunden.",
-  "errorMessage": "Diese Seite wurde möglicherweise verschoben, oder die Adresse ist falsch.", "backHome": "Zurück zu Babellino"
+  "errorMessage": "Diese Seite wurde möglicherweise verschoben, oder die Adresse ist falsch.", "backHome": "Zurück zu Babellino",
+  "updatesCTA": "Neuigkeiten erhalten",
+  "updatesHeading": "Neues von Babellino.",
+  "updatesDescription": "Produktneuigkeiten, neue Sprachen und Infos zum Marktstart.",
+  "updatesProvider": "Die Anmeldung erfolgt über beehiiv. Das Formular ist auf Englisch.",
+  "updatesPrivacy": "Datenschutz",
+  "updatesLoading": "Anmeldeformular wird geladen…",
+  "updatesError": "Das Formular konnte nicht geladen werden. Schreib uns über den Link unten.",
+  "updatesFallback": "Lieber per E-Mail? Schreib uns.",
+  "updatesFrame": "Anmeldung für Babellino-Neuigkeiten",
+  "updatesSubject": "Neuigkeiten von Babellino"
 }

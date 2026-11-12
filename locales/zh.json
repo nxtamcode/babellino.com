@@ -35,5 +35,15 @@
   "illustrative": "设备图片和示例对话仅供示意，并非最终硬件或实时演示。",
   "website": "网站", "questions": "常见问题",
   "errorTitle": "未找到页面 — Babellino", "errorHeading": "未找到页面。",
-  "errorMessage": "此页面可能已移至其他位置，或您输入的地址有误。", "backHome": "返回 Babellino"
+  "errorMessage": "此页面可能已移至其他位置，或您输入的地址有误。", "backHome": "返回 Babellino",
+  "updatesCTA": "获取最新消息",
+  "updatesHeading": "获取 Babellino 最新消息。",
+  "updatesDescription": "产品动态、新增语言和上市消息。",
+  "updatesProvider": "邮件订阅由 beehiiv 提供，表单为英文。",
+  "updatesPrivacy": "隐私政策",
+  "updatesLoading": "正在加载订阅表单…",
+  "updatesError": "无法加载表单。你可以通过下方链接给我们发邮件。",
+  "updatesFallback": "想通过邮件联系？欢迎给我们写信。",
+  "updatesFrame": "Babellino 邮件订阅",
+  "updatesSubject": "Babellino 最新消息"
 }

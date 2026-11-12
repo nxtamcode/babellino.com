@@ -47,6 +47,8 @@ def render():
     for code, d in locales.items():
         url = BASE + path(code)
         values = {k: escape(v) for k, v in d.items() if isinstance(v, str)}
+        values["contactHref"] = "".join(f"&#{ord(char)};" for char in "mailto:" + email)
+        values["updatesHref"] = "".join(f"&#{ord(char)};" for char in f'mailto:{email}?subject={quote(d["updatesSubject"])}')
         values.update(homePath=path(code) + ("?lang=en" if code == "en" else ""), languageSelector=selector(code))
         config = dict(locale=code, languages=languages,
                       labels={k: d[k] for k in ("pause", "resume", "pauseLabel", "resumeLabel")})
@@ -70,7 +72,7 @@ def render():
         head += [f'<link rel="alternate" hreflang="{locales[c]["htmlLang"]}" href="{BASE}{path(c)}">' for c in ORDER]
         head += [f'<link rel="alternate" hreflang="x-default" href="{BASE}/">',
                  '<link rel="icon" href="/favicon.svg" type="image/svg+xml">', '<link rel="stylesheet" href="/styles.css">',
-                 f'<script type="application/ld+json">{json_script(graph)}</script>', runtime, '<script src="/hero.js" defer></script>']
+                 f'<script type="application/ld+json">{json_script(graph)}</script>', runtime, '<script src="/hero.js" defer></script>', '<script src="/signup.js" defer></script>']
         values["head"] = "\n  ".join(head)
         lines = "".join(f'<{tag} class="headline-line">{escape(line)}</{tag}>' for tag, line in zip(("span", "span", "em"), d["headline"]))
         values["headlineHTML"] = f'<span class="headline-slide is-current" lang="{d["htmlLang"]}">{lines}</span>'
