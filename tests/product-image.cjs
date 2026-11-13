@@ -5,7 +5,7 @@ module.exports = async function verifyProductImage(page, expectedAlt) {
   assert.equal(await image.count(), 1);
   assert.ok(await image.isVisible());
   await image.evaluate(el => el.decode());
-  assert.equal(await image.getAttribute('src'), '/assets/babellino-kitchen.png');
+  assert.equal(await image.getAttribute('src'), '/assets/babellino-kitchen.jpg');
   const alt = await image.getAttribute('alt');
   assert.ok(alt && alt.trim());
   if (expectedAlt) assert.equal(alt, expectedAlt);

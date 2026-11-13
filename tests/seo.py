@@ -79,7 +79,7 @@ for code, copy in locales.items():
     assert page.lang == copy["htmlLang"] and page.h1 == 1
     assert len(page.images) == 1
     product = page.images[0]
-    assert product["src"] == "/assets/babellino-kitchen.png"
+    assert product["src"] == "/assets/babellino-kitchen.jpg"
     assert product["alt"] == copy["productAlt"]
     assert (product["width"], product["height"]) == ("1792", "1008")
     assert product.get("loading") != "lazy" and product["fetchpriority"] == "high"
@@ -155,10 +155,16 @@ for code, copy in locales.items():
     for public in ("index.html", "404.html", "llms.txt"):
         assert "github" not in (directory / public).read_text().lower()
 
-product_png = (ROOT / "assets/babellino-kitchen.png").read_bytes()
-assert product_png[:8] == b"\x89PNG\r\n\x1a\n"
-assert struct.unpack(">II", product_png[16:24]) == (1792, 1008)
-assert len(product_png) < 2_000_000
+# The supplied light-interface hero is JPEG; browser QA checks its decoded dimensions.
+product_jpg = (ROOT / "assets/babellino-kitchen.jpg").read_bytes()
+assert product_jpg[:3] == b"\xff\xd8\xff" and product_jpg[-2:] == b"\xff\xd9"
+assert len(product_jpg) < 400_000
+
+# Keep the separately published close-up in sync with the supplied light interface.
+device_png = (ROOT / "assets/babellino-device.png").read_bytes()
+assert device_png[:8] == b"\x89PNG\r\n\x1a\n"
+assert struct.unpack(">II", device_png[16:24]) == (1450, 2091)
+assert len(device_png) < 2_000_000
 
 png = (ROOT / "social-card.png").read_bytes()
 assert png[:8] == b"\x89PNG\r\n\x1a\n"
