@@ -15,6 +15,7 @@ class Page(HTMLParser):
         super().__init__()
         self.meta, self.links, self.ids, self.scripts = {}, [], set(), []
         self.title, self.text, self.lang = "", "", None
+        self.images = []
         self.h1 = self.questions = 0
         self.in_title = self.in_json = False
         self.feed(source)
@@ -36,6 +37,8 @@ class Page(HTMLParser):
         if tag == "script" and attrs.get("type") == "application/ld+json":
             self.in_json = True
             self.scripts.append("")
+        if tag == "img":
+            self.images.append(attrs)
         if tag == "title":
             self.in_title = True
         if tag == "h1":
@@ -73,6 +76,14 @@ for code, copy in locales.items():
     page = Page(source)
     url = BASE + paths[code]
     assert page.lang == copy["htmlLang"] and page.h1 == 1
+    assert len(page.images) == 1
+    product = page.images[0]
+    assert product["src"] == "/assets/babellino-device.png"
+    assert product["alt"] == copy["conceptAlt"]
+    assert (product["width"], product["height"]) == ("1450", "2091")
+    assert product.get("loading") != "lazy" and product["fetchpriority"] == "high"
+    assert copy["conceptCaption"] in page.text
+    assert 'class="product-stage"' not in source and 'class="device"' not in source
     assert page.title == copy["title"]
     assert "noindex" not in page.meta.get("robots", "")
     assert [l["href"] for l in page.links if l.get("rel") == "canonical"] == [url]
@@ -138,6 +149,11 @@ for code, copy in locales.items():
     assert error.title == copy["errorTitle"] and copy["errorHeading"] in error.text
     for public in ("index.html", "404.html", "llms.txt"):
         assert "github" not in (directory / public).read_text().lower()
+
+product_png = (ROOT / "assets/babellino-device.png").read_bytes()
+assert product_png[:8] == b"\x89PNG\r\n\x1a\n"
+assert struct.unpack(">II", product_png[16:24]) == (1450, 2091)
+assert len(product_png) < 2_000_000
 
 png = (ROOT / "social-card.png").read_bytes()
 assert png[:8] == b"\x89PNG\r\n\x1a\n"

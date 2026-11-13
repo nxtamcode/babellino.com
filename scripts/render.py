@@ -76,14 +76,8 @@ def render():
         values["head"] = "\n  ".join(head)
         lines = "".join(f'<{tag} class="headline-line">{escape(line)}</{tag}>' for tag, line in zip(("span", "span", "em"), d["headline"]))
         values["headlineHTML"] = f'<span class="headline-slide is-current" lang="{d["htmlLang"]}">{lines}</span>'
-        pair = locales["es" if code == "en" else "en"]
-        values.update(pairLang=pair["htmlLang"], pairNative=escape(pair["native"]))
-        for key in ("greeting", "reply", "deviceHeading", "howHeading"):
+        for key in ("deviceHeading", "howHeading"):
             values[key + "HTML"] = ("<br> " if key == "howHeading" else "<br>").join(map(escape, d[key]))
-        # Translations use natural wrapping; only the original speech has line breaks.
-        values["pairGreetingHTML"] = escape(" ".join(pair["greeting"]))
-        values["pairReplyHTML"] = "<br>".join(map(escape, pair["reply"]))
-        values["replyHTML"] = escape(" ".join(d["reply"]))
         values["detailsHTML"] = "".join(f'<div><dt>{escape(k)}</dt><dd>{escape(v)}</dd></div>' for k, v in zip(d["detailLabels"], d["detailValues"]))
         values["processHTML"] = '<span class="process-arrow" aria-hidden="true">→</span>'.join(f'<span>{escape(v)}</span>' for v in d["process"])
         values["processLabel"] = escape(", ".join(d["process"]))
