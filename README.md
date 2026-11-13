@@ -41,7 +41,7 @@ third-party detection, or analytics.
 current page language. Pause/Resume stops updates; hidden tabs suspend the timer.
 Reduced-motion preferences keep the current page language static. The localized
 heading works without JavaScript and stays stable for assistive technology.
-The product language list is explicit and independent of the illustrative demo.
+The product language list is explicit and independent of the displayed conversation.
 
 ```sh
 python3 -m http.server 8080 --bind 127.0.0.1
@@ -77,9 +77,11 @@ The public form's default success text is not proof of those account settings.
 website on 2026-11-13, copied without alteration (1450 × 2091, with transparency).
 All ten homepages use it in place of the old CSS-built device. Explicit intrinsic
 dimensions reserve its aspect ratio; responsive CSS shows the complete image
-without cropping or distortion. The existing localized alternative text and
-illustrative/development disclosures remain. The text within the supplied image
-stays English/Spanish rather than being reconstructed or translated.
+without cropping or distortion. The owner confirmed that this shows
+the real product on 2026-11-13. Localized alternative text and a useful caption
+describe the device; do not label it a concept or non-final hardware. The text
+within the supplied image stays English/Spanish rather than being reconstructed
+or translated.
 
 ## Publishing
 
@@ -87,10 +89,11 @@ GitHub Pages serves the repository root from `master`. `.nojekyll` keeps the
 site static. The custom domain is **[babellino.com](https://babellino.com)**,
 declared in `CNAME`. GitHub Pages manages the TLS certificate; HTTPS is enforced.
 
-The device illustration and displayed conversation are conceptual, not a final
-hardware render or a live translator. The explicit supported-language list is
-approved; the product remains in development. Final specifications, pricing,
-and availability are not announced.
+The supplied image shows the real Babellino product, as confirmed by the owner
+on 2026-11-13; it is not an interactive translator. The 8-inch touchscreen and
+explicit supported-language list are approved. The existing prelaunch/development
+status remains; pricing and availability have not been announced. Do not infer
+new specifications, shipping readiness, or a release date from the image.
 
 ## Content boundaries
 

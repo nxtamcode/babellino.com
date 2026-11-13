@@ -94,7 +94,7 @@ def render():
         values["runtime"] = f'<script id="site-config" type="application/json">{json_script(config)}</script>\n  <script src="/site.js" defer></script>'
         values["languageSelector"] = selector(code, error=True)
         output[path(code).lstrip("/") + "404.html"] = Template((ROOT / "templates/404.html").read_text()).substitute(values)
-        llms = f'# Babellino\n\n> {d["description"]}\n\n{d["offlineAnswer"]}\n{d["unannounced"]}\n{d["illustrative"]}\n\n## {d["languagesHeading"]}\n\n'
+        llms = f'# Babellino\n\n> {d["description"]}\n\n{d["offlineAnswer"]}\n{d["unannounced"]}\n\n## {d["languagesHeading"]}\n\n'
         llms += "\n".join(f'- {name} — {locales[c]["native"]}' for c, name in zip(ORDER, d["languageNames"]))
         llms += f'\n\n{d["moreLanguages"]} ' + f'[{d["requestLanguage"]}]({url}#languages)' + "\n"
         llms += f'\n## {d["website"]}\n\n- [Babellino]({url})\n'

@@ -3,8 +3,7 @@
 > Babellino es un traductor con IA sin conexión en desarrollo, con pantalla táctil de 8 pulgadas y 10 idiomas compatibles. Sin suscripciones ni internet durante el uso.
 
 No se requiere suscripción. Babellino se está desarrollando para traducir sin conexión, con IA en el propio dispositivo y sin necesidad de internet durante el uso.
-Las especificaciones finales, el precio y la disponibilidad aún no se han anunciado.
-La ilustración del dispositivo y la conversación de ejemplo son ilustrativas; no muestran el dispositivo final ni una demostración en vivo.
+El precio y la disponibilidad aún no se han anunciado.
 
 ## 10 idiomas compatibles.
 
