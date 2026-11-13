@@ -16,6 +16,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
     for (const [name, width, height] of [
       ['desktop', 1440, 1000], ['mobile', 390, 844],
       ['small-mobile', 320, 700], ['tablet', 768, 1024],
+      ['compact-desktop', 1101, 1000], ['wide-tablet', 1100, 1000],
     ]) {
       console.log(`Checking ${name}`);
       const context = await browser.newContext({ viewport: { width, height }, reducedMotion: 'reduce' });

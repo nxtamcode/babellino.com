@@ -32,8 +32,11 @@ p, h1, h2, figure { margin: 0; }
 .main-nav span { margin-left: 8px; }
 .main-nav .nav-subscribe { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--ink); border-radius: 4px; white-space: nowrap; }
 .main-nav .nav-subscribe:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
-.hero { display: grid; grid-template-columns: 1.08fr 1fr; gap: 40px; padding-block: 74px 68px; align-items: center; }
-.hero-copy { min-width: 0; }
+/* Keep the device clear on the right, with readable copy over the quiet left edge. */
+.hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: 720px; padding: 48px; margin-block: 32px 76px; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--paper) 0%, #f5f3e9fa 30%, #f5f3e9ed 42%, #f5f3e900 54%); pointer-events: none; }
+.hero-copy { min-width: 0; width: 44%; max-width: 480px; }
+.hero h1 { font-size: clamp(64px, 6vw, 88px); }
 .eyebrow { font-size: 11px; letter-spacing: 1.1px; line-height: 1.7; text-transform: uppercase; }
 .hero .eyebrow { display: flex; align-items: center; gap: 8px; letter-spacing: .8px; }
 .status-dot { width: 6px; height: 6px; flex: 0 0 6px; border-radius: 50%; background: #687348; }
@@ -57,9 +60,9 @@ h1 em { font-weight: 400; }
 .hero-note { font-size: 13px; line-height: 1.6; color: var(--muted); margin-top: 18px; }
 .hero-note strong { color: var(--ink); font-weight: 600; }
 .hero-note span { display: inline-block; max-width: 100%; }
-.product-figure { min-width: 0; width: 100%; }
-.product-image { display: block; width: 100%; max-width: 420px; height: auto; margin-inline: auto; }
-.product-figure figcaption { margin-top: 18px; }
+.product-figure { position: absolute; inset: 0; z-index: -2; min-width: 0; width: 100%; }
+.product-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 56% 50%; }
+.product-figure figcaption { position: absolute; top: 100%; width: 100%; padding-top: 12px; }
 figcaption { text-align: center; font-size: 10px; line-height: 1.6; color: var(--muted); }
 .intro { border-top: 1px solid var(--line); padding-block: 64px 88px; display: grid; grid-template-columns: .5fr 1.25fr 1fr; gap: 50px; }
 .section-label { display: flex; justify-content: space-between; align-items: baseline; font-size: 10px; letter-spacing: 1.3px; line-height: 1.5; }
@@ -95,10 +98,15 @@ dd { margin: 8px 0 0; font-size: 14px; }
 .footer-contact { margin-left: auto; font-size: 12px; }
 .footer > span { font-size: 10px; color: var(--muted); }
 
-@media (min-width: 1500px) { .hero { gap: 80px; } }
 @media (max-width: 1100px) {
   .wrap { width: calc(100% - 64px); }
-  .hero { gap: 22px; }
+  .hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; padding: 0; margin-block: 24px 48px; gap: 32px; }
+  .hero::before { content: none; }
+  .hero-copy { width: 100%; max-width: 600px; }
+  .product-figure { position: static; order: -1; z-index: auto; }
+  .product-image { height: auto; }
+  .product-figure figcaption { position: static; }
+  .hero h1 { font-size: 78px; }
   h1 { font-size: 78px; }
   .hero .eyebrow { max-width: 300px; font-size: 10px; }
   .intro { grid-template-columns: 1.2fr 1fr; gap: 32px; }
@@ -115,12 +123,13 @@ dd { margin: 8px 0 0; font-size: 14px; }
   .brand-mark { width: 28px; margin-right: 6px; }
   .main-nav { gap: 8px 16px; flex-wrap: wrap; font-size: 12px; }
   .main-nav a:first-child { display: none; }
-  .hero { grid-template-columns: 1fr; padding-top: 42px; gap: 8px; padding-bottom: 44px; }
+  .hero { margin-block: 24px 44px; }
   .hero .eyebrow { max-width: none; font-size: 9px; letter-spacing: .55px; }
   h1 { font-size: clamp(64px, 13vw, 88px); letter-spacing: -3.6px; margin-top: 24px; }
   .hero-description { font-size: 16px; max-width: 430px; margin-block: 23px; }
   .hero-note { margin-top: 14px; }
-  .product-figure { max-width: 480px; width: 100%; justify-self: center; margin-top: 22px; }
+  .hero h1 { font-size: clamp(64px, 13vw, 88px); }
+  .product-image { aspect-ratio: 4 / 3; height: auto; }
   .intro { grid-template-columns: 1fr; padding-block: 32px 48px; gap: 28px; }
   h2 { font-size: 37px; }
   .intro-content p { max-width: 500px; }
