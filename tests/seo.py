@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urlparse
 import json
+import re
 import struct
 import xml.etree.ElementTree as ET
 
@@ -79,10 +80,13 @@ for code, copy in locales.items():
     assert len(page.images) == 1
     product = page.images[0]
     assert product["src"] == "/assets/babellino-device.png"
-    assert product["alt"] == copy["conceptAlt"]
+    assert product["alt"] == copy["productAlt"]
     assert (product["width"], product["height"]) == ("1450", "2091")
     assert product.get("loading") != "lazy" and product["fetchpriority"] == "high"
-    assert copy["conceptCaption"] in page.text
+    assert copy["productCaption"] in page.text
+    assert copy["hardwareQuestion"] in page.text and copy["hardwareAnswer"] in page.text
+    assert "illustrative" not in copy and "conceptCaption" not in copy
+    assert not re.search(r"concept\w*|conceit\w*|konzept\w*|概念|非最终硬件|not final hardware", source, re.I)
     assert 'class="product-stage"' not in source and 'class="device"' not in source
     assert page.title == copy["title"]
     assert "noindex" not in page.meta.get("robots", "")
@@ -141,7 +145,8 @@ for code, copy in locales.items():
             assert parsed.fragment in Page(target.read_text()).ids
     llms = (directory / "llms.txt").read_text()
     assert llms.startswith("# Babellino\n")
-    for key in ("unannounced", "illustrative", "offlineAnswer", "moreLanguages"):
+    assert not re.search(r"illustrativ\w*|not final hardware|非最终硬件|仅供示意", llms, re.I)
+    for key in ("unannounced", "offlineAnswer", "moreLanguages"):
         assert copy[key] in llms
     assert all(name in llms for name in copy["languageNames"])
     error = Page((directory / "404.html").read_text())
