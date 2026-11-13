@@ -73,8 +73,9 @@ The public form's default success text is not proof of those account settings.
 
 ## Product image
 
-`assets/babellino-kitchen.png` is the owner-supplied hero image approved on
-2026-11-13, copied without alteration (1792 × 1008). All ten homepages use the
+`assets/babellino-kitchen.jpg` is the owner-supplied hero image approved on
+2026-11-13, updated to the supplied light-interface JPEG without alteration
+(1792 × 1008, 291 KB). All ten homepages use the
 sunlit kitchen scene. Desktop copy sits over a pale left-edge scrim, keeping the
 device clear; tablet and mobile place the photo above the copy. Small screens
 use a 4:3 CSS crop focused on the device, without stretching the image. Explicit
@@ -84,8 +85,9 @@ the 8-inch touchscreen and offline translation.
 
 The owner confirmed that the pictured device is the real product. Do not label
 it a concept or non-final hardware. The text within supplied images is not
-reconstructed or translated. The earlier close-up remains a local asset at
-`assets/babellino-device.png`; it is not loaded by the homepage.
+reconstructed or translated. The close-up at `assets/babellino-device.png` is also the supplied light-interface
+version, copied without alteration (1450 × 2091 PNG, with transparency). It is
+not loaded by the homepage. Both versions were supplied by the owner on 2026-11-13.
 
 ## Publishing
 
