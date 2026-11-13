@@ -4,11 +4,11 @@
   "description": "Babellino is an offline AI translator in development with an 8-inch touchscreen and 10 supported languages. No subscription or internet required during use.",
   "skip": "Skip to content", "home": "Babellino home", "navigation": "Main navigation",
   "deviceNav": "The device", "howNav": "How it works", "languageMenu": "Website language",
-  "eyebrow": "A dedicated offline translator · In development",
+  "eyebrow": "In development",
   "headline": ["A little less", "lost in", "translation."],
   "headlineAccessible": "A little less lost in translation.",
   "pause": "Pause", "resume": "Resume", "pauseLabel": "Pause headline language rotation", "resumeLabel": "Resume headline language rotation",
-  "heroDescription": "Different languages. Same table. Meet the self-contained AI translator that keeps the conversation going.",
+  "heroDescription": "An offline AI translator for face-to-face conversations.",
   "meet": "Meet Babellino", "noSubscriptions": "No subscriptions.", "noInternet": "No internet required during use.",
   "noCamera": "No camera.", "dualMicrophones": "Dual microphones.",
   "languagesLink": "10 supported languages",
@@ -46,5 +46,6 @@
   "updatesFallback": "Prefer email? Contact us.",
   "updatesFrame": "Babellino email signup",
   "updatesSubject": "Babellino updates",
-  "subscribeNav": "Subscribe"
+  "subscribeNav": "Get updates",
+  "deviceAlt": "Babellino conversation screen showing English and Spanish translations."
 }

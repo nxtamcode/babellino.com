@@ -4,11 +4,11 @@
   "description": "Babellino is een offline AI-vertaler in ontwikkeling, met een 8-inch touchscreen en 10 ondersteunde talen. Geen abonnement of internet nodig tijdens gebruik.",
   "skip": "Ga naar de inhoud", "home": "Babellino-startpagina", "navigation": "Hoofdnavigatie",
   "deviceNav": "Het apparaat", "howNav": "Hoe het werkt", "languageMenu": "Taal van de website",
-  "eyebrow": "Een zelfstandig offline vertaalapparaat · In ontwikkeling",
+  "eyebrow": "In ontwikkeling",
   "headline": ["Iets minder", "verloren in de", "vertaling."],
   "headlineAccessible": "Iets minder verloren in de vertaling.",
   "pause": "Pauzeren", "resume": "Hervatten", "pauseLabel": "Taalwisseling van de kop pauzeren", "resumeLabel": "Taalwisseling van de kop hervatten",
-  "heroDescription": "Verschillende talen. Dezelfde tafel. Maak kennis met de zelfstandige AI-vertaler die het gesprek gaande houdt.",
+  "heroDescription": "Een offline AI-vertaler voor gesprekken, recht tegenover elkaar.",
   "meet": "Ontdek Babellino", "noSubscriptions": "Geen abonnementen.", "noInternet": "Geen internet nodig tijdens gebruik.",
   "noCamera": "Geen camera.", "dualMicrophones": "Twee microfoons.",
   "languagesLink": "10 ondersteunde talen",
@@ -46,5 +46,6 @@
   "updatesFallback": "Liever e-mail? Neem contact op.",
   "updatesFrame": "Aanmelden voor Babellino-updates",
   "updatesSubject": "Updates over Babellino",
-  "subscribeNav": "Inschrijven"
+  "subscribeNav": "Ontvang updates",
+  "deviceAlt": "Babellino-gespreksscherm met vertalingen in het Engels en Spaans."
 }

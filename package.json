@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "Buildless Babellino landing page; dependencies are only for browser QA.",
   "scripts": {
-    "test": "python3 scripts/render.py --check && python3 tests/seo.py && node tests/verify.cjs && node tests/hero-rotation.cjs && node tests/locales.cjs && node tests/signup.cjs"
+    "test": "python3 scripts/render.py --check && python3 tests/seo.py && node tests/design.cjs && node tests/verify.cjs && node tests/hero-rotation.cjs && node tests/locales.cjs && node tests/signup.cjs",
+    "test:static": "python3 scripts/render.py --check && python3 tests/seo.py && node tests/design.cjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.13.0",

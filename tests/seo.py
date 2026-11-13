@@ -77,12 +77,18 @@ for code, copy in locales.items():
     page = Page(source)
     url = BASE + paths[code]
     assert page.lang == copy["htmlLang"] and page.h1 == 1
-    assert len(page.images) == 1
+    assert len(page.images) == 2
     product = page.images[0]
     assert product["src"] == "/assets/babellino-kitchen.jpg"
     assert product["alt"] == copy["productAlt"]
-    assert (product["width"], product["height"]) == ("1792", "1008")
+    assert (product["width"], product["height"]) == ("1440", "1376")
     assert product.get("loading") != "lazy" and product["fetchpriority"] == "high"
+    conversation = page.images[1]
+    assert conversation["src"] == "/assets/conversation.es.png"
+    assert conversation["alt"] == copy["deviceAlt"]
+    assert (conversation["width"], conversation["height"]) == ("800", "1280")
+    assert conversation["loading"] == "lazy"
+    assert copy["subscribeNav"] == copy["updatesCTA"]
     assert copy["productCaption"] in page.text
     assert copy["hardwareQuestion"] in page.text and copy["hardwareAnswer"] in page.text
     assert "illustrative" not in copy and "conceptCaption" not in copy
@@ -155,16 +161,16 @@ for code, copy in locales.items():
     for public in ("index.html", "404.html", "llms.txt"):
         assert "github" not in (directory / public).read_text().lower()
 
-# The supplied light-interface hero is JPEG; browser QA checks its decoded dimensions.
+# Latest owner-supplied JPEG; browser checks verify decoded 1440 × 1376 dimensions.
 product_jpg = (ROOT / "assets/babellino-kitchen.jpg").read_bytes()
 assert product_jpg[:3] == b"\xff\xd8\xff" and product_jpg[-2:] == b"\xff\xd9"
-assert len(product_jpg) < 400_000
+assert len(product_jpg) < 750_000
 
-# Keep the separately published close-up in sync with the supplied light interface.
-device_png = (ROOT / "assets/babellino-device.png").read_bytes()
-assert device_png[:8] == b"\x89PNG\r\n\x1a\n"
-assert struct.unpack(">II", device_png[16:24]) == (1450, 2091)
-assert len(device_png) < 2_000_000
+# Keep the framed conversation image in sync with the supplied screenshot.
+conversation_png = (ROOT / "assets/conversation.es.png").read_bytes()
+assert conversation_png[:8] == b"\x89PNG\r\n\x1a\n"
+assert struct.unpack(">II", conversation_png[16:24]) == (800, 1280)
+assert len(conversation_png) < 500_000
 
 png = (ROOT / "social-card.png").read_bytes()
 assert png[:8] == b"\x89PNG\r\n\x1a\n"

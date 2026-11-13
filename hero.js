@@ -28,22 +28,8 @@
   let current = 0;
   let paused = false;
   let timer;
-  let resizeFrame;
-
-  // Reserve the original three-line height; fit longer translations without
-  // moving the paragraph, controls, or product illustration between languages.
-  const fitHeadlines = () => {
-    const available = visual.clientWidth - 2;
-    if (available <= 0) return;
-    slides.forEach(slide => {
-      slide.style.fontSize = '';
-      const widest = Math.max(...Array.from(slide.children, line => line.getBoundingClientRect().width));
-      if (widest > available) {
-        const size = parseFloat(getComputedStyle(slide).fontSize);
-        slide.style.fontSize = `${size * available / widest}px`;
-      }
-    });
-  };
+  // All slides occupy the same CSS grid cell. Natural wrapping and the tallest
+  // slide reserve space without shrinking individual languages or moving the CTA.
 
   const show = index => {
     current = index;
@@ -85,11 +71,5 @@
   document.addEventListener('visibilitychange', schedule);
   window.addEventListener('pagehide', () => clearTimeout(timer));
   window.addEventListener('pageshow', schedule);
-  window.addEventListener('resize', () => {
-    cancelAnimationFrame(resizeFrame);
-    resizeFrame = requestAnimationFrame(fitHeadlines);
-  });
-  if (document.fonts) document.fonts.ready.then(fitHeadlines);
-  fitHeadlines();
   updateMotion();
 })();

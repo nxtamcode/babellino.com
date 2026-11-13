@@ -4,11 +4,11 @@
   "description": "Babellino este un traducător IA offline în dezvoltare, cu ecran tactil de 8 inchi și 10 limbi acceptate. Fără abonament sau internet în timpul utilizării.",
   "skip": "Sari la conținut", "home": "Pagina principală Babellino", "navigation": "Navigare principală",
   "deviceNav": "Dispozitivul", "howNav": "Cum funcționează", "languageMenu": "Limba site-ului",
-  "eyebrow": "Un traducător dedicat offline · În dezvoltare",
+  "eyebrow": "În dezvoltare",
   "headline": ["Mai puțin", "pierduți în", "traducere."],
   "headlineAccessible": "Mai puțin pierduți în traducere.",
   "pause": "Pauză", "resume": "Reia", "pauseLabel": "Oprește temporar schimbarea limbii titlului", "resumeLabel": "Reia schimbarea limbii titlului",
-  "heroDescription": "Limbi diferite. Aceeași masă. Descoperă traducătorul IA autonom care menține conversația vie.",
+  "heroDescription": "Un traducător AI offline pentru conversații față în față.",
   "meet": "Descoperă Babellino", "noSubscriptions": "Fără abonamente.", "noInternet": "Fără internet în timpul utilizării.",
   "noCamera": "Fără cameră.", "dualMicrophones": "Două microfoane.",
   "languagesLink": "10 limbi acceptate",
@@ -46,5 +46,6 @@
   "updatesFallback": "Preferi e-mailul? Contactează-ne.",
   "updatesFrame": "Înscriere la noutățile Babellino",
   "updatesSubject": "Noutăți Babellino",
-  "subscribeNav": "Abonează-te"
+  "subscribeNav": "Primește noutăți",
+  "deviceAlt": "Ecranul de conversație Babellino cu traduceri în engleză și spaniolă."
 }

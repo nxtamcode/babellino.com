@@ -14,9 +14,13 @@ const { mkdir, writeFile } = require('node:fs/promises');
   await mkdir('test-results', { recursive: true });
   try {
     for (const [name, width, height] of [
-      ['desktop', 1440, 1000], ['mobile', 390, 844],
+      ['desktop', 1440, 900], ['mobile', 390, 844],
       ['small-mobile', 320, 700], ['tablet', 768, 1024],
-      ['compact-desktop', 1101, 1000], ['wide-tablet', 1100, 1000],
+      ['compact-desktop', 901, 768], ['wide-tablet', 900, 900],
+      ['small-desktop', 1281, 800], ['large-tablet', 1280, 800],
+      ['notebook', 1366, 768], ['short-desktop', 1440, 700],
+      ['small-laptop', 1101, 1000], ['small-laptop-narrow', 1100, 1000],
+      ['split-hero', 1001, 900], ['stacked-hero', 1000, 900],
       ['large-phone', 430, 932], ['landscape-phone', 844, 390],
       ['tablet-landscape', 1024, 768], ['mobile-breakpoint', 760, 1024],
       ['tablet-breakpoint', 761, 1024], ['wide-desktop', 1920, 1080],
@@ -39,33 +43,40 @@ const { mkdir, writeFile } = require('node:fs/promises');
       assert.match(await page.title(), /^Babellino/);
       assert.doesNotMatch(await response.text(), /github|open[\s-]?source/i);
       assert.equal(await page.locator('h1').count(), 1);
-      assert.deepEqual(await page.locator('.hero-note li').allTextContents(), ['No subscriptions.', 'No internet required during use.', 'No camera.', 'Dual microphones.']);
-      const benefits = await page.locator('.hero-note').evaluate(list => {
-        const items = Array.from(list.children, li => li.getBoundingClientRect());
-        const style = getComputedStyle(list);
+      assert.deepEqual(await page.locator('.reassurance li').allTextContents(), ['No subscriptions.', 'No internet required during use.']);
+      assert.deepEqual(await page.locator('.details li').allTextContents(), ['8-inch touchscreen', 'Dual microphones.', 'No camera.', '10 supported languages']);
+      assert.deepEqual(await page.locator('main > section[id]').evaluateAll(elements => elements.map(el => el.id)),
+        ['the-device', 'how-it-works', 'languages', 'questions', 'updates']);
+      const hierarchy = await page.evaluate(() => {
+        const style = selector => getComputedStyle(document.querySelector(selector));
         return {
-          singleLines: items.every(r => r.height <= parseFloat(style.lineHeight) + 1),
-          aligned: items.every(r => Math.abs(r.left - items[0].left) < 1),
-          stacked: items.slice(1).every((r, i) => r.top > items[i].bottom),
-          font: parseFloat(style.fontSize),
-          ctaFont: parseFloat(getComputedStyle(document.querySelector('.hero .button')).fontSize),
-          linkFont: parseFloat(getComputedStyle(document.querySelector('.hero .languages-link')).fontSize),
+          bodyWeight: style('body').fontWeight,
+          headingWeight: style('h1').fontWeight,
+          factsWeight: style('.reassurance').fontWeight,
+          actionWeight: style('.hero .button').fontWeight,
+          noHalos: [...document.querySelectorAll('.header, .header *, .hero-copy, .hero-copy *')]
+            .every(el => getComputedStyle(el).textShadow === 'none'),
+          copyBackground: style('.hero-copy').backgroundColor,
         };
       });
-      assert.ok(benefits.singleLines && benefits.aligned && benefits.stacked, 'English benefits should be a compact list without orphaned words');
-      assert.ok(benefits.ctaFont > benefits.font && benefits.font > benefits.linkFont, 'Keep action, facts, and secondary link in a clear type hierarchy');
+      assert.equal(hierarchy.bodyWeight, '400');
+      assert.equal(hierarchy.headingWeight, '400');
+      assert.equal(hierarchy.factsWeight, '400');
+      assert.equal(hierarchy.actionWeight, '600');
+      assert.ok(hierarchy.noHalos, 'Legibility must not depend on text halos');
+      assert.equal(hierarchy.copyBackground, 'rgb(245, 243, 233)');
       const undersized = await page.evaluate(() => {
         const checks = [
-          ['.hero-description, .hero-note, .intro-content p, .how-bottom p, .closing p, .questions summary, .supported p, .language-list li, .updates-copy p, dd, .process', 16],
-          ['.main-nav, .site-language, .footer-contact, .footer > span, .native-name, .signup-note, .signup-fallback, .hero-language-controls', 14],
-          ['.eyebrow, .section-label, dt', 12],
+          ['.hero-description, .device-story, .how-copy p, .questions summary, .questions p, .updates-copy p', 18],
+          ['.reassurance, .supported p, .language-list li, .closing-copy p, .details, .process, .footer-contact', 16],
+          ['.main-nav, .site-language, .footer > span, .native-name, .signup-note, .signup-fallback, .hero-language-controls', 14],
+          ['.eyebrow', 13],
         ];
         return checks.flatMap(([selector, minimum]) => Array.from(document.querySelectorAll(selector))
           .filter(el => parseFloat(getComputedStyle(el).fontSize) < minimum)
-          .map(el => ({ selector, minimum, tag: el.tagName, size: getComputedStyle(el).fontSize })));
+          .map(el => ({selector, minimum, size: getComputedStyle(el).fontSize})));
       });
-      assert.deepEqual(undersized, [], 'Keep body copy and supporting text readable at every viewport');
-      assert.equal(await page.locator('.details div').filter({ hasText: 'Subscriptions' }).locator('dd').innerText(), 'None required');
+      assert.deepEqual(undersized, []);
       const productImage = await verifyProductImage(page);
       const layout = await page.evaluate(() => ({
         width: innerWidth, scroll: document.documentElement.scrollWidth,
@@ -80,7 +91,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
       assert.equal(await page.locator(':focus').innerText(), 'Skip to content');
       await page.keyboard.press('Enter');
       assert.equal(new URL(page.url()).hash, '#main');
-      await page.getByRole('link', { name: 'Get updates' }).click();
+      await page.locator('.hero .button').click();
       assert.equal(new URL(page.url()).hash, '#updates');
       await page.getByRole('link', { name: 'How it works' }).click();
       assert.equal(new URL(page.url()).hash, '#how-it-works');
