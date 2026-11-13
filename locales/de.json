@@ -10,6 +10,7 @@
   "pause": "Pause", "resume": "Fortsetzen", "pauseLabel": "Sprachwechsel der Überschrift pausieren", "resumeLabel": "Sprachwechsel der Überschrift fortsetzen",
   "heroDescription": "Verschiedene Sprachen. Derselbe Tisch. Entdecke den eigenständigen KI-Übersetzer, der das Gespräch am Laufen hält.",
   "meet": "Babellino entdecken", "noSubscriptions": "Keine Abos.", "noInternet": "Kein Internet bei der Nutzung nötig.",
+  "noCamera": "Keine Kamera.", "dualMicrophones": "Zwei Mikrofone.",
   "languagesLink": "10 unterstützte Sprachen",
   "productAlt": "Babellino-Übersetzer auf einer Marmor-Kücheninsel in einer sonnigen Küche.",
   "offline": "Offline", "greeting": ["Guten Morgen.", "Schön, dich", "kennenzulernen."], "reply": ["Ganz meinerseits.", "Wie geht es dir?"],

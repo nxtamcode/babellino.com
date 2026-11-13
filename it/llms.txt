@@ -3,6 +3,7 @@
 > Babellino è un traduttore IA offline in sviluppo, con touchscreen da 8 pollici e 10 lingue supportate. Nessun abbonamento né internet durante l’uso.
 
 Non è richiesto alcun abbonamento. Babellino è in sviluppo per tradurre offline, con IA sul dispositivo e senza connessione internet durante l’uso.
+Senza fotocamera. Due microfoni.
 Prezzo e disponibilità non sono ancora stati annunciati.
 
 ## 10 lingue supportate.

@@ -10,6 +10,7 @@
   "pause": "Pause", "resume": "Resume", "pauseLabel": "Pause headline language rotation", "resumeLabel": "Resume headline language rotation",
   "heroDescription": "Different languages. Same table. Meet the self-contained AI translator that keeps the conversation going.",
   "meet": "Meet Babellino", "noSubscriptions": "No subscriptions.", "noInternet": "No internet required during use.",
+  "noCamera": "No camera.", "dualMicrophones": "Dual microphones.",
   "languagesLink": "10 supported languages",
   "productAlt": "Babellino translator on a marble island in a sunlit kitchen.",
   "offline": "Offline", "greeting": ["Good morning.", "It's nice to", "meet you."], "reply": ["Likewise.", "How are you?"],

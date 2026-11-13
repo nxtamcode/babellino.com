@@ -39,7 +39,32 @@ const { mkdir, writeFile } = require('node:fs/promises');
       assert.match(await page.title(), /^Babellino/);
       assert.doesNotMatch(await response.text(), /github|open[\s-]?source/i);
       assert.equal(await page.locator('h1').count(), 1);
-      assert.equal(await page.locator('.hero-note').innerText(), 'No subscriptions. No internet required during use.');
+      assert.deepEqual(await page.locator('.hero-note li').allTextContents(), ['No subscriptions.', 'No internet required during use.', 'No camera.', 'Dual microphones.']);
+      const benefits = await page.locator('.hero-note').evaluate(list => {
+        const items = Array.from(list.children, li => li.getBoundingClientRect());
+        const style = getComputedStyle(list);
+        return {
+          singleLines: items.every(r => r.height <= parseFloat(style.lineHeight) + 1),
+          aligned: items.every(r => Math.abs(r.left - items[0].left) < 1),
+          stacked: items.slice(1).every((r, i) => r.top > items[i].bottom),
+          font: parseFloat(style.fontSize),
+          ctaFont: parseFloat(getComputedStyle(document.querySelector('.hero .button')).fontSize),
+          linkFont: parseFloat(getComputedStyle(document.querySelector('.hero .languages-link')).fontSize),
+        };
+      });
+      assert.ok(benefits.singleLines && benefits.aligned && benefits.stacked, 'English benefits should be a compact list without orphaned words');
+      assert.ok(benefits.ctaFont > benefits.font && benefits.font > benefits.linkFont, 'Keep action, facts, and secondary link in a clear type hierarchy');
+      const undersized = await page.evaluate(() => {
+        const checks = [
+          ['.hero-description, .hero-note, .intro-content p, .how-bottom p, .closing p, .questions summary, .supported p, .language-list li, .updates-copy p, dd, .process', 16],
+          ['.main-nav, .site-language, .footer-contact, .footer > span, .native-name, .signup-note, .signup-fallback, .hero-language-controls', 14],
+          ['.eyebrow, .section-label, dt', 12],
+        ];
+        return checks.flatMap(([selector, minimum]) => Array.from(document.querySelectorAll(selector))
+          .filter(el => parseFloat(getComputedStyle(el).fontSize) < minimum)
+          .map(el => ({ selector, minimum, tag: el.tagName, size: getComputedStyle(el).fontSize })));
+      });
+      assert.deepEqual(undersized, [], 'Keep body copy and supporting text readable at every viewport');
       assert.equal(await page.locator('.details div').filter({ hasText: 'Subscriptions' }).locator('dd').innerText(), 'None required');
       const productImage = await verifyProductImage(page);
       const layout = await page.evaluate(() => ({

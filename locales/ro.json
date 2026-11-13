@@ -10,6 +10,7 @@
   "pause": "Pauză", "resume": "Reia", "pauseLabel": "Oprește temporar schimbarea limbii titlului", "resumeLabel": "Reia schimbarea limbii titlului",
   "heroDescription": "Limbi diferite. Aceeași masă. Descoperă traducătorul IA autonom care menține conversația vie.",
   "meet": "Descoperă Babellino", "noSubscriptions": "Fără abonamente.", "noInternet": "Fără internet în timpul utilizării.",
+  "noCamera": "Fără cameră.", "dualMicrophones": "Două microfoane.",
   "languagesLink": "10 limbi acceptate",
   "productAlt": "Traducător Babellino pe o insulă de marmură într-o bucătărie însorită.",
   "offline": "Offline", "greeting": ["Bună dimineața.", "Îmi pare bine", "să te cunosc."], "reply": ["Și mie.", "Ce mai faci?"],

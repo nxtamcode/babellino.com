@@ -10,6 +10,7 @@
   "pause": "Pausa", "resume": "Reprèn", "pauseLabel": "Pausa la rotació d’idiomes del títol", "resumeLabel": "Reprèn la rotació d’idiomes del títol",
   "heroDescription": "Idiomes diferents. La mateixa taula. Descobreix el traductor autònom amb IA que manté viva la conversa.",
   "meet": "Descobreix Babellino", "noSubscriptions": "Sense subscripcions.", "noInternet": "Sense internet durant l’ús.",
+  "noCamera": "Sense càmera.", "dualMicrophones": "Dos micròfons.",
   "languagesLink": "10 idiomes compatibles",
   "productAlt": "Traductor Babellino sobre una illa de marbre en una cuina il·luminada pel sol.",
   "offline": "Sense connexió", "greeting": ["Bon dia.", "És un plaer", "conèixer-te."], "reply": ["Igualment.", "Com estàs?"],

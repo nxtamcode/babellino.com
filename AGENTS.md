@@ -7,6 +7,8 @@
   The image is not an interactive demo. Publish only the approved language list
   in issue #8; do not infer additional support from the image.
 - Only publish approved product facts. Never copy private device source into this repo.
+- Owner-confirmed hardware facts (2026-11-13): no camera and dual microphones.
+  These do not establish recording behavior, noise cancellation, or privacy guarantees.
 - Do not add repository links or imply public-source availability in visitor-facing content.
 - Prefer local assets; do not add analytics, remote fonts, or unnecessary JavaScript.
   Exception: the owner-approved beehiiv signup embed. Its provider-owned iframe may
