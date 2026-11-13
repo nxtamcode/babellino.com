@@ -4,11 +4,11 @@
   "description": "Babellino é um tradutor com IA offline em desenvolvimento, com ecrã tátil de 8 polegadas e 10 idiomas suportados. Sem subscrições nem internet durante a utilização.",
   "skip": "Saltar para o conteúdo", "home": "Página inicial da Babellino", "navigation": "Navegação principal",
   "deviceNav": "O dispositivo", "howNav": "Como funciona", "languageMenu": "Idioma do site",
-  "eyebrow": "Um tradutor dedicado offline · Em desenvolvimento",
+  "eyebrow": "Em desenvolvimento",
   "headline": ["Um pouco menos", "perdidos na", "tradução."],
   "headlineAccessible": "Um pouco menos perdidos na tradução.",
   "pause": "Pausar", "resume": "Retomar", "pauseLabel": "Pausar a rotação de idiomas do título", "resumeLabel": "Retomar a rotação de idiomas do título",
-  "heroDescription": "Idiomas diferentes. A mesma mesa. Conheça o tradutor autónomo com IA que mantém a conversa a fluir.",
+  "heroDescription": "Um tradutor de IA offline para conversas cara a cara.",
   "meet": "Conheça o Babellino", "noSubscriptions": "Sem subscrições.", "noInternet": "Sem internet durante a utilização.",
   "noCamera": "Sem câmara.", "dualMicrophones": "Dois microfones.",
   "languagesLink": "10 idiomas suportados",
@@ -46,5 +46,6 @@
   "updatesFallback": "Preferes e-mail? Contacta-nos.",
   "updatesFrame": "Inscrição nas novidades do Babellino",
   "updatesSubject": "Novidades do Babellino",
-  "subscribeNav": "Subscrever"
+  "subscribeNav": "Receber novidades",
+  "deviceAlt": "Ecrã de conversação do Babellino com traduções em inglês e espanhol."
 }

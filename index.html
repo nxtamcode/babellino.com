@@ -46,7 +46,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="header home-header wrap">
     <a class="wordmark" href="/?lang=en" aria-label="Babellino home">
-      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
         <path d="M5 5h17a7 7 0 0 1 7 7v7a7 7 0 0 1-7 7h-6l-8 6v-6H5Z" fill="currentColor"/>
         <path d="M12 11v9m0-5h5a3 3 0 1 1 0 6h-5" fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
@@ -54,8 +54,8 @@
     </a>
     <nav class="main-nav" aria-label="Main navigation">
       <a href="#the-device">The device</a>
-      <a href="#how-it-works">How it works <span aria-hidden="true">↗</span></a>
-      <a class="nav-subscribe" href="#updates">Subscribe</a>
+      <a href="#how-it-works">How it works</a>
+      <a class="nav-subscribe" href="#updates">Get updates</a>
     </nav>
     <details class="site-language"><summary><span class="visually-hidden" data-language-label>Website language: </span><span data-language-name lang="en">English</span></summary><ul><li><a href="/ca/" lang="ca" hreflang="ca" data-locale="ca">Català</a></li><li><a href="/nl/" lang="nl" hreflang="nl" data-locale="nl">Nederlands</a></li><li><a href="/?lang=en" lang="en" hreflang="en" data-locale="en" aria-current="true">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr" data-locale="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de" data-locale="de">Deutsch</a></li><li><a href="/it/" lang="it" hreflang="it" data-locale="it">Italiano</a></li><li><a href="/zh/" lang="zh-Hans" hreflang="zh-Hans" data-locale="zh">普通话</a></li><li><a href="/pt/" lang="pt" hreflang="pt" data-locale="pt">Português</a></li><li><a href="/ro/" lang="ro" hreflang="ro" data-locale="ro">Română</a></li><li><a href="/es/" lang="es" hreflang="es" data-locale="es">Español</a></li></ul></details>
   </header>
@@ -63,80 +63,73 @@
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> A dedicated offline translator · In development</p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> In development</p>
         <h1 id="hero-title">
           <span class="visually-hidden">A little less lost in translation.</span>
-          <span class="hero-title-visual" aria-hidden="true">
-            <span class="headline-slide is-current" lang="en"><span class="headline-line">A little less</span><span class="headline-line">lost in</span><em class="headline-line">translation.</em></span>
-          </span>
+          <span class="hero-title-visual" aria-hidden="true"><span class="headline-slide is-current" lang="en"><span class="headline-line">A little less</span><span class="headline-line">lost in</span><em class="headline-line">translation.</em></span></span>
         </h1>
+        <p class="hero-description">An offline AI translator for face-to-face conversations.</p>
+        <a class="button" href="#updates">Get updates <span aria-hidden="true">↓</span></a>
         <div class="hero-language-controls" hidden>
           <span id="hero-language" lang="en">English</span>
           <button id="hero-language-toggle" type="button" aria-label="Pause headline language rotation">Pause</button>
         </div>
-        <p class="hero-description">Different languages. Same table. Meet the self-contained AI translator that keeps the conversation going.</p>
-        <a class="button" href="#updates">Get updates <span aria-hidden="true">↓</span></a>
-        <ul class="hero-note">
-          <li>No subscriptions.</li>
-          <li>No internet required during use.</li>
-          <li>No camera.</li>
-          <li>Dual microphones.</li>
-        </ul>
-        <a class="text-link languages-link" href="#languages">10 supported languages</a>
       </div>
-
       <figure class="product-figure">
-        <img class="product-image" src="/assets/babellino-kitchen.jpg" width="1792" height="1008"
+        <img class="product-image" src="/assets/babellino-kitchen.jpg" width="1440" height="1376"
              alt="Babellino translator on a marble island in a sunlit kitchen." fetchpriority="high" decoding="async">
         <figcaption class="visually-hidden">8-inch touchscreen · Offline, face-to-face translation</figcaption>
       </figure>
     </section>
 
-    <section class="supported wrap" id="languages" aria-labelledby="languages-title">
-      <h2 id="languages-title">10 supported languages.</h2>
-      <ul class="language-list"><li><span>Catalan</span><span class="native-name" lang="ca">Català</span></li><li><span>Dutch</span><span class="native-name" lang="nl">Nederlands</span></li><li><span>English</span></li><li><span>French</span><span class="native-name" lang="fr">Français</span></li><li><span>German</span><span class="native-name" lang="de">Deutsch</span></li><li><span>Italian</span><span class="native-name" lang="it">Italiano</span></li><li><span>Mandarin Chinese</span><span class="native-name" lang="zh-Hans">普通话</span></li><li><span>Portuguese</span><span class="native-name" lang="pt">Português</span></li><li><span>Romanian</span><span class="native-name" lang="ro">Română</span></li><li><span>Spanish</span><span class="native-name" lang="es">Español</span></li></ul>
-      <p>More languages are coming. <a class="text-link request-language" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#76;&#97;&#110;&#103;&#117;&#97;&#103;&#101;&#37;&#50;&#48;&#114;&#101;&#113;&#117;&#101;&#115;&#116;&#37;&#50;&#48;&#102;&#111;&#114;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Contact us to request another.</a></p>
-    </section>
+    <ul class="reassurance wrap">
+      <li>No subscriptions.</li>
+      <li>No internet required during use.</li>
+    </ul>
 
     <section class="intro wrap" id="the-device" aria-labelledby="device-title">
-      <div class="section-label"><span>01 / THE DEVICE</span><span aria-hidden="true">↘</span></div>
+      <figure class="device-detail">
+        <div class="conversation-frame">
+          <img src="/assets/conversation.es.png" width="800" height="1280"
+               alt="Babellino conversation screen showing English and Spanish translations." loading="lazy" decoding="async">
+        </div>
+      </figure>
       <div class="intro-content">
+        <p class="eyebrow">The device</p>
         <h2 id="device-title">More face to face.<br>Less phone to phone.</h2>
-        <p>Babellino is a self-contained offline AI translator in development. The dedicated device combines an 8-inch touchscreen with on-device AI for live, face-to-face translation, without internet during use.</p>
-        <p>No connection to find. No phone to pass around. Just a little more room to understand each other.</p>
+        <p class="device-story">No connection to find. No phone to pass around. Just a little more room to understand each other.</p>
+        <ul class="details">
+          <li>8-inch touchscreen</li>
+          <li>Dual microphones.</li>
+          <li>No camera.</li>
+          <li><a class="text-link languages-link" href="#languages">10 supported languages</a></li>
+        </ul>
       </div>
-      <dl class="details"><div><dt>Connection</dt><dd>No internet needed during use</dd></div><div><dt>Intelligence</dt><dd>AI runs on the device</dd></div><div><dt>Interface</dt><dd>8-inch touchscreen</dd></div><div><dt>Subscriptions</dt><dd>None required</dd></div></dl>
     </section>
 
     <section class="how" id="how-it-works" aria-labelledby="how-title">
       <div class="wrap how-inner">
-        <div class="section-label"><span>02 / THE IDEA</span><span aria-hidden="true">↘</span></div>
-        <h2 id="how-title">The world is connected.<br> Your translator doesn&#x27;t have to be.</h2>
-        <div class="how-bottom">
+        <div class="how-copy">
+          <h2 id="how-title">How it works</h2>
           <p>Speech comes in. On-device AI translates. The words appear on screen. The internet stays out of it.</p>
-          <div class="process" aria-label="Speech, On-device AI, Translation">
-            <span>Speech</span><span class="process-arrow" aria-hidden="true">→</span><span>On-device AI</span><span class="process-arrow" aria-hidden="true">→</span><span>Translation</span>
-          </div>
         </div>
+        <div class="process" aria-label="Speech, On-device AI, Translation"><span>Speech</span><span class="process-arrow" aria-hidden="true">→</span><span>On-device AI</span><span class="process-arrow" aria-hidden="true">→</span><span>Translation</span></div>
       </div>
     </section>
 
-    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
-      <div class="updates-copy">
-        <h2 id="updates-title">Get Babellino updates.</h2>
-        <p>Product news, new languages, and launch updates.</p>
+    <section class="supported wrap" id="languages" aria-labelledby="languages-title">
+      <div class="supported-copy">
+        <h2 id="languages-title">10 supported languages.</h2>
+        <p>More languages are coming. <a class="text-link request-language" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#76;&#97;&#110;&#103;&#117;&#97;&#103;&#101;&#37;&#50;&#48;&#114;&#101;&#113;&#117;&#101;&#115;&#116;&#37;&#50;&#48;&#102;&#111;&#114;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Contact us to request another.</a></p>
       </div>
-      <div class="updates-signup">
-        <div id="signup-embed" lang="en" data-form-title="Babellino email signup"></div>
-        <p class="signup-status" role="status" data-loading="Loading signup form…" data-error="The form couldn’t load. You can email us below." hidden></p>
-        <p class="signup-note">Email signup is handled by beehiiv. <a class="text-link" href="https://www.beehiiv.com/privacy">Privacy</a></p>
-        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#37;&#50;&#48;&#117;&#112;&#100;&#97;&#116;&#101;&#115;">Prefer email? Contact us.</a>
-      </div>
+      <ul class="language-list"><li><span>Catalan</span><span class="native-name" lang="ca">Català</span></li><li><span>Dutch</span><span class="native-name" lang="nl">Nederlands</span></li><li><span>English</span></li><li><span>French</span><span class="native-name" lang="fr">Français</span></li><li><span>German</span><span class="native-name" lang="de">Deutsch</span></li><li><span>Italian</span><span class="native-name" lang="it">Italiano</span></li><li><span>Mandarin Chinese</span><span class="native-name" lang="zh-Hans">普通话</span></li><li><span>Portuguese</span><span class="native-name" lang="pt">Português</span></li><li><span>Romanian</span><span class="native-name" lang="ro">Română</span></li><li><span>Spanish</span><span class="native-name" lang="es">Español</span></li></ul>
     </section>
 
     <section class="closing wrap" id="questions" aria-labelledby="closing-title">
-      <h2 id="closing-title">About Babellino.</h2>
-      <p>Currently in development. Pricing and availability have not been announced.</p>
+      <div class="closing-copy">
+        <h2 id="closing-title">Questions</h2>
+        <p>Currently in development. Pricing and availability have not been announced.</p>
+      </div>
       <div class="questions">
         <details>
           <summary>Does Babellino need a subscription or internet?</summary>
@@ -150,6 +143,19 @@
           <summary>How large is the screen?</summary>
           <p>Babellino has an 8-inch touchscreen that displays the conversation in both languages.</p>
         </details>
+      </div>
+    </section>
+
+    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
+      <div class="updates-copy">
+        <h2 id="updates-title">Get Babellino updates.</h2>
+        <p>Product news, new languages, and launch updates.</p>
+      </div>
+      <div class="updates-signup">
+        <div id="signup-embed" lang="en" data-form-title="Babellino email signup"></div>
+        <p class="signup-status" role="status" data-loading="Loading signup form…" data-error="The form couldn’t load. You can email us below." hidden></p>
+        <p class="signup-note">Email signup is handled by beehiiv. <a class="text-link" href="https://www.beehiiv.com/privacy">Privacy</a></p>
+        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#37;&#50;&#48;&#117;&#112;&#100;&#97;&#116;&#101;&#115;">Prefer email? Contact us.</a>
       </div>
     </section>
   </main>

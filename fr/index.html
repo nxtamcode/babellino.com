@@ -46,7 +46,7 @@
   <a class="skip-link" href="#main">Aller au contenu</a>
   <header class="header home-header wrap">
     <a class="wordmark" href="/fr/" aria-label="Accueil Babellino">
-      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
         <path d="M5 5h17a7 7 0 0 1 7 7v7a7 7 0 0 1-7 7h-6l-8 6v-6H5Z" fill="currentColor"/>
         <path d="M12 11v9m0-5h5a3 3 0 1 1 0 6h-5" fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
@@ -54,8 +54,8 @@
     </a>
     <nav class="main-nav" aria-label="Navigation principale">
       <a href="#the-device">L’appareil</a>
-      <a href="#how-it-works">Fonctionnement <span aria-hidden="true">↗</span></a>
-      <a class="nav-subscribe" href="#updates">S’inscrire</a>
+      <a href="#how-it-works">Fonctionnement</a>
+      <a class="nav-subscribe" href="#updates">Recevoir les nouveautés</a>
     </nav>
     <details class="site-language"><summary><span class="visually-hidden" data-language-label>Langue du site: </span><span data-language-name lang="fr">Français</span></summary><ul><li><a href="/ca/" lang="ca" hreflang="ca" data-locale="ca">Català</a></li><li><a href="/nl/" lang="nl" hreflang="nl" data-locale="nl">Nederlands</a></li><li><a href="/?lang=en" lang="en" hreflang="en" data-locale="en">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr" data-locale="fr" aria-current="true">Français</a></li><li><a href="/de/" lang="de" hreflang="de" data-locale="de">Deutsch</a></li><li><a href="/it/" lang="it" hreflang="it" data-locale="it">Italiano</a></li><li><a href="/zh/" lang="zh-Hans" hreflang="zh-Hans" data-locale="zh">普通话</a></li><li><a href="/pt/" lang="pt" hreflang="pt" data-locale="pt">Português</a></li><li><a href="/ro/" lang="ro" hreflang="ro" data-locale="ro">Română</a></li><li><a href="/es/" lang="es" hreflang="es" data-locale="es">Español</a></li></ul></details>
   </header>
@@ -63,80 +63,73 @@
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Un traducteur dédié hors ligne · En développement</p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> En développement</p>
         <h1 id="hero-title">
           <span class="visually-hidden">Un peu moins perdus dans la traduction.</span>
-          <span class="hero-title-visual" aria-hidden="true">
-            <span class="headline-slide is-current" lang="fr"><span class="headline-line">Un peu moins</span><span class="headline-line">perdus dans la</span><em class="headline-line">traduction.</em></span>
-          </span>
+          <span class="hero-title-visual" aria-hidden="true"><span class="headline-slide is-current" lang="fr"><span class="headline-line">Un peu moins</span><span class="headline-line">perdus dans la</span><em class="headline-line">traduction.</em></span></span>
         </h1>
+        <p class="hero-description">Un traducteur IA hors ligne pour vos conversations en face à face.</p>
+        <a class="button" href="#updates">Recevoir les nouveautés <span aria-hidden="true">↓</span></a>
         <div class="hero-language-controls" hidden>
           <span id="hero-language" lang="fr">Français</span>
           <button id="hero-language-toggle" type="button" aria-label="Mettre en pause le défilement des langues du titre">Pause</button>
         </div>
-        <p class="hero-description">Des langues différentes. Une même table. Découvrez le traducteur IA autonome qui fait vivre la conversation.</p>
-        <a class="button" href="#updates">Recevoir les nouveautés <span aria-hidden="true">↓</span></a>
-        <ul class="hero-note">
-          <li>Sans abonnement.</li>
-          <li>Sans internet pendant l’utilisation.</li>
-          <li>Sans caméra.</li>
-          <li>Deux microphones.</li>
-        </ul>
-        <a class="text-link languages-link" href="#languages">10 langues prises en charge</a>
       </div>
-
       <figure class="product-figure">
-        <img class="product-image" src="/assets/babellino-kitchen.jpg" width="1792" height="1008"
+        <img class="product-image" src="/assets/babellino-kitchen.jpg" width="1440" height="1376"
              alt="Traducteur Babellino sur un îlot en marbre dans une cuisine ensoleillée." fetchpriority="high" decoding="async">
         <figcaption class="visually-hidden">Écran tactile de 8 pouces · Traduction hors ligne, face à face</figcaption>
       </figure>
     </section>
 
-    <section class="supported wrap" id="languages" aria-labelledby="languages-title">
-      <h2 id="languages-title">10 langues prises en charge.</h2>
-      <ul class="language-list"><li><span>Catalan</span><span class="native-name" lang="ca">Català</span></li><li><span>Néerlandais</span><span class="native-name" lang="nl">Nederlands</span></li><li><span>Anglais</span><span class="native-name" lang="en">English</span></li><li><span>Français</span></li><li><span>Allemand</span><span class="native-name" lang="de">Deutsch</span></li><li><span>Italien</span><span class="native-name" lang="it">Italiano</span></li><li><span>Chinois mandarin</span><span class="native-name" lang="zh-Hans">普通话</span></li><li><span>Portugais</span><span class="native-name" lang="pt">Português</span></li><li><span>Roumain</span><span class="native-name" lang="ro">Română</span></li><li><span>Espagnol</span><span class="native-name" lang="es">Español</span></li></ul>
-      <p>D’autres langues arrivent. <a class="text-link request-language" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#68;&#101;&#109;&#97;&#110;&#100;&#101;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#108;&#97;&#110;&#103;&#117;&#101;&#37;&#50;&#48;&#112;&#111;&#117;&#114;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Contactez-nous pour en demander une autre.</a></p>
-    </section>
+    <ul class="reassurance wrap">
+      <li>Sans abonnement.</li>
+      <li>Sans internet pendant l’utilisation.</li>
+    </ul>
 
     <section class="intro wrap" id="the-device" aria-labelledby="device-title">
-      <div class="section-label"><span>01 / L’APPAREIL</span><span aria-hidden="true">↘</span></div>
+      <figure class="device-detail">
+        <div class="conversation-frame">
+          <img src="/assets/conversation.es.png" width="800" height="1280"
+               alt="Écran de conversation de Babellino avec des traductions en anglais et en espagnol." loading="lazy" decoding="async">
+        </div>
+      </figure>
       <div class="intro-content">
+        <p class="eyebrow">L’appareil</p>
         <h2 id="device-title">Plus de face-à-face.<br>Moins de téléphones interposés.</h2>
-        <p>Babellino est un traducteur IA autonome hors ligne, actuellement en développement. Cet appareil dédié associe un écran tactile de 8 pouces à une IA embarquée pour traduire les conversations en face à face, sans internet pendant l’utilisation.</p>
-        <p>Pas de connexion à chercher. Pas de téléphone à se passer. Juste un peu plus de place pour se comprendre.</p>
+        <p class="device-story">Pas de connexion à chercher. Pas de téléphone à se passer. Juste un peu plus de place pour se comprendre.</p>
+        <ul class="details">
+          <li>Écran tactile de 8 pouces</li>
+          <li>Deux microphones.</li>
+          <li>Sans caméra.</li>
+          <li><a class="text-link languages-link" href="#languages">10 langues prises en charge</a></li>
+        </ul>
       </div>
-      <dl class="details"><div><dt>Connexion</dt><dd>Sans internet pendant l’utilisation</dd></div><div><dt>Intelligence</dt><dd>L’IA fonctionne sur l’appareil</dd></div><div><dt>Interface</dt><dd>Écran tactile de 8 pouces</dd></div><div><dt>Abonnements</dt><dd>Aucun abonnement requis</dd></div></dl>
     </section>
 
     <section class="how" id="how-it-works" aria-labelledby="how-title">
       <div class="wrap how-inner">
-        <div class="section-label"><span>02 / L’IDÉE</span><span aria-hidden="true">↘</span></div>
-        <h2 id="how-title">Le monde est connecté.<br> Votre traducteur n’a pas besoin de l’être.</h2>
-        <div class="how-bottom">
+        <div class="how-copy">
+          <h2 id="how-title">Fonctionnement</h2>
           <p>La voix entre. L’IA embarquée traduit. Les mots s’affichent à l’écran. Internet n’intervient pas.</p>
-          <div class="process" aria-label="Voix, IA embarquée, Traduction">
-            <span>Voix</span><span class="process-arrow" aria-hidden="true">→</span><span>IA embarquée</span><span class="process-arrow" aria-hidden="true">→</span><span>Traduction</span>
-          </div>
         </div>
+        <div class="process" aria-label="Voix, IA embarquée, Traduction"><span>Voix</span><span class="process-arrow" aria-hidden="true">→</span><span>IA embarquée</span><span class="process-arrow" aria-hidden="true">→</span><span>Traduction</span></div>
       </div>
     </section>
 
-    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
-      <div class="updates-copy">
-        <h2 id="updates-title">Les nouvelles de Babellino.</h2>
-        <p>Actualités du produit, nouvelles langues et lancement.</p>
+    <section class="supported wrap" id="languages" aria-labelledby="languages-title">
+      <div class="supported-copy">
+        <h2 id="languages-title">10 langues prises en charge.</h2>
+        <p>D’autres langues arrivent. <a class="text-link request-language" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#68;&#101;&#109;&#97;&#110;&#100;&#101;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#108;&#97;&#110;&#103;&#117;&#101;&#37;&#50;&#48;&#112;&#111;&#117;&#114;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Contactez-nous pour en demander une autre.</a></p>
       </div>
-      <div class="updates-signup">
-        <div id="signup-embed" lang="en" data-form-title="Inscription aux nouvelles de Babellino"></div>
-        <p class="signup-status" role="status" data-loading="Chargement du formulaire…" data-error="Le formulaire n’a pas pu se charger. Vous pouvez nous écrire ci-dessous." hidden></p>
-        <p class="signup-note">Les inscriptions sont gérées par beehiiv. Formulaire en anglais. <a class="text-link" href="https://www.beehiiv.com/privacy">Confidentialité</a></p>
-        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#78;&#111;&#117;&#118;&#101;&#108;&#108;&#101;&#115;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Vous préférez un e-mail ? Contactez-nous.</a>
-      </div>
+      <ul class="language-list"><li><span>Catalan</span><span class="native-name" lang="ca">Català</span></li><li><span>Néerlandais</span><span class="native-name" lang="nl">Nederlands</span></li><li><span>Anglais</span><span class="native-name" lang="en">English</span></li><li><span>Français</span></li><li><span>Allemand</span><span class="native-name" lang="de">Deutsch</span></li><li><span>Italien</span><span class="native-name" lang="it">Italiano</span></li><li><span>Chinois mandarin</span><span class="native-name" lang="zh-Hans">普通话</span></li><li><span>Portugais</span><span class="native-name" lang="pt">Português</span></li><li><span>Roumain</span><span class="native-name" lang="ro">Română</span></li><li><span>Espagnol</span><span class="native-name" lang="es">Español</span></li></ul>
     </section>
 
     <section class="closing wrap" id="questions" aria-labelledby="closing-title">
-      <h2 id="closing-title">À propos de Babellino.</h2>
-      <p>Actuellement en développement. Le prix et la disponibilité n’ont pas encore été annoncés.</p>
+      <div class="closing-copy">
+        <h2 id="closing-title">Questions</h2>
+        <p>Actuellement en développement. Le prix et la disponibilité n’ont pas encore été annoncés.</p>
+      </div>
       <div class="questions">
         <details>
           <summary>Babellino nécessite-t-il un abonnement ou internet ?</summary>
@@ -150,6 +143,19 @@
           <summary>Quelle est la taille de l’écran ?</summary>
           <p>Babellino possède un écran tactile de 8 pouces qui affiche la conversation dans les deux langues.</p>
         </details>
+      </div>
+    </section>
+
+    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
+      <div class="updates-copy">
+        <h2 id="updates-title">Les nouvelles de Babellino.</h2>
+        <p>Actualités du produit, nouvelles langues et lancement.</p>
+      </div>
+      <div class="updates-signup">
+        <div id="signup-embed" lang="en" data-form-title="Inscription aux nouvelles de Babellino"></div>
+        <p class="signup-status" role="status" data-loading="Chargement du formulaire…" data-error="Le formulaire n’a pas pu se charger. Vous pouvez nous écrire ci-dessous." hidden></p>
+        <p class="signup-note">Les inscriptions sont gérées par beehiiv. Formulaire en anglais. <a class="text-link" href="https://www.beehiiv.com/privacy">Confidentialité</a></p>
+        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#78;&#111;&#117;&#118;&#101;&#108;&#108;&#101;&#115;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Vous préférez un e-mail ? Contactez-nous.</a>
       </div>
     </section>
   </main>

@@ -71,33 +71,57 @@ changed by this integration. Check these in beehiiv before collecting addresses;
 confirmation behavior must be verified with an owner-authorized test email.
 The public form's default success text is not proof of those account settings.
 
-## Product image
+## Design and product imagery
 
-`assets/babellino-kitchen.jpg` is the owner-supplied hero image approved on
-2026-11-13, updated to the supplied light-interface JPEG without alteration
-(1792 × 1008, 291 KB). All ten homepages use the
-sunlit kitchen scene edge-to-edge across the viewport. Desktop copy sits directly
-over the photograph, with no gradient or scrim, keeping the device clear. The
-transparent homepage navigation sits over the same photo from the top edge.
-Dark supporting text and subtle text-only light shadows improve desktop
-legibility without obscuring the scene. The four sales facts form a compact
-vertical list, with a quieter language link and a distinct primary action. Core
-body copy is at least 16px, supporting text at least 14px, and compact labels
-at least 12px; mobile headings and translated navigation have their own sizing. Tablet and mobile keep the photo above
-the copy, with a taller device-focused crop that leaves room for navigation.
-The photograph is cropped 12% closer on desktop and 16% closer in stacked layouts.
-Stacked crops center the device itself horizontally; the source asset is unchanged.
-No image is stretched. Explicit
-intrinsic dimensions reserve the image's space, and the hero is prioritized for
-loading. Localized alternative text describes the scene; the caption describes
-the 8-inch touchscreen and offline translation for assistive technology, without
-adding a separate visual caption strip.
+The product page uses a deliberate split hero: readable dark type on paper beside
+an edge-to-edge kitchen photograph. The paper-backed header uses the same grid.
+There are no text halos, outlines, gradients, or photo scrims. At 1000px and below,
+the headline, product definition, and primary action precede the photograph.
+Both regions grow with their content; translated headlines wrap rather than shrink.
+All language slides share a CSS grid cell so rotation does not move the description
+or primary action. The existing pause, reduced-motion, and hidden-tab behavior remains.
 
-The owner confirmed that the pictured device is the real product. Do not label
-it a concept or non-final hardware. The text within supplied images is not
-reconstructed or translated. The close-up at `assets/babellino-device.png` is also the supplied light-interface
-version, copied without alteration (1450 × 2091 PNG, with transparency). It is
-not loaded by the homepage. Both versions were supplied by the owner on 2026-11-13.
+Body copy is regular-weight 18px, with larger introductory copy and lighter serif
+headings. Controls use selective medium/bold emphasis. The two subscription/internet
+reassurances sit together; hardware facts and the language link belong to the device
+section instead of a separate four-claim strip. The reading order is hero, device,
+how it works, languages, questions, then signup. Navigation and hero actions both
+say “Get updates” (localized), not “Subscribe” beside “No subscriptions.”
+
+`assets/babellino-kitchen.jpg` is the owner's latest 1440 × 1376 photograph,
+copied without alteration. It shows the revised English/Spanish screen with a
+closer view of the device. The hero uses `object-fit: cover` and a 52% / 52% focal
+position, with no additional zoom. Taller stacked frames and a desktop minimum
+frame height retain breathing room around the complete device and base.
+Intrinsic dimensions are updated in all ten pages. The JPEG is prioritized for
+loading and retains the supplied image quality (about 435 KB).
+The product section uses the owner's 800 × 1280 `assets/conversation.es.png`
+screenshot inside a simple charcoal CSS frame, replacing the older angled device
+render. The complete screenshot keeps its original aspect ratio with no perspective
+or cropping; the frame adapts to the available width. It has localized alt text,
+intrinsic dimensions and lazy loading. The image is copied without alteration, not
+an interactive demo. The earlier `assets/babellino-device.png` asset is retained but
+is no longer displayed on the page.
+
+The owner confirmed that the pictured device is the real product. Do not label it
+as concept or non-final hardware, or infer release readiness from either image.
+
+### Signup follow-up outside this repository
+
+The host layout leaves the existing, approved beehiiv embed room to breathe, but
+cannot restyle its cross-origin contents. The last published-commit CI recorded
+email fields only 87px wide at a 390px viewport and 32px at 320px. The provider form
+still needs its own builder configuration and a new read-only rendering check:
+
+- Remove its duplicate heading and description.
+- Use a paper/transparent background and no shadow.
+- Reduce internal padding to 16px or less.
+- Use a responsive full-width input; stack input and button on narrow screens.
+- Publish the form changes in beehiiv; a saved draft does not update the embed.
+
+No provider account settings or subscriber data were changed by the redesign.
+Do not call this issue fixed because the outer page or mocked-form tests pass.
+The email fallback remains available. Real email submissions require separate approval.
 
 ## Publishing
 
@@ -137,10 +161,18 @@ Final loader formats, progress placement, and device validation are still pendin
 Test desktop and mobile layouts, local asset loading, anchor navigation, keyboard
 focus, accessibility, and the final GitHub Pages URL before reporting deployment.
 
-The GitHub Actions check runs Playwright and axe at 320, 390, 768, and 1440 pixels,
-and checks all ten locales at 320 and 1440 pixels, native language navigation,
-browser defaults, overrides, blocked storage, and translated errors. It saves
-screenshots plus a report as a seven-day workflow artifact. For local QA:
+The browser suite checks 21 viewport sizes from 320 to 2560 pixels, including both
+sides of the 1000px hero breakpoint and the 900px navigation breakpoint. It checks
+all ten locales at 320, 768, 900, 1000, 1001 and 1440 pixels, native language
+navigation, browser defaults, overrides, blocked storage, and translated errors.
+Geometry checks keep the complete device separate from text and verify the
+split/stacked composition without forcing every locale into a fixed first-screen
+height. Existing rotation tests check stable layout, wrapping, pause/resume, and
+reduced-motion behavior. CI saves screenshots plus a report for seven days.
+
+Run the dependency-free source checks with `npm run test:static`. These validate
+generated pages, content/metadata, source hierarchy, and solid-background color
+contrast—not browser rendering. For complete browser QA:
 
 ```sh
 npm ci --ignore-scripts

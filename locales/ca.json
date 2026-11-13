@@ -4,11 +4,11 @@
   "description": "Babellino és un traductor amb IA sense connexió en desenvolupament, amb pantalla tàctil de 8 polzades i 10 idiomes compatibles. Sense subscripcions ni internet durant l’ús.",
   "skip": "Ves al contingut", "home": "Inici de Babellino", "navigation": "Navegació principal",
   "deviceNav": "El dispositiu", "howNav": "Com funciona", "languageMenu": "Idioma del lloc web",
-  "eyebrow": "Un traductor dedicat sense connexió · En desenvolupament",
+  "eyebrow": "En desenvolupament",
   "headline": ["Una mica menys", "perduts en la", "traducció."],
   "headlineAccessible": "Una mica menys perduts en la traducció.",
   "pause": "Pausa", "resume": "Reprèn", "pauseLabel": "Pausa la rotació d’idiomes del títol", "resumeLabel": "Reprèn la rotació d’idiomes del títol",
-  "heroDescription": "Idiomes diferents. La mateixa taula. Descobreix el traductor autònom amb IA que manté viva la conversa.",
+  "heroDescription": "Un traductor d’IA sense connexió per conversar cara a cara.",
   "meet": "Descobreix Babellino", "noSubscriptions": "Sense subscripcions.", "noInternet": "Sense internet durant l’ús.",
   "noCamera": "Sense càmera.", "dualMicrophones": "Dos micròfons.",
   "languagesLink": "10 idiomes compatibles",
@@ -46,5 +46,6 @@
   "updatesFallback": "Prefereixes el correu? Contacta amb nosaltres.",
   "updatesFrame": "Inscripció per correu a Babellino",
   "updatesSubject": "Novetats de Babellino",
-  "subscribeNav": "Subscriu-t’hi"
+  "subscribeNav": "Rep novetats",
+  "deviceAlt": "Pantalla de conversa de Babellino amb traduccions en anglès i castellà."
 }

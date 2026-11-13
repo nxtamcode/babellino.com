@@ -78,7 +78,7 @@ def render():
         values["headlineHTML"] = f'<span class="headline-slide is-current" lang="{d["htmlLang"]}">{lines}</span>'
         for key in ("deviceHeading", "howHeading"):
             values[key + "HTML"] = ("<br> " if key == "howHeading" else "<br>").join(map(escape, d[key]))
-        values["detailsHTML"] = "".join(f'<div><dt>{escape(k)}</dt><dd>{escape(v)}</dd></div>' for k, v in zip(d["detailLabels"], d["detailValues"]))
+        values["screenDetail"] = escape(d["detailValues"][2])
         values["processHTML"] = '<span class="process-arrow" aria-hidden="true">→</span>'.join(f'<span>{escape(v)}</span>' for v in d["process"])
         values["processLabel"] = escape(", ".join(d["process"]))
         values["languageList"] = "".join(f'<li><span>{escape(name)}</span>' + (f'<span class="native-name" lang="{locales[c]["htmlLang"]}">{escape(locales[c]["native"])}</span>' if name != locales[c]["native"] else "") + "</li>" for c, name in zip(ORDER, d["languageNames"]))

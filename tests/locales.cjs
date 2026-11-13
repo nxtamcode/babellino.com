@@ -17,8 +17,9 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
   try {
     for (const code of codes) {
       const copy = data[code];
-      for (const width of [1440, 1101, 768, 320]) {
-        const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
+      for (const width of [1440, 1001, 1000, 900, 768, 320]) {
+        const height = width === 320 ? 700 : width > 900 ? 768 : 1024;
+        const context = await browser.newContext({ viewport: { width, height }, reducedMotion: 'reduce' });
         const page = await context.newPage();
         await mockBeehiiv(page);
         const errors = [];
@@ -32,8 +33,11 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
         assert.equal(await page.locator('#hero-language-toggle').isVisible(), false);
         assert.equal(await page.getByRole('heading', { level: 1, name: copy.headlineAccessible, exact: true }).count(), 1);
         assert.equal(await page.locator('.language-list li').count(), 10);
-        assert.deepEqual(await page.locator('.hero-note li').allTextContents(), [copy.noSubscriptions, copy.noInternet, copy.noCamera, copy.dualMicrophones]);
+        assert.deepEqual(await page.locator('.reassurance li').allTextContents(), [copy.noSubscriptions, copy.noInternet]);
         assert.equal(await page.locator('.supported h2').textContent(), copy.languagesHeading);
+        assert.deepEqual(await page.locator('.details li').allTextContents(), [copy.detailValues[2], copy.dualMicrophones, copy.noCamera, copy.languagesLink]);
+        assert.equal(await page.locator('.device-detail img').getAttribute('alt'), copy.deviceAlt);
+        assert.equal(await page.locator('.closing h2').textContent(), copy.questions);
         for (const name of copy.languageNames) assert.ok((await page.locator('.language-list').innerText()).includes(name));
         assert.ok((await page.locator('.supported').innerText()).includes(copy.moreLanguages));
         const request = page.locator('.request-language');

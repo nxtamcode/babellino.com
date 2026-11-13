@@ -4,11 +4,11 @@
   "description": "Babellino 是一款开发中的离线 AI 翻译器，配备 8 英寸触摸屏，支持 10 种语言。无需订阅，使用时无需联网。",
   "skip": "跳至正文", "home": "Babellino 首页", "navigation": "主导航",
   "deviceNav": "设备介绍", "howNav": "工作原理", "languageMenu": "网站语言",
-  "eyebrow": "独立离线翻译设备 · 开发中",
+  "eyebrow": "开发中",
   "headline": ["少一点", "语言隔阂，", "多一点理解。"],
   "headlineAccessible": "少一点语言隔阂，多一点理解。",
   "pause": "暂停", "resume": "继续", "pauseLabel": "暂停标题语言轮换", "resumeLabel": "继续标题语言轮换",
-  "heroDescription": "不同的语言，同一张桌子。认识 Babellino：让对话自然延续的独立 AI 翻译器。",
+  "heroDescription": "用于面对面对话的离线 AI 翻译设备。",
   "meet": "了解 Babellino", "noSubscriptions": "无需订阅。", "noInternet": "使用时无需联网。",
   "noCamera": "无摄像头。", "dualMicrophones": "双麦克风。",
   "languagesLink": "支持 10 种语言",
@@ -46,5 +46,6 @@
   "updatesFallback": "想通过邮件联系？欢迎给我们写信。",
   "updatesFrame": "Babellino 邮件订阅",
   "updatesSubject": "Babellino 最新消息",
-  "subscribeNav": "订阅"
+  "subscribeNav": "获取最新消息",
+  "deviceAlt": "Babellino 对话界面，显示英语和西班牙语翻译。"
 }

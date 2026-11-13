@@ -46,7 +46,7 @@
   <a class="skip-link" href="#main">Sari la conținut</a>
   <header class="header home-header wrap">
     <a class="wordmark" href="/ro/" aria-label="Pagina principală Babellino">
-      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
+      <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
         <path d="M5 5h17a7 7 0 0 1 7 7v7a7 7 0 0 1-7 7h-6l-8 6v-6H5Z" fill="currentColor"/>
         <path d="M12 11v9m0-5h5a3 3 0 1 1 0 6h-5" fill="none" stroke="var(--paper)" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
@@ -54,8 +54,8 @@
     </a>
     <nav class="main-nav" aria-label="Navigare principală">
       <a href="#the-device">Dispozitivul</a>
-      <a href="#how-it-works">Cum funcționează <span aria-hidden="true">↗</span></a>
-      <a class="nav-subscribe" href="#updates">Abonează-te</a>
+      <a href="#how-it-works">Cum funcționează</a>
+      <a class="nav-subscribe" href="#updates">Primește noutăți</a>
     </nav>
     <details class="site-language"><summary><span class="visually-hidden" data-language-label>Limba site-ului: </span><span data-language-name lang="ro">Română</span></summary><ul><li><a href="/ca/" lang="ca" hreflang="ca" data-locale="ca">Català</a></li><li><a href="/nl/" lang="nl" hreflang="nl" data-locale="nl">Nederlands</a></li><li><a href="/?lang=en" lang="en" hreflang="en" data-locale="en">English</a></li><li><a href="/fr/" lang="fr" hreflang="fr" data-locale="fr">Français</a></li><li><a href="/de/" lang="de" hreflang="de" data-locale="de">Deutsch</a></li><li><a href="/it/" lang="it" hreflang="it" data-locale="it">Italiano</a></li><li><a href="/zh/" lang="zh-Hans" hreflang="zh-Hans" data-locale="zh">普通话</a></li><li><a href="/pt/" lang="pt" hreflang="pt" data-locale="pt">Português</a></li><li><a href="/ro/" lang="ro" hreflang="ro" data-locale="ro" aria-current="true">Română</a></li><li><a href="/es/" lang="es" hreflang="es" data-locale="es">Español</a></li></ul></details>
   </header>
@@ -63,80 +63,73 @@
   <main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Un traducător dedicat offline · În dezvoltare</p>
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> În dezvoltare</p>
         <h1 id="hero-title">
           <span class="visually-hidden">Mai puțin pierduți în traducere.</span>
-          <span class="hero-title-visual" aria-hidden="true">
-            <span class="headline-slide is-current" lang="ro"><span class="headline-line">Mai puțin</span><span class="headline-line">pierduți în</span><em class="headline-line">traducere.</em></span>
-          </span>
+          <span class="hero-title-visual" aria-hidden="true"><span class="headline-slide is-current" lang="ro"><span class="headline-line">Mai puțin</span><span class="headline-line">pierduți în</span><em class="headline-line">traducere.</em></span></span>
         </h1>
+        <p class="hero-description">Un traducător AI offline pentru conversații față în față.</p>
+        <a class="button" href="#updates">Primește noutăți <span aria-hidden="true">↓</span></a>
         <div class="hero-language-controls" hidden>
           <span id="hero-language" lang="ro">Română</span>
           <button id="hero-language-toggle" type="button" aria-label="Oprește temporar schimbarea limbii titlului">Pauză</button>
         </div>
-        <p class="hero-description">Limbi diferite. Aceeași masă. Descoperă traducătorul IA autonom care menține conversația vie.</p>
-        <a class="button" href="#updates">Primește noutăți <span aria-hidden="true">↓</span></a>
-        <ul class="hero-note">
-          <li>Fără abonamente.</li>
-          <li>Fără internet în timpul utilizării.</li>
-          <li>Fără cameră.</li>
-          <li>Două microfoane.</li>
-        </ul>
-        <a class="text-link languages-link" href="#languages">10 limbi acceptate</a>
       </div>
-
       <figure class="product-figure">
-        <img class="product-image" src="/assets/babellino-kitchen.jpg" width="1792" height="1008"
+        <img class="product-image" src="/assets/babellino-kitchen.jpg" width="1440" height="1376"
              alt="Traducător Babellino pe o insulă de marmură într-o bucătărie însorită." fetchpriority="high" decoding="async">
         <figcaption class="visually-hidden">Ecran tactil de 8 inchi · Traducere offline, față în față</figcaption>
       </figure>
     </section>
 
-    <section class="supported wrap" id="languages" aria-labelledby="languages-title">
-      <h2 id="languages-title">10 limbi acceptate.</h2>
-      <ul class="language-list"><li><span>Catalană</span><span class="native-name" lang="ca">Català</span></li><li><span>Neerlandeză</span><span class="native-name" lang="nl">Nederlands</span></li><li><span>Engleză</span><span class="native-name" lang="en">English</span></li><li><span>Franceză</span><span class="native-name" lang="fr">Français</span></li><li><span>Germană</span><span class="native-name" lang="de">Deutsch</span></li><li><span>Italiană</span><span class="native-name" lang="it">Italiano</span></li><li><span>Chineză mandarină</span><span class="native-name" lang="zh-Hans">普通话</span></li><li><span>Portugheză</span><span class="native-name" lang="pt">Português</span></li><li><span>Română</span></li><li><span>Spaniolă</span><span class="native-name" lang="es">Español</span></li></ul>
-      <p>Vor urma și alte limbi. <a class="text-link request-language" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#83;&#111;&#108;&#105;&#99;&#105;&#116;&#97;&#114;&#101;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#108;&#105;&#109;&#98;&#37;&#67;&#52;&#37;&#56;&#51;&#37;&#50;&#48;&#112;&#101;&#110;&#116;&#114;&#117;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Contactează-ne pentru a solicita o altă limbă.</a></p>
-    </section>
+    <ul class="reassurance wrap">
+      <li>Fără abonamente.</li>
+      <li>Fără internet în timpul utilizării.</li>
+    </ul>
 
     <section class="intro wrap" id="the-device" aria-labelledby="device-title">
-      <div class="section-label"><span>01 / DISPOZITIVUL</span><span aria-hidden="true">↘</span></div>
+      <figure class="device-detail">
+        <div class="conversation-frame">
+          <img src="/assets/conversation.es.png" width="800" height="1280"
+               alt="Ecranul de conversație Babellino cu traduceri în engleză și spaniolă." loading="lazy" decoding="async">
+        </div>
+      </figure>
       <div class="intro-content">
+        <p class="eyebrow">Dispozitivul</p>
         <h2 id="device-title">Mai mult față în față.<br>Mai puține telefoane între noi.</h2>
-        <p>Babellino este un traducător IA autonom offline, aflat în dezvoltare. Dispozitivul dedicat combină un ecran tactil de 8 inchi cu IA locală pentru traducerea conversațiilor față în față, fără internet în timpul utilizării.</p>
-        <p>Fără să cauți o conexiune. Fără să dai telefonul din mână în mână. Doar puțin mai mult spațiu pentru a ne înțelege.</p>
+        <p class="device-story">Fără să cauți o conexiune. Fără să dai telefonul din mână în mână. Doar puțin mai mult spațiu pentru a ne înțelege.</p>
+        <ul class="details">
+          <li>Ecran tactil de 8 inchi</li>
+          <li>Două microfoane.</li>
+          <li>Fără cameră.</li>
+          <li><a class="text-link languages-link" href="#languages">10 limbi acceptate</a></li>
+        </ul>
       </div>
-      <dl class="details"><div><dt>Conexiune</dt><dd>Fără internet în timpul utilizării</dd></div><div><dt>Inteligență</dt><dd>IA rulează pe dispozitiv</dd></div><div><dt>Interfață</dt><dd>Ecran tactil de 8 inchi</dd></div><div><dt>Abonamente</dt><dd>Nu sunt necesare</dd></div></dl>
     </section>
 
     <section class="how" id="how-it-works" aria-labelledby="how-title">
       <div class="wrap how-inner">
-        <div class="section-label"><span>02 / IDEEA</span><span aria-hidden="true">↘</span></div>
-        <h2 id="how-title">Lumea este conectată.<br> Traducătorul tău nu trebuie să fie.</h2>
-        <div class="how-bottom">
+        <div class="how-copy">
+          <h2 id="how-title">Cum funcționează</h2>
           <p>Vocea intră. IA de pe dispozitiv traduce. Cuvintele apar pe ecran. Internetul nu intervine.</p>
-          <div class="process" aria-label="Voce, IA pe dispozitiv, Traducere">
-            <span>Voce</span><span class="process-arrow" aria-hidden="true">→</span><span>IA pe dispozitiv</span><span class="process-arrow" aria-hidden="true">→</span><span>Traducere</span>
-          </div>
         </div>
+        <div class="process" aria-label="Voce, IA pe dispozitiv, Traducere"><span>Voce</span><span class="process-arrow" aria-hidden="true">→</span><span>IA pe dispozitiv</span><span class="process-arrow" aria-hidden="true">→</span><span>Traducere</span></div>
       </div>
     </section>
 
-    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
-      <div class="updates-copy">
-        <h2 id="updates-title">Noutăți de la Babellino.</h2>
-        <p>Noutăți despre produs, limbi noi și informații despre lansare.</p>
+    <section class="supported wrap" id="languages" aria-labelledby="languages-title">
+      <div class="supported-copy">
+        <h2 id="languages-title">10 limbi acceptate.</h2>
+        <p>Vor urma și alte limbi. <a class="text-link request-language" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#83;&#111;&#108;&#105;&#99;&#105;&#116;&#97;&#114;&#101;&#37;&#50;&#48;&#100;&#101;&#37;&#50;&#48;&#108;&#105;&#109;&#98;&#37;&#67;&#52;&#37;&#56;&#51;&#37;&#50;&#48;&#112;&#101;&#110;&#116;&#114;&#117;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Contactează-ne pentru a solicita o altă limbă.</a></p>
       </div>
-      <div class="updates-signup">
-        <div id="signup-embed" lang="en" data-form-title="Înscriere la noutățile Babellino"></div>
-        <p class="signup-status" role="status" data-loading="Se încarcă formularul…" data-error="Formularul nu s-a putut încărca. Ne poți scrie prin linkul de mai jos." hidden></p>
-        <p class="signup-note">Înscrierile sunt gestionate de beehiiv. Formularul este în engleză. <a class="text-link" href="https://www.beehiiv.com/privacy">Confidențialitate</a></p>
-        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#78;&#111;&#117;&#116;&#37;&#67;&#52;&#37;&#56;&#51;&#37;&#67;&#56;&#37;&#57;&#66;&#105;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Preferi e-mailul? Contactează-ne.</a>
-      </div>
+      <ul class="language-list"><li><span>Catalană</span><span class="native-name" lang="ca">Català</span></li><li><span>Neerlandeză</span><span class="native-name" lang="nl">Nederlands</span></li><li><span>Engleză</span><span class="native-name" lang="en">English</span></li><li><span>Franceză</span><span class="native-name" lang="fr">Français</span></li><li><span>Germană</span><span class="native-name" lang="de">Deutsch</span></li><li><span>Italiană</span><span class="native-name" lang="it">Italiano</span></li><li><span>Chineză mandarină</span><span class="native-name" lang="zh-Hans">普通话</span></li><li><span>Portugheză</span><span class="native-name" lang="pt">Português</span></li><li><span>Română</span></li><li><span>Spaniolă</span><span class="native-name" lang="es">Español</span></li></ul>
     </section>
 
     <section class="closing wrap" id="questions" aria-labelledby="closing-title">
-      <h2 id="closing-title">Despre Babellino.</h2>
-      <p>În prezent în dezvoltare. Prețul și disponibilitatea nu au fost încă anunțate.</p>
+      <div class="closing-copy">
+        <h2 id="closing-title">Întrebări</h2>
+        <p>În prezent în dezvoltare. Prețul și disponibilitatea nu au fost încă anunțate.</p>
+      </div>
       <div class="questions">
         <details>
           <summary>Babellino are nevoie de abonament sau internet?</summary>
@@ -150,6 +143,19 @@
           <summary>Cât de mare este ecranul?</summary>
           <p>Babellino are un ecran tactil de 8 inchi care afișează conversația în ambele limbi.</p>
         </details>
+      </div>
+    </section>
+
+    <section class="updates wrap" id="updates" aria-labelledby="updates-title">
+      <div class="updates-copy">
+        <h2 id="updates-title">Noutăți de la Babellino.</h2>
+        <p>Noutăți despre produs, limbi noi și informații despre lansare.</p>
+      </div>
+      <div class="updates-signup">
+        <div id="signup-embed" lang="en" data-form-title="Înscriere la noutățile Babellino"></div>
+        <p class="signup-status" role="status" data-loading="Se încarcă formularul…" data-error="Formularul nu s-a putut încărca. Ne poți scrie prin linkul de mai jos." hidden></p>
+        <p class="signup-note">Înscrierile sunt gestionate de beehiiv. Formularul este în engleză. <a class="text-link" href="https://www.beehiiv.com/privacy">Confidențialitate</a></p>
+        <a class="signup-fallback text-link" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#104;&#105;&#64;&#98;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;&#46;&#99;&#111;&#109;&#63;&#115;&#117;&#98;&#106;&#101;&#99;&#116;&#61;&#78;&#111;&#117;&#116;&#37;&#67;&#52;&#37;&#56;&#51;&#37;&#67;&#56;&#37;&#57;&#66;&#105;&#37;&#50;&#48;&#66;&#97;&#98;&#101;&#108;&#108;&#105;&#110;&#111;">Preferi e-mailul? Contactează-ne.</a>
       </div>
     </section>
   </main>
