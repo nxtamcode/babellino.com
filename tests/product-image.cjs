@@ -31,6 +31,13 @@ module.exports = async function verifyProductImage(page, expectedAlt) {
       naturalWidth: el.naturalWidth, naturalHeight: el.naturalHeight,
       width: rect.width, height: rect.height, viewport: innerWidth,
       fullHeroWidth: Math.abs(rect.width - hero.width) < 1,
+      fullViewportWidth: Math.abs(rect.left) < 1 && Math.abs(rect.right - innerWidth) < 1,
+      noScrim: ['::before', '::after'].every(pseudo => {
+        const s = getComputedStyle(el.closest('.hero'), pseudo);
+        return s.content === 'none' || s.content === 'normal';
+      }) && getComputedStyle(el.closest('.hero')).backgroundImage === 'none',
+      copyOverImage: copy.left >= rect.left && copy.right <= rect.right
+        && copy.top >= rect.top && copy.bottom <= rect.bottom,
       fit: style.objectFit, position: style.objectPosition,
       contained: rect.left >= figure.left - 1 && rect.right <= figure.right + 1
         && rect.top >= figure.top - 1 && rect.bottom <= figure.bottom + 1
@@ -44,7 +51,9 @@ module.exports = async function verifyProductImage(page, expectedAlt) {
   assert.equal(metrics.naturalWidth, 1792);
   assert.equal(metrics.naturalHeight, 1008);
   assert.ok(metrics.width > 0 && metrics.height > 0);
-  assert.ok(metrics.fullHeroWidth, 'Kitchen image must span the hero, not the old portrait slot');
+  assert.ok(metrics.fullHeroWidth && metrics.fullViewportWidth, 'Kitchen image must span the viewport edge to edge');
+  assert.ok(metrics.noScrim, 'Do not restore the gradient or an image-covering scrim');
+  if (metrics.viewport > 1100) assert.ok(metrics.copyOverImage, 'Desktop text sits directly over the photograph');
   assert.equal(metrics.fit, 'cover', 'Cover preserves proportions without stretching');
   assert.equal(metrics.position, '56% 50%');
   assert.ok(metrics.deviceVisible, 'Keep the complete device inside the responsive crop');

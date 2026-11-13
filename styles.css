@@ -32,9 +32,8 @@ p, h1, h2, figure { margin: 0; }
 .main-nav span { margin-left: 8px; }
 .main-nav .nav-subscribe { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--ink); border-radius: 4px; white-space: nowrap; }
 .main-nav .nav-subscribe:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
-/* Keep the device clear on the right, with readable copy over the quiet left edge. */
-.hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: 720px; padding: 48px; margin-block: 32px 76px; }
-.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--paper) 0%, #f5f3e9fa 30%, #f5f3e9ed 42%, #f5f3e900 54%); pointer-events: none; }
+/* Full-bleed photograph, with copy directly over the image and no scrim. */
+.hero { position: relative; isolation: isolate; display: flex; align-items: center; min-height: 720px; padding: 48px max(56px, calc((100% - 1320px) / 2)); margin-block: 32px 76px; }
 .hero-copy { min-width: 0; width: 44%; max-width: 480px; }
 .hero h1 { font-size: clamp(64px, 6vw, 88px); }
 .eyebrow { font-size: 11px; letter-spacing: 1.1px; line-height: 1.7; text-transform: uppercase; }
@@ -60,7 +59,7 @@ h1 em { font-weight: 400; }
 .hero-note { font-size: 13px; line-height: 1.6; color: var(--muted); margin-top: 18px; }
 .hero-note strong { color: var(--ink); font-weight: 600; }
 .hero-note span { display: inline-block; max-width: 100%; }
-.product-figure { position: absolute; inset: 0; z-index: -2; min-width: 0; width: 100%; }
+.product-figure { position: absolute; inset: 0; z-index: -1; min-width: 0; width: 100%; }
 .product-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 56% 50%; }
 .product-figure figcaption { position: absolute; top: 100%; width: 100%; padding-top: 12px; }
 figcaption { text-align: center; font-size: 10px; line-height: 1.6; color: var(--muted); }
@@ -98,11 +97,14 @@ dd { margin: 8px 0 0; font-size: 14px; }
 .footer-contact { margin-left: auto; font-size: 12px; }
 .footer > span { font-size: 10px; color: var(--muted); }
 
+@media (min-width: 1101px) {
+  .hero-description, .hero-note, .hero-language-controls { color: var(--ink); }
+}
 @media (max-width: 1100px) {
   .wrap { width: calc(100% - 64px); }
   .hero { display: flex; flex-direction: column; align-items: stretch; min-height: 0; padding: 0; margin-block: 24px 48px; gap: 32px; }
-  .hero::before { content: none; }
-  .hero-copy { width: 100%; max-width: 600px; }
+  .hero-copy { width: calc(100% - 64px); max-width: none; margin-inline: auto; }
+  .hero-title-visual { max-width: 600px; }
   .product-figure { position: static; order: -1; z-index: auto; }
   .product-image { height: auto; }
   .product-figure figcaption { position: static; }
@@ -124,6 +126,7 @@ dd { margin: 8px 0 0; font-size: 14px; }
   .main-nav { gap: 8px 16px; flex-wrap: wrap; font-size: 12px; }
   .main-nav a:first-child { display: none; }
   .hero { margin-block: 24px 44px; }
+  .hero-copy { width: calc(100% - 40px); }
   .hero .eyebrow { max-width: none; font-size: 9px; letter-spacing: .55px; }
   h1 { font-size: clamp(64px, 13vw, 88px); letter-spacing: -3.6px; margin-top: 24px; }
   .hero-description { font-size: 16px; max-width: 430px; margin-block: 23px; }
