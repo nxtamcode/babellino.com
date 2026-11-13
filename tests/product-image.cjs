@@ -1,4 +1,4 @@
-// Shared checks for the owner-supplied, unaltered kitchen hero asset.
+// Shared checks for the supplied kitchen image and its responsive, clipped crop.
 const assert = require('node:assert/strict');
 module.exports = async function verifyProductImage(page, expectedAlt) {
   const image = page.locator('.product-image');
@@ -11,66 +11,86 @@ module.exports = async function verifyProductImage(page, expectedAlt) {
   if (expectedAlt) assert.equal(alt, expectedAlt);
   const metrics = await image.evaluate(el => {
     const rect = el.getBoundingClientRect();
-    const figure = el.closest('figure').getBoundingClientRect();
+    const figureEl = el.closest('figure');
+    const frame = figureEl.getBoundingClientRect();
     const hero = el.closest('.hero').getBoundingClientRect();
     const copy = document.querySelector('.hero-copy').getBoundingClientRect();
     const header = document.querySelector('.home-header').getBoundingClientRect();
     const style = getComputedStyle(el);
-    const scale = Math.max(rect.width / el.naturalWidth, rect.height / el.naturalHeight);
-    // The device occupies this measured region of the supplied photograph.
-    // Track its visible bounds after the CSS cover crop (56% horizontal, 62% vertical).
-    const offsetX = (rect.width - el.naturalWidth * scale) * .56;
-    const offsetY = (rect.height - el.naturalHeight * scale) * .62;
+    const layoutWidth = parseFloat(style.width), layoutHeight = parseFloat(style.height);
+    const zoom = rect.width / layoutWidth;
+    const scale = Math.max(layoutWidth / el.naturalWidth, layoutHeight / el.naturalHeight) * zoom;
+    const plain = /^([\d.]+)% ([\d.]+)%$/.exec(style.objectPosition);
+    const calc = /^calc\((.+)\) ([\d.]+)%$/.exec(style.objectPosition);
+    const percent = calc && /([\d.]+)%/.exec(calc[1]);
+    const pixels = calc && /([-+]?\s*[\d.]+)px/.exec(calc[1]);
+    const positionValid = !!(plain || (calc && percent && pixels));
+    const xPercent = plain ? Number(plain[1]) / 100 : Number(percent?.[1]) / 100;
+    const xPixels = plain ? 0 : Number(pixels?.[1].replace(/\s/g, ''));
+    const yPercent = Number(plain ? plain[2] : calc?.[2]) / 100;
+    const offsetX = (rect.width - el.naturalWidth * scale) * xPercent + xPixels * zoom;
+    const offsetY = (rect.height - el.naturalHeight * scale) * yPercent;
+    // The device's measured region in the original photograph. Work from the
+    // transformed image bounds, but compare its visible content with the clipping frame.
+    const painted = { left: rect.left + offsetX, top: rect.top + offsetY };
+    painted.right = painted.left + el.naturalWidth * scale;
+    painted.bottom = painted.top + el.naturalHeight * scale;
     const device = {
-      left: rect.left + offsetX + .49 * el.naturalWidth * scale,
-      right: rect.left + offsetX + .63 * el.naturalWidth * scale,
-      top: rect.top + offsetY + .40 * el.naturalHeight * scale,
-      bottom: rect.top + offsetY + .75 * el.naturalHeight * scale,
+      left: painted.left + .49 * el.naturalWidth * scale,
+      right: painted.left + .63 * el.naturalWidth * scale,
+      top: painted.top + .40 * el.naturalHeight * scale,
+      bottom: painted.top + .75 * el.naturalHeight * scale,
     };
     return {
-      complete: el.complete,
-      startsAtPageTop: Math.abs(rect.top + scrollY) < 1,
-      headerOverImage: header.top >= rect.top && header.bottom <= rect.bottom,
+      complete: el.complete, naturalWidth: el.naturalWidth, naturalHeight: el.naturalHeight,
+      width: frame.width, height: frame.height, viewport: innerWidth,
+      zoom, uniformZoom: Math.abs(zoom - rect.height / layoutHeight) < .002,
+      position: style.objectPosition, positionValid,
+      centeredCrop: xPercent === .5 && yPercent === .5 && Math.abs(xPixels + layoutHeight * .106666667) < .02,
+      deviceCenterOffset: (device.left + device.right - frame.left - frame.right) / 2,
+      startsAtPageTop: Math.abs(frame.top + scrollY) < 1,
+      headerOverImage: header.top >= frame.top && header.bottom <= frame.bottom,
       headerClear: header.bottom + 8 < device.top && header.bottom + 16 < copy.top,
-      noCaptionStrip: getComputedStyle(el.closest('figure').querySelector('figcaption')).clipPath === 'inset(50%)',
-      naturalWidth: el.naturalWidth, naturalHeight: el.naturalHeight,
-      width: rect.width, height: rect.height, viewport: innerWidth,
-      fullHeroWidth: Math.abs(rect.width - hero.width) < 1,
-      fullViewportWidth: Math.abs(rect.left) < 1 && Math.abs(rect.right - innerWidth) < 1,
+      noCaptionStrip: getComputedStyle(figureEl.querySelector('figcaption')).clipPath === 'inset(50%)',
+      fullHeroWidth: Math.abs(frame.width - hero.width) < 1,
+      fullViewportWidth: Math.abs(frame.left) < 1 && Math.abs(frame.right - innerWidth) < 1,
       noScrim: ['::before', '::after'].every(pseudo => {
         const s = getComputedStyle(el.closest('.hero'), pseudo);
         return s.content === 'none' || s.content === 'normal';
       }) && getComputedStyle(el.closest('.hero')).backgroundImage === 'none',
-      copyOverImage: copy.left >= rect.left && copy.right <= rect.right
-        && copy.top >= rect.top && copy.bottom <= rect.bottom,
-      fit: style.objectFit, position: style.objectPosition,
-      contained: rect.left >= figure.left - 1 && rect.right <= figure.right + 1
-        && rect.top >= figure.top - 1 && rect.bottom <= figure.bottom + 1
-        && rect.left >= 0 && rect.right <= innerWidth,
-      deviceVisible: device.left >= rect.left && device.right <= rect.right
-        && device.top >= rect.top && device.bottom <= rect.bottom,
-      copyClear: innerWidth > 1100 ? copy.right + 8 < device.left : copy.top > figure.bottom,
+      copyOverImage: copy.left >= frame.left && copy.right <= frame.right
+        && copy.top >= frame.top && copy.bottom <= frame.bottom,
+      fit: style.objectFit, clipped: getComputedStyle(figureEl).overflow === 'hidden',
+      coversFrame: [rect, painted].every(box => box.left <= frame.left + 1 && box.right >= frame.right - 1
+        && box.top <= frame.top + 1 && box.bottom >= frame.bottom - 1),
+      deviceVisible: device.left >= frame.left && device.right <= frame.right
+        && device.top >= frame.top && device.bottom <= frame.bottom,
+      copyClear: innerWidth > 1100 ? copy.right + 8 < device.left : copy.top > frame.bottom,
     };
   });
-  assert.ok(metrics.complete && metrics.contained);
+  assert.ok(metrics.complete && metrics.positionValid, `Image decode/position: ${metrics.position}`);
   assert.equal(metrics.naturalWidth, 1792);
   assert.equal(metrics.naturalHeight, 1008);
   assert.ok(metrics.width > 0 && metrics.height > 0);
-  assert.ok(metrics.fullHeroWidth && metrics.fullViewportWidth, 'Kitchen image must span the viewport edge to edge');
-  assert.ok(metrics.noScrim, 'Do not restore the gradient or an image-covering scrim');
-  assert.ok(metrics.startsAtPageTop && metrics.headerOverImage, 'Navigation must overlay the image from the page top');
-  assert.ok(metrics.headerClear, 'Navigation must not collide with the device or hero copy');
-  assert.ok(metrics.noCaptionStrip, 'Keep the descriptive caption accessible without a separate framing strip');
-  if (metrics.viewport > 1100) assert.ok(metrics.copyOverImage, 'Desktop text sits directly over the photograph');
-  assert.equal(metrics.fit, 'cover', 'Cover preserves proportions without stretching');
-  assert.equal(metrics.position, '56% 62%');
-  assert.ok(metrics.deviceVisible, 'Keep the complete device inside the responsive crop');
-  assert.ok(metrics.copyClear, 'The headline and signup controls must not cover the device');
-  if (metrics.viewport <= 1100) {
+  assert.ok(metrics.fullHeroWidth && metrics.fullViewportWidth, 'Keep the photo edge-to-edge');
+  assert.ok(metrics.clipped && metrics.coversFrame, 'Crop the enlarged photo without overflow or empty edges');
+  assert.ok(metrics.noScrim, 'Do not restore a gradient or image-covering scrim');
+  assert.ok(metrics.startsAtPageTop && metrics.headerOverImage, 'Navigation overlays the image from the page top');
+  assert.ok(metrics.headerClear, 'Navigation must not collide with the device or copy');
+  assert.ok(metrics.noCaptionStrip, 'Keep the descriptive caption accessible without a separate strip');
+  assert.equal(metrics.fit, 'cover');
+  assert.ok(metrics.uniformZoom, 'Do not stretch the photograph');
+  assert.ok(Math.abs(metrics.zoom - (metrics.viewport > 1100 ? 1.12 : 1.16)) < .002, 'Enlarge the device at every breakpoint');
+  assert.ok(metrics.deviceVisible && metrics.copyClear, 'Keep the complete device clear of the text');
+  if (metrics.viewport > 1100) {
+    assert.ok(metrics.copyOverImage);
+    assert.equal(metrics.position, '56% 62%');
+  } else {
+    assert.ok(metrics.centeredCrop && Math.abs(metrics.deviceCenterOffset) < 1, 'Center the device when text is stacked');
     const height = metrics.viewport <= 760
       ? Math.min(520, Math.max(360, metrics.viewport * .90))
       : Math.min(660, Math.max(420, metrics.viewport * .62));
-    assert.ok(Math.abs(metrics.height - height) < 1, 'Photo reserves room for navigation and the complete device');
+    assert.ok(Math.abs(metrics.height - height) < 1, 'Reserve room for navigation and the complete device');
   }
   assert.equal(await page.locator('.product-stage, .device, .screen').count(), 0);
   return metrics;

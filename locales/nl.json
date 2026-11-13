@@ -10,6 +10,7 @@
   "pause": "Pauzeren", "resume": "Hervatten", "pauseLabel": "Taalwisseling van de kop pauzeren", "resumeLabel": "Taalwisseling van de kop hervatten",
   "heroDescription": "Verschillende talen. Dezelfde tafel. Maak kennis met de zelfstandige AI-vertaler die het gesprek gaande houdt.",
   "meet": "Ontdek Babellino", "noSubscriptions": "Geen abonnementen.", "noInternet": "Geen internet nodig tijdens gebruik.",
+  "noCamera": "Geen camera.", "dualMicrophones": "Twee microfoons.",
   "languagesLink": "10 ondersteunde talen",
   "productAlt": "Babellino-vertaler op een marmeren kookeiland in een zonovergoten keuken.",
   "offline": "Offline", "greeting": ["Goedemorgen.", "Leuk je te", "ontmoeten."], "reply": ["Insgelijks.", "Hoe gaat het?"],

@@ -3,6 +3,7 @@
 > Babellino est un traducteur IA hors ligne en développement, avec un écran tactile de 8 pouces et 10 langues prises en charge. Sans abonnement ni internet pendant l’utilisation.
 
 Aucun abonnement n’est requis. Babellino est développé pour traduire hors ligne grâce à une IA embarquée, sans connexion internet pendant l’utilisation.
+Sans caméra. Deux microphones.
 Le prix et la disponibilité n’ont pas encore été annoncés.
 
 ## 10 langues prises en charge.

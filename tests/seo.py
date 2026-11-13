@@ -115,7 +115,7 @@ for code, copy in locales.items():
     for unsupported in ['"offers"', '"aggregateRating"', '"review"', '"sameAs"', '"FAQPage"']:
         assert unsupported not in page.scripts[0], f"Unverified/irrelevant schema: {unsupported}"
     assert page.questions == 4  # Three FAQs + the native language selector.
-    for key in ("languagesHeading", "moreLanguages", "requestLanguage", "development", "noSubscriptions", "noInternet", "offlineQuestion", "offlineAnswer"):
+    for key in ("languagesHeading", "moreLanguages", "requestLanguage", "development", "noSubscriptions", "noInternet", "noCamera", "dualMicrophones", "offlineQuestion", "offlineAnswer"):
         assert copy[key] in page.text, (code, key)
     assert "Supported languages have not been announced" not in page.text
     assert [l["data-locale"] for l in page.links if "data-locale" in l] == codes
@@ -146,7 +146,7 @@ for code, copy in locales.items():
     llms = (directory / "llms.txt").read_text()
     assert llms.startswith("# Babellino\n")
     assert not re.search(r"illustrativ\w*|not final hardware|非最终硬件|仅供示意", llms, re.I)
-    for key in ("unannounced", "offlineAnswer", "moreLanguages"):
+    for key in ("unannounced", "offlineAnswer", "moreLanguages", "noCamera", "dualMicrophones"):
         assert copy[key] in llms
     assert all(name in llms for name in copy["languageNames"])
     error = Page((directory / "404.html").read_text())

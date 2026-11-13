@@ -79,9 +79,14 @@ The public form's default success text is not proof of those account settings.
 sunlit kitchen scene edge-to-edge across the viewport. Desktop copy sits directly
 over the photograph, with no gradient or scrim, keeping the device clear. The
 transparent homepage navigation sits over the same photo from the top edge.
-Dark, larger supporting text and a subtle text-only light shadow improve desktop
-legibility without obscuring the scene. Tablet and mobile keep the photo above
+Dark supporting text and subtle text-only light shadows improve desktop
+legibility without obscuring the scene. The four sales facts form a compact
+vertical list, with a quieter language link and a distinct primary action. Core
+body copy is at least 16px, supporting text at least 14px, and compact labels
+at least 12px; mobile headings and translated navigation have their own sizing. Tablet and mobile keep the photo above
 the copy, with a taller device-focused crop that leaves room for navigation.
+The photograph is cropped 12% closer on desktop and 16% closer in stacked layouts.
+Stacked crops center the device itself horizontally; the source asset is unchanged.
 No image is stretched. Explicit
 intrinsic dimensions reserve the image's space, and the hero is prioritized for
 loading. Localized alternative text describes the scene; the caption describes
@@ -112,6 +117,8 @@ new specifications, shipping readiness, or a release date from the image.
 - Owner-approved messaging (2026-11-10): no subscriptions; no internet required during
   translation use. This does not announce a hardware price, free lifetime updates,
   or an offline firmware-update process.
+- Owner-approved facts (2026-11-13): no camera; dual microphones. Do not infer
+  recording behavior, microphone directionality, noise cancellation, or privacy guarantees.
 - This repository is the website, not device firmware.
 - Do not publish internal source, provisioning details, private links, or credentials.
 - Do not add unverified latency, accuracy, language counts, battery life, certifications,

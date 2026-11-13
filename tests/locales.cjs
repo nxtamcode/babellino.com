@@ -17,7 +17,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
   try {
     for (const code of codes) {
       const copy = data[code];
-      for (const width of [1440, 320]) {
+      for (const width of [1440, 1101, 768, 320]) {
         const context = await browser.newContext({ viewport: { width, height: 1000 }, reducedMotion: 'reduce' });
         const page = await context.newPage();
         await mockBeehiiv(page);
@@ -32,6 +32,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
         assert.equal(await page.locator('#hero-language-toggle').isVisible(), false);
         assert.equal(await page.getByRole('heading', { level: 1, name: copy.headlineAccessible, exact: true }).count(), 1);
         assert.equal(await page.locator('.language-list li').count(), 10);
+        assert.deepEqual(await page.locator('.hero-note li').allTextContents(), [copy.noSubscriptions, copy.noInternet, copy.noCamera, copy.dualMicrophones]);
         assert.equal(await page.locator('.supported h2').textContent(), copy.languagesHeading);
         for (const name of copy.languageNames) assert.ok((await page.locator('.language-list').innerText()).includes(name));
         assert.ok((await page.locator('.supported').innerText()).includes(copy.moreLanguages));

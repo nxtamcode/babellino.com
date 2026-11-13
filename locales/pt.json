@@ -10,6 +10,7 @@
   "pause": "Pausar", "resume": "Retomar", "pauseLabel": "Pausar a rotação de idiomas do título", "resumeLabel": "Retomar a rotação de idiomas do título",
   "heroDescription": "Idiomas diferentes. A mesma mesa. Conheça o tradutor autónomo com IA que mantém a conversa a fluir.",
   "meet": "Conheça o Babellino", "noSubscriptions": "Sem subscrições.", "noInternet": "Sem internet durante a utilização.",
+  "noCamera": "Sem câmara.", "dualMicrophones": "Dois microfones.",
   "languagesLink": "10 idiomas suportados",
   "productAlt": "Tradutor Babellino sobre uma ilha de mármore numa cozinha iluminada pelo sol.",
   "offline": "Offline", "greeting": ["Bom dia.", "É um prazer", "conhecer-te."], "reply": ["Igualmente.", "Como estás?"],

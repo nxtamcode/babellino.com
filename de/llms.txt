@@ -3,6 +3,7 @@
 > Babellino ist ein Offline-KI-Übersetzer in Entwicklung mit 8-Zoll-Touchscreen und 10 unterstützten Sprachen. Kein Abo und kein Internet bei der Nutzung nötig.
 
 Ein Abo ist nicht erforderlich. Babellino wird für Offline-Übersetzung entwickelt: Die KI läuft auf dem Gerät, und während der Nutzung ist keine Internetverbindung nötig.
+Keine Kamera. Zwei Mikrofone.
 Preis und Verfügbarkeit wurden noch nicht bekannt gegeben.
 
 ## 10 unterstützte Sprachen.
