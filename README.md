@@ -71,6 +71,16 @@ changed by this integration. Check these in beehiiv before collecting addresses;
 confirmation behavior must be verified with an owner-authorized test email.
 The public form's default success text is not proof of those account settings.
 
+## Product image
+
+`assets/babellino-device.png` is the owner-supplied product image approved for the
+website on 2026-11-13, copied without alteration (1450 × 2091, with transparency).
+All ten homepages use it in place of the old CSS-built device. Explicit intrinsic
+dimensions reserve its aspect ratio; responsive CSS shows the complete image
+without cropping or distortion. The existing localized alternative text and
+illustrative/development disclosures remain. The text within the supplied image
+stays English/Spanish rather than being reconstructed or translated.
+
 ## Publishing
 
 GitHub Pages serves the repository root from `master`. `.nojekyll` keeps the

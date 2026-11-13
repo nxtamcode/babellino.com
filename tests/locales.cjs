@@ -1,3 +1,4 @@
+const verifyProductImage = require('./product-image.cjs');
 const { mockBeehiiv, loaderURL } = require('./beehiiv-mock.cjs');
 const { chromium } = require('playwright');
 const AxeBuilder = require('@axe-core/playwright').default;
@@ -43,12 +44,10 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
         await request.focus();
         assert.equal(await request.evaluate(el => el === document.activeElement), true);
         await page.evaluate(() => scrollTo(0, 0));
-        const layout = await page.evaluate(() => {
-          const screen = document.querySelector('.screen');
-          return { overflow: document.documentElement.scrollWidth > innerWidth,
-            clipped: screen.scrollHeight > screen.clientHeight + 1 || screen.scrollWidth > screen.clientWidth + 1 };
-        });
-        assert.deepEqual(layout, { overflow: false, clipped: false }, `${code}/${width}`);
+        const productImage = await verifyProductImage(page, copy.conceptAlt);
+        const layout = await page.evaluate(() => ({ overflow: document.documentElement.scrollWidth > innerWidth }));
+        assert.deepEqual(layout, { overflow: false }, `${code}/${width}`);
+        layout.productImage = productImage;
         assert.deepEqual((await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze()).violations, []);
         await page.screenshot({ path: `test-results/locale-${code}-${width}.png`, fullPage: true });
         // Native disclosure, all native names, keyboard focus and escape.
@@ -81,6 +80,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
       await mockBeehiiv(page);
       await page.goto(new URL(route(code), base).href);
       assert.equal(await page.locator('html').getAttribute('lang'), copy.htmlLang);
+      await verifyProductImage(page, copy.conceptAlt);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
       assert.equal(new URL(await page.locator('.request-language').getAttribute('href')).pathname, contactEmail);
       await page.screenshot({ path: `test-results/no-js-${code}.png`, fullPage: true });

@@ -1,3 +1,4 @@
+const verifyProductImage = require('./product-image.cjs');
 const { mockBeehiiv, loaderURL } = require('./beehiiv-mock.cjs');
 // Browser and accessibility QA: https://playwright.dev/docs/accessibility-testing
 const { chromium } = require('playwright');
@@ -35,16 +36,16 @@ const { mkdir, writeFile } = require('node:fs/promises');
       assert.equal(await page.locator('h1').count(), 1);
       assert.equal(await page.locator('.hero-note').innerText(), 'No subscriptions. No internet required during use.');
       assert.equal(await page.locator('.details div').filter({ hasText: 'Subscriptions' }).locator('dd').innerText(), 'None required');
+      const productImage = await verifyProductImage(page);
       const layout = await page.evaluate(() => ({
         width: innerWidth, scroll: document.documentElement.scrollWidth,
-        screenHeight: document.querySelector('.screen').clientHeight,
-        screenScroll: document.querySelector('.screen').scrollHeight,
       }));
       if (layout.scroll > width) errors.push('Horizontal page overflow');
-      if (layout.screenScroll > layout.screenHeight + 1) errors.push('Screen mockup clipping');
+      layout.productImage = productImage;
       const a11y = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
       await page.screenshot({ path: `test-results/${name}.png`, fullPage: true });
       await page.locator('.closing').screenshot({ path: `test-results/${name}-closing.png` });
+      await page.locator('.hero').screenshot({ path: `test-results/${name}-product-hero.png` });
       await page.keyboard.press('Tab');
       assert.equal(await page.locator(':focus').innerText(), 'Skip to content');
       await page.keyboard.press('Enter');
@@ -74,6 +75,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
     const page = await fallback.newPage();
     await mockBeehiiv(page);
     await page.goto(base);
+    await verifyProductImage(page);
     await page.getByText('Which languages does Babellino support?', { exact: true }).click();
     assert.ok(await page.getByText('Babellino supports the 10 languages listed above, with more coming.', { exact: false }).isVisible());
     await page.goto(new URL('404.html', base).href);
