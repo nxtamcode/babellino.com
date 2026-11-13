@@ -77,12 +77,16 @@ The public form's default success text is not proof of those account settings.
 2026-11-13, updated to the supplied light-interface JPEG without alteration
 (1792 × 1008, 291 KB). All ten homepages use the
 sunlit kitchen scene edge-to-edge across the viewport. Desktop copy sits directly
-over the photograph, with no gradient or scrim, keeping the device clear. Tablet
-and mobile keep the full-width photo above the copy for readability. Small screens
-use a 4:3 CSS crop focused on the device, without stretching the image. Explicit
+over the photograph, with no gradient or scrim, keeping the device clear. The
+transparent homepage navigation sits over the same photo from the top edge.
+Dark, larger supporting text and a subtle text-only light shadow improve desktop
+legibility without obscuring the scene. Tablet and mobile keep the photo above
+the copy, with a taller device-focused crop that leaves room for navigation.
+No image is stretched. Explicit
 intrinsic dimensions reserve the image's space, and the hero is prioritized for
 loading. Localized alternative text describes the scene; the caption describes
-the 8-inch touchscreen and offline translation.
+the 8-inch touchscreen and offline translation for assistive technology, without
+adding a separate visual caption strip.
 
 The owner confirmed that the pictured device is the real product. Do not label
 it a concept or non-final hardware. The text within supplied images is not

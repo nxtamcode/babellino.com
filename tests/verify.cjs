@@ -17,6 +17,10 @@ const { mkdir, writeFile } = require('node:fs/promises');
       ['desktop', 1440, 1000], ['mobile', 390, 844],
       ['small-mobile', 320, 700], ['tablet', 768, 1024],
       ['compact-desktop', 1101, 1000], ['wide-tablet', 1100, 1000],
+      ['large-phone', 430, 932], ['landscape-phone', 844, 390],
+      ['tablet-landscape', 1024, 768], ['mobile-breakpoint', 760, 1024],
+      ['tablet-breakpoint', 761, 1024], ['wide-desktop', 1920, 1080],
+      ['ultrawide', 2560, 1440],
     ]) {
       console.log(`Checking ${name}`);
       const context = await browser.newContext({ viewport: { width, height }, reducedMotion: 'reduce' });

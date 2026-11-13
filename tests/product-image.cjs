@@ -14,12 +14,13 @@ module.exports = async function verifyProductImage(page, expectedAlt) {
     const figure = el.closest('figure').getBoundingClientRect();
     const hero = el.closest('.hero').getBoundingClientRect();
     const copy = document.querySelector('.hero-copy').getBoundingClientRect();
+    const header = document.querySelector('.home-header').getBoundingClientRect();
     const style = getComputedStyle(el);
     const scale = Math.max(rect.width / el.naturalWidth, rect.height / el.naturalHeight);
     // The device occupies this measured region of the supplied photograph.
-    // Track its visible bounds after the CSS cover crop (56% horizontal, 50% vertical).
+    // Track its visible bounds after the CSS cover crop (56% horizontal, 62% vertical).
     const offsetX = (rect.width - el.naturalWidth * scale) * .56;
-    const offsetY = (rect.height - el.naturalHeight * scale) * .5;
+    const offsetY = (rect.height - el.naturalHeight * scale) * .62;
     const device = {
       left: rect.left + offsetX + .49 * el.naturalWidth * scale,
       right: rect.left + offsetX + .63 * el.naturalWidth * scale,
@@ -28,6 +29,10 @@ module.exports = async function verifyProductImage(page, expectedAlt) {
     };
     return {
       complete: el.complete,
+      startsAtPageTop: Math.abs(rect.top + scrollY) < 1,
+      headerOverImage: header.top >= rect.top && header.bottom <= rect.bottom,
+      headerClear: header.bottom + 8 < device.top && header.bottom + 16 < copy.top,
+      noCaptionStrip: getComputedStyle(el.closest('figure').querySelector('figcaption')).clipPath === 'inset(50%)',
       naturalWidth: el.naturalWidth, naturalHeight: el.naturalHeight,
       width: rect.width, height: rect.height, viewport: innerWidth,
       fullHeroWidth: Math.abs(rect.width - hero.width) < 1,
@@ -53,14 +58,19 @@ module.exports = async function verifyProductImage(page, expectedAlt) {
   assert.ok(metrics.width > 0 && metrics.height > 0);
   assert.ok(metrics.fullHeroWidth && metrics.fullViewportWidth, 'Kitchen image must span the viewport edge to edge');
   assert.ok(metrics.noScrim, 'Do not restore the gradient or an image-covering scrim');
+  assert.ok(metrics.startsAtPageTop && metrics.headerOverImage, 'Navigation must overlay the image from the page top');
+  assert.ok(metrics.headerClear, 'Navigation must not collide with the device or hero copy');
+  assert.ok(metrics.noCaptionStrip, 'Keep the descriptive caption accessible without a separate framing strip');
   if (metrics.viewport > 1100) assert.ok(metrics.copyOverImage, 'Desktop text sits directly over the photograph');
   assert.equal(metrics.fit, 'cover', 'Cover preserves proportions without stretching');
-  assert.equal(metrics.position, '56% 50%');
+  assert.equal(metrics.position, '56% 62%');
   assert.ok(metrics.deviceVisible, 'Keep the complete device inside the responsive crop');
   assert.ok(metrics.copyClear, 'The headline and signup controls must not cover the device');
   if (metrics.viewport <= 1100) {
-    const ratio = metrics.viewport <= 760 ? 4 / 3 : 1792 / 1008;
-    assert.ok(Math.abs(metrics.width / metrics.height - ratio) < .002, 'Expected responsive photo ratio');
+    const height = metrics.viewport <= 760
+      ? Math.min(520, Math.max(360, metrics.viewport * .90))
+      : Math.min(660, Math.max(420, metrics.viewport * .62));
+    assert.ok(Math.abs(metrics.height - height) < 1, 'Photo reserves room for navigation and the complete device');
   }
   assert.equal(await page.locator('.product-stage, .device, .screen').count(), 0);
   return metrics;
