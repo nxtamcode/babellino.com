@@ -73,15 +73,19 @@ The public form's default success text is not proof of those account settings.
 
 ## Product image
 
-`assets/babellino-device.png` is the owner-supplied product image approved for the
-website on 2026-11-13, copied without alteration (1450 × 2091, with transparency).
-All ten homepages use it in place of the old CSS-built device. Explicit intrinsic
-dimensions reserve its aspect ratio; responsive CSS shows the complete image
-without cropping or distortion. The owner confirmed that this shows
-the real product on 2026-11-13. Localized alternative text and a useful caption
-describe the device; do not label it a concept or non-final hardware. The text
-within the supplied image stays English/Spanish rather than being reconstructed
-or translated.
+`assets/babellino-kitchen.png` is the owner-supplied hero image approved on
+2026-11-13, copied without alteration (1792 × 1008). All ten homepages use the
+sunlit kitchen scene. Desktop copy sits over a pale left-edge scrim, keeping the
+device clear; tablet and mobile place the photo above the copy. Small screens
+use a 4:3 CSS crop focused on the device, without stretching the image. Explicit
+intrinsic dimensions reserve the image's space, and the hero is prioritized for
+loading. Localized alternative text describes the scene; the caption describes
+the 8-inch touchscreen and offline translation.
+
+The owner confirmed that the pictured device is the real product. Do not label
+it a concept or non-final hardware. The text within supplied images is not
+reconstructed or translated. The earlier close-up remains a local asset at
+`assets/babellino-device.png`; it is not loaded by the homepage.
 
 ## Publishing
 
