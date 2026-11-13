@@ -76,8 +76,9 @@ The public form's default success text is not proof of those account settings.
 `assets/babellino-kitchen.jpg` is the owner-supplied hero image approved on
 2026-11-13, updated to the supplied light-interface JPEG without alteration
 (1792 × 1008, 291 KB). All ten homepages use the
-sunlit kitchen scene. Desktop copy sits over a pale left-edge scrim, keeping the
-device clear; tablet and mobile place the photo above the copy. Small screens
+sunlit kitchen scene edge-to-edge across the viewport. Desktop copy sits directly
+over the photograph, with no gradient or scrim, keeping the device clear. Tablet
+and mobile keep the full-width photo above the copy for readability. Small screens
 use a 4:3 CSS crop focused on the device, without stretching the image. Explicit
 intrinsic dimensions reserve the image's space, and the hero is prioritized for
 loading. Localized alternative text describes the scene; the caption describes
