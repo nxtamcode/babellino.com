@@ -4,7 +4,7 @@ const { chromium } = require('playwright');
 const { mkdir, writeFile } = require('node:fs/promises');
 const assert = require('node:assert/strict');
 const { loaderURL, formID } = require('./beehiiv-mock.cjs');
-const { mockGTM } = require('./gtm-mock.cjs');
+const { mockAnalytics } = require('./analytics-mock.cjs');
 const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
 
 (async () => {
@@ -24,7 +24,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
         }
         return route.continue();
       });
-      await mockGTM(page);
+      await mockAnalytics(page);
       page.on('response', response => {
         const url = new URL(response.url());
         requests.push({ status: response.status(), url: url.origin + url.pathname });

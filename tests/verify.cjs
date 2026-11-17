@@ -1,4 +1,4 @@
-const { gtmURL } = require('./gtm-mock.cjs');
+const { gtmURL, ahrefsURL } = require('./analytics-mock.cjs');
 const verifyProductImage = require('./product-image.cjs');
 const { mockBeehiiv, loaderURL } = require('./beehiiv-mock.cjs');
 // Browser and accessibility QA: https://playwright.dev/docs/accessibility-testing
@@ -34,7 +34,7 @@ const { mkdir, writeFile } = require('node:fs/promises');
       const errors = [], remoteRequests = [];
       page.on('pageerror', error => errors.push(error.message));
       page.on('request', request => {
-        if (![loaderURL, gtmURL].includes(request.url()) && new URL(request.url()).origin !== new URL(base).origin) remoteRequests.push(request.url());
+        if (![loaderURL, gtmURL, ahrefsURL].includes(request.url()) && new URL(request.url()).origin !== new URL(base).origin) remoteRequests.push(request.url());
       });
       page.on('response', response => {
         if (response.status() >= 400) errors.push(`HTTP ${response.status()}: ${response.url()}`);

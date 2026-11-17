@@ -1,4 +1,4 @@
-const { gtmURL } = require('./gtm-mock.cjs');
+const { gtmURL, ahrefsURL } = require('./analytics-mock.cjs');
 const verifyProductImage = require('./product-image.cjs');
 const { mockBeehiiv, loaderURL } = require('./beehiiv-mock.cjs');
 const { chromium } = require('playwright');
@@ -25,7 +25,7 @@ const base = process.env.BASE_URL || 'http://127.0.0.1:8765/';
         await mockBeehiiv(page);
         const errors = [];
         page.on('pageerror', e => errors.push(e.message));
-        page.on('request', r => { if (![loaderURL, gtmURL].includes(r.url()) && new URL(r.url()).origin !== new URL(base).origin) errors.push(r.url()); });
+        page.on('request', r => { if (![loaderURL, gtmURL, ahrefsURL].includes(r.url()) && new URL(r.url()).origin !== new URL(base).origin) errors.push(r.url()); });
         page.on('response', r => { if (r.status() >= 400) errors.push(`${r.status()} ${r.url()}`); });
         assert.equal((await page.goto(new URL(route(code), base).href, { waitUntil: 'networkidle' })).status(), 200);
         assert.equal(await page.locator('html').getAttribute('lang'), copy.htmlLang);
