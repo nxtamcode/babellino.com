@@ -6,9 +6,10 @@ device with an 8-inch touchscreen and no internet requirement during use.
 ## Development
 
 Buildless HTML, CSS, and vanilla JavaScript. The site uses local assets and system
-fonts. The owner-approved beehiiv signup is the sole external runtime integration;
-its iframe loads third-party assets, fonts, anti-bot services and telemetry. Do not
-claim that the whole site is cookie-free, tracking-free, or makes no external requests.
+fonts. Owner-approved external integrations are the beehiiv signup embed and
+Google Tag Manager container `GTM-PCC32WMM`. These providers may load additional
+third-party resources or telemetry. Do not claim that the site is cookie-free,
+tracking-free, or makes no external requests.
 
 ### Languages and content editing
 
@@ -48,6 +49,23 @@ python3 -m http.server 8080 --bind 127.0.0.1
 ```
 
 Open <http://127.0.0.1:8080>.
+
+## Google Tag Manager
+
+The owner supplied container `GTM-PCC32WMM` on 2026-11-17. The exact supplied
+async loader and `dataLayer`/`gtag` initialization live in `templates/tracking.html`,
+included near the top of the head on all ten homepages and localized error pages.
+This matches Google's [current manual installation snippet](https://support.google.com/tagmanager/answer/14847097?hl=en).
+No second loader, analytics destination, custom event, noscript iframe, or account
+configuration is added. Container tags, destinations and consent behavior are
+managed in GTM and are not validated by installing the loader. Review those
+settings and any required disclosure/consent separately; installation alone is
+not a privacy-compliance claim.
+
+Browser QA intercepts the exact GTM loader with an inert local response, including
+in the read-only beehiiv smoke test, so tests do not send synthetic analytics.
+Source and browser checks verify one async loader and the initial command queue
+on every language's home and error pages, plus a blocked-loader fallback.
 
 ## Email signup
 

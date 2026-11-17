@@ -1,3 +1,4 @@
+const { gtmURL } = require('./gtm-mock.cjs');
 const { chromium } = require('playwright');
 const AxeBuilder = require('@axe-core/playwright').default;
 const assert = require('node:assert/strict');
@@ -51,7 +52,7 @@ const codes = ['ca', 'nl', 'en', 'fr', 'de', 'it', 'zh', 'pt', 'ro', 'es'];
         await page.evaluate(() => scrollTo(0, 0));
         await page.locator('#updates').scrollIntoViewIfNeeded();
         assert.equal(requests.filter(r => r === loaderURL).length, 1, 'Loader must run once');
-        assert.ok(requests.every(r => r === loaderURL || new URL(r).origin === new URL(base).origin));
+        assert.ok(requests.every(r => [loaderURL, gtmURL].includes(r) || new URL(r).origin === new URL(base).origin));
         await context.close();
       }
       const noJS = await browser.newPage({ javaScriptEnabled: false });

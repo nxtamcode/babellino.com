@@ -23,6 +23,7 @@ def json_script(data):
 
 def render():
     settings = json.loads((ROOT / "site.json").read_text())
+    tracking = (ROOT / "templates/tracking.html").read_text().rstrip()
     locales = {c: json.loads((ROOT / f"locales/{c}.json").read_text()) for c in ORDER}
     keys = set(locales["en"])
     assert all(set(d) == keys for d in locales.values()), "Translation keys must match"
@@ -47,6 +48,7 @@ def render():
     for code, d in locales.items():
         url = BASE + path(code)
         values = {k: escape(v) for k, v in d.items() if isinstance(v, str)}
+        values["tracking"] = tracking
         values["contactHref"] = "".join(f"&#{ord(char)};" for char in "mailto:" + email)
         values["updatesHref"] = "".join(f"&#{ord(char)};" for char in f'mailto:{email}?subject={quote(d["updatesSubject"])}')
         values.update(homePath=path(code) + ("?lang=en" if code == "en" else ""), languageSelector=selector(code))
