@@ -10,10 +10,13 @@
 - Owner-confirmed hardware facts (2026-11-13): no camera and dual microphones.
   These do not establish recording behavior, noise cancellation, or privacy guarantees.
 - Do not add repository links or imply public-source availability in visitor-facing content.
-- Prefer local assets; do not add analytics, remote fonts, or unnecessary JavaScript.
-  Exception: the owner-approved beehiiv signup embed. Its provider-owned iframe may
-  load third-party fonts, anti-bot services and telemetry; no optional attribution
-  script or site analytics. Do not claim this integration is tracking/cookie-free.
+- Prefer local assets; do not add unapproved analytics, remote fonts, or unnecessary JavaScript.
+  Approved integrations: the beehiiv signup embed and Google Tag Manager container
+  `GTM-PCC32WMM` (owner-supplied snippet, 2026-11-17). Its tags are managed outside
+  this repo; do not change tags, destinations or consent settings without approval.
+  beehiiv's iframe may load third-party fonts, anti-bot services and telemetry;
+  no optional attribution script. Do not claim the site is tracking/cookie-free.
+  Stub GTM during browser QA to avoid sending test visits to analytics.
 - Babellino's public contact is `hi@babellino.com`, configured in `site.json`.
   Never use another product's address or put subscriber data/API secrets in this repo.
 - Visually check desktop and mobile after UI changes, then remove unnecessary copy
