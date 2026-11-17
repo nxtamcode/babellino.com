@@ -1,13 +1,15 @@
 const assert = require('node:assert/strict');
 const { readFileSync } = require('node:fs');
 const vm = require('node:vm');
-const { gtmURL } = require('./gtm-mock.cjs');
+const { gtmURL, ahrefsURL, ahrefsKey } = require('./analytics-mock.cjs');
 const snippet = readFileSync('templates/tracking.html', 'utf8').trim();
 const scripts = [...snippet.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)];
-assert.equal(scripts.length, 2);
+assert.equal(scripts.length, 3);
 assert.equal(scripts[0][1].trim(), `async src="${gtmURL}"`);
 assert.equal(scripts[0][2], '');
 assert.equal(scripts[1][1], '');
+assert.equal(scripts[2][1].trim(), `src="${ahrefsURL}" data-key="${ahrefsKey}" async`);
+assert.equal(scripts[2][2], '');
 assert.match(scripts[1][2], /window\.dataLayer = window\.dataLayer \|\| \[\];/);
 assert.match(scripts[1][2], /function gtag\(\)\{dataLayer\.push\(arguments\);\}/);
 assert.match(scripts[1][2], /gtag\('js', new Date\(\)\);/);
@@ -17,6 +19,9 @@ for (const prefix of ['', 'ca/', 'nl/', 'fr/', 'de/', 'it/', 'zh/', 'pt/', 'ro/'
     const source = readFileSync(file, 'utf8');
     const head = source.match(/<head>([\s\S]*?)<\/head>/)[1];
     assert.equal(source.split(gtmURL).length - 1, 1, `${file}: load exactly once`);
+    assert.equal(source.split(ahrefsURL).length - 1, 1, `${file}: one Ahrefs loader`);
+    assert.equal(source.split(ahrefsKey).length - 1, 1, `${file}: correct Ahrefs key once`);
+    assert.ok(!source.includes('1WhL5RBufcLyiINvnOknKg'), 'Never use the nxtam key on Babellino');
     assert.ok(head.includes(snippet), `${file}: exact supplied snippet in head`);
     assert.equal(head.indexOf('<script'), head.indexOf(snippet), `${file}: first script in head`);
     assert.ok(!source.includes('googletagmanager.com/ns.html'), 'No unrequested legacy iframe');
@@ -32,4 +37,4 @@ for (const existing of [false, true]) {
   assert.ok(vm.runInContext('dataLayer[dataLayer.length - 1][1] instanceof Date', context));
   assert.equal(typeof context.gtag, 'function');
 }
-console.log('GTM source checks passed: exact snippet on 20 pages, async single loader, queue initialization and preservation.');
+console.log('Analytics source checks passed: exact GTM/Ahrefs snippets on 20 pages, async single loader, queue initialization and preservation.');
